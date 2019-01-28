@@ -1,0 +1,18 @@
+Added Component: Designator=ZigBee(ZigBee XL2530-D01)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=PA2 Pin=ZigBee-4
+Added Pin To Net: NetName=PA3 Pin=ZigBee-5
+Added Pin To Net: NetName=NetD10_K Pin=ZigBee-10
+Added Pin To Net: NetName=VCC3.3 Pin=ZigBee-11
+Added Pin To Net: NetName=GND Pin=ZigBee-12
+Added Pin To Net: NetName=NetD9_K Pin=ZigBee-13
+Added Pin To Net: NetName=NetPAR_RESET_1 Pin=ZigBee-18
+Added Member To Class: ClassName=core_layer Member=Component C? 100uF (107) ¡À10% 6.3V
+Added Member To Class: ClassName=core_layer Member=Component C? 100uF (107) ¡À10% 6.3V
+Added Member To Class: ClassName=core_layer Member=Component C? 100nF(104) 10% 50V
+Added Member To Class: ClassName=core_layer Member=Component D? B5819W  SL
+Added Member To Class: ClassName=core_layer Member=Component R? 4.7K¦¸ (4701) ¡À1%
+Added Member To Class: ClassName=core_layer Member=Component R? 4.7K¦¸ (4701) ¡À1%
+Added Member To Class: ClassName=core_layer Member=Component R? 4.7K¦¸ (4701) ¡À1%
+Added Member To Class: ClassName=core_layer Member=Component ZigBee ZigBeeXL2530-D01
+Added Room: Name=core_layer

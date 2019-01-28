@@ -1,0 +1,55 @@
+Removed Pin From Net: NetName=PC13 Pin=CORE-2
+Removed Pin From Net: NetName=OSC_IN Pin=CORE-5
+Removed Pin From Net: NetName=OSC_OUT Pin=CORE-6
+Removed Pin From Net: NetName=RESET Pin=CORE-7
+Removed Pin From Net: NetName=GND Pin=CORE-8
+Removed Pin From Net: NetName=VCC3.3 Pin=CORE-9
+Removed Pin From Net: NetName=TX2 Pin=CORE-12
+Removed Pin From Net: NetName=RX2 Pin=CORE-13
+Removed Pin From Net: NetName=BOOT1 Pin=CORE-20
+Removed Pin From Net: NetName=GND Pin=CORE-23
+Removed Pin From Net: NetName=VCC3.3 Pin=CORE-24
+Removed Pin From Net: NetName=PB12 Pin=CORE-25
+Removed Pin From Net: NetName=TX1 Pin=CORE-30
+Removed Pin From Net: NetName=RX1 Pin=CORE-31
+Removed Pin From Net: NetName=SWIO Pin=CORE-34
+Removed Pin From Net: NetName=GND Pin=CORE-35
+Removed Pin From Net: NetName=VCC3.3 Pin=CORE-36
+Removed Pin From Net: NetName=SWCLK Pin=CORE-37
+Removed Pin From Net: NetName=SWO Pin=CORE-39
+Removed Pin From Net: NetName=BOOT0 Pin=CORE-44
+Removed Pin From Net: NetName=GND Pin=CORE-47
+Removed Pin From Net: NetName=VCC3.3 Pin=CORE-48
+Removed Member From Class: ClassName=Sheet2 Member=CORE
+Added Component: Designator=U1(LQFP-48_7x7x05P)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "供应商链接"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.szlcsc.com/product/details_9243.html"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Notepad"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "LQFP-48_7x7x05P"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = "LC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SuppliersPartNumber"; Value = "C8734"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=PC13 Pin=U1-2
+Added Pin To Net: NetName=OSC_IN Pin=U1-5
+Added Pin To Net: NetName=OSC_OUT Pin=U1-6
+Added Pin To Net: NetName=RESET Pin=U1-7
+Added Pin To Net: NetName=GND Pin=U1-8
+Added Pin To Net: NetName=VCC3.3 Pin=U1-9
+Added Pin To Net: NetName=TX2 Pin=U1-12
+Added Pin To Net: NetName=RX2 Pin=U1-13
+Added Pin To Net: NetName=BOOT1 Pin=U1-20
+Added Pin To Net: NetName=GND Pin=U1-23
+Added Pin To Net: NetName=VCC3.3 Pin=U1-24
+Added Pin To Net: NetName=PB12 Pin=U1-25
+Added Pin To Net: NetName=TX1 Pin=U1-30
+Added Pin To Net: NetName=RX1 Pin=U1-31
+Added Pin To Net: NetName=SWIO Pin=U1-34
+Added Pin To Net: NetName=GND Pin=U1-35
+Added Pin To Net: NetName=VCC3.3 Pin=U1-36
+Added Pin To Net: NetName=SWCLK Pin=U1-37
+Added Pin To Net: NetName=SWO Pin=U1-39
+Added Pin To Net: NetName=BOOT0 Pin=U1-44
+Added Pin To Net: NetName=GND Pin=U1-47
+Added Pin To Net: NetName=VCC3.3 Pin=U1-48
+Added Member To Class: ClassName=Sheet2 Member=Component U1 STM32F103C8T6
+Added Room: Name=Sheet2

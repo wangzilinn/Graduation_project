@@ -1,0 +1,15 @@
+Removed Pin From Net: NetName=NetD6_K Pin=R8-1
+Removed Pin From Net: NetName=GND Pin=R8-2
+Removed Member From Class: ClassName=core_layer Member=R8
+Added Component: Designator=R?(0805_R)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "供应商链接"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.szlcsc.com/product/details_18102.html"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Notepad"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "0805"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = "LC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SuppliersPartNumber"; Value = "C17414"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetD6_K Pin=R?-1
+Added Pin To Net: NetName=GND Pin=R?-2
+Added Member To Class: ClassName=core_layer Member=Component R? 10KΩ (1002) ±1%
+Added Room: Name=core_layer

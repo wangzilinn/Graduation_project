@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=GND Pin=C3-1
+Removed Pin From Net: NetName=VCC5 Pin=C3-2
+Change Component Footprint: Designator=C3 Old Footprint=C-RAD-0805 New Footprint=0805
+Change Component Footprint: Designator=C5 Old Footprint=C-RAD-0805 New Footprint=0805
+Change Component Comment : Designator=C3 Old Comment=Cap New Comment=104
+Change Component Comment : Designator=C5 Old Comment=Cap New Comment=104
+Change component parameters. Clean all parameters for all variants
+Change component parameters. Clean all parameters for all variants
+Added Pin To Net: NetName=VCC5 Pin=C3-1
+Added Pin To Net: NetName=GND Pin=C3-2
+Added Room: Name=core_layer

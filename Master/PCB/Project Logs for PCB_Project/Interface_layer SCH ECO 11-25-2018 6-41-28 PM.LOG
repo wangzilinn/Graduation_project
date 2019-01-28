@@ -1,0 +1,6 @@
+Change Component Designator: Old Designator=IIC? New Designator=IIC1
+Change Component Designator: Old Designator=SPI? New Designator=SPI1
+Change Component Designator: Old Designator=USART? New Designator=USART1
+Change Component Designator: Old Designator=USART? New Designator=USART2
+Change Component Designator: Old Designator=USART? New Designator=USART3
+Change Component Designator: Old Designator=V_USART_SELECT? New Designator=V_USART_SELECT1

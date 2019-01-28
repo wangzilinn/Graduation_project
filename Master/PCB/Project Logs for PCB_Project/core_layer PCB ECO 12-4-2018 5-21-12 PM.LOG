@@ -1,0 +1,6 @@
+Change Component Designator: OldDesignator=5V-GND NewDesignator=5V-IN
+Change Component Designator: OldDesignator=M1 NewDesignator=CORE
+Added Member To Class: ClassName=core_layer Member=Component BlueTooth ATK-BC05-V12
+Added Member To Class: ClassName=core_layer Member=Component HID USART_HID
+Added Member To Class: ClassName=core_layer Member=Component  Header 13
+Added Room: Name=core_layer

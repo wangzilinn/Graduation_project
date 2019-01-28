@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=GND Pin=C1-1
+Removed Pin From Net: NetName=VCC5 Pin=C1-2
+Removed Member From Class: ClassName=core_layer Member=C1
+Added Member To Class: ClassName=core_layer Member=Component M1 STM32F4&F7_CB
+Added Member To Class: ClassName=core_layer Member=Component P1 Header 13
+Added Room: Name=core_layer

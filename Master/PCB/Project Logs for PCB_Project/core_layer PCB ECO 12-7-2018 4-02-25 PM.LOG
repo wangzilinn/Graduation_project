@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=VCC3.3 Pin=SWD-1
+Added Component: Designator=IN3.3(HDR1X2)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VCC3.3 Pin=IN3.3-2
+Added Pin To Net: NetName=NetIN3.3_1 Pin=IN3.3-1
+Added Pin To Net: NetName=NetIN3.3_1 Pin=SWD-1
+Added Net: Name=NetIN3.3_1
+Added Member To Class: ClassName=core_layer Member=Component IN3.3 Header 2
+Added Room: Name=core_layer

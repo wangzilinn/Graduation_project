@@ -1,0 +1,22 @@
+Bill of Material for 
+On 2018-12-17 at 1:17:00 PM
+
+ Comment             Pattern     Quantity  Components
+------------------------------------------------------------------------------
+ 106                 0805             2    C3, C4                                            
+ 22nF                0805             1    C1                                                
+ Cap                 C-RAD-0805       7    C5, C6, C7, C8, C9, C10, C11 无极性电容                
+ DHT11               DTH11            1    DHT1                                              
+ Diode               DIODE-1206       1    D2                           二极管                  
+ Header 2            HDR2X1_A         2    PAR_RESET, VCC3.7-IN         接插件                  
+ Header 3X2          HDR2X3           1    BOOT                         Header, 3-Pin, Dual row 
+ Header 4            HDR4X1_A         2    SWD, USART1                  接插件                  
+ LED0                LED_0805         4    D5, D6, REV, SEND            发光二极管                
+ Res1                0805-1           8    R2, R3, R4, R5, R6, R7, R8   贴片电阻                 
+                                           R9
+ RT9193-33           LC-SOT-23-5      1    TO3.3                                             
+ STM32F103C8T6       LQFP-48_7x7x05P    1    CORE                         ARM                  
+ SW-PB               SW_PB2_A1        1    RESET                        微动开关                 
+ TEST POINT          TP-1.5           1    TEST3.3                      测试点                  
+ XTAL                X-SM49           1    Y1                           晶振                   
+ ZigBee XL2530-D01   ZigBeeXL2530-D01    1    ZigBee                                            

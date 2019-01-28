@@ -1,0 +1,5 @@
+Added Pin To Net: NetName=NetD10_A Pin=D10-A
+Added Pin To Net: NetName=NetD10_A Pin=R10-1
+Added Net: Name=NetD10_A
+Added Member To Class: ClassName=core_layer Member=Component BlueTooth ATK-BC05-V12
+Added Room: Name=core_layer

@@ -1,0 +1,14 @@
+Change Component Designator: OldDesignator=* NewDesignator=DHT
+Change Component Designator: OldDesignator=* NewDesignator=PAJ
+Change Component Designator: OldDesignator=D? NewDesignator=D8
+Change Component Designator: OldDesignator=IIC? NewDesignator=IIC1
+Change Component Designator: OldDesignator=P? NewDesignator=P1
+Change Component Designator: OldDesignator=R? NewDesignator=R7
+Change Component Designator: OldDesignator=R? NewDesignator=R8
+Change Component Designator: OldDesignator=SPI? NewDesignator=SPI1
+Change Component Designator: OldDesignator=U? NewDesignator=U1
+Change Net Name : Old Net Name=NetD?_1 New Net Name=NetD8_1
+Added Member To Class: ClassName=core_layer Member=Component M1 STM32F4&F7_CB
+Added Member To Class: ClassName=core_layer Member=Component PAJ ATK-PAJ7620U2
+Added Member To Class: ClassName=core_layer Member=Component R8 Res1
+Added Room: Name=core_layer

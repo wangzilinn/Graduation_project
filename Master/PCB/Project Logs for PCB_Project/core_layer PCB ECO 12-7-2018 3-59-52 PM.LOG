@@ -1,0 +1,4 @@
+Added Member To Class: ClassName=core_layer Member=Component CORE STM32F4&F7_CB
+Added Member To Class: ClassName=core_layer Member=Component DHT DHT11
+Added Member To Class: ClassName=core_layer Member=Component  Header 13
+Added Room: Name=core_layer

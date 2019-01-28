@@ -1,0 +1,14 @@
+Added Component: Designator=TEST(HDR1X3)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VCC3.3 Pin=SWD-1
+Added Pin To Net: NetName=GND Pin=TEST-1
+Added Pin To Net: NetName=VCC3.3 Pin=TEST-2
+Added Pin To Net: NetName=VCC5 Pin=TEST-3
+Added Member To Class: ClassName=core_layer Member=Component 5V-IN Header 2
+Added Member To Class: ClassName=core_layer Member=Component CORE STM32F4&F7_CB
+Added Member To Class: ClassName=core_layer Member=Component TEST Header 3
+Added Member To Class: ClassName=core_layer Member=Component  Header 13
+Added Room: Name=core_layer
