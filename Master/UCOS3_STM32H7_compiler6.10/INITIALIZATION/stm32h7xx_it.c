@@ -171,25 +171,9 @@ void SysTick_Handler(void)
 ******************************************************************************/
 void USART1_IRQHandler(void)                	
 { 
-	u32 timeout=0;
-    u32 maxDelay=0x1FFFF;
 	OSIntEnter();    
 	
 	HAL_UART_IRQHandler(&UART1_Handler);	//调用HAL库中断处理公用函数
-	
-	timeout=0;
-    while (HAL_UART_GetState(&UART1_Handler)!=HAL_UART_STATE_READY)//等待就绪
-	{
-        timeout++;////超时处理
-        if(timeout>maxDelay) break;		
-	}
-     
-	timeout=0;
-	while(HAL_UART_Receive_IT(&UART1_Handler,(u8 *)aRxBuffer, RXBUFFERSIZE)!=HAL_OK)//一次处理完成之后，重新开启中断并设置RxXferCount为1
-	{
-        timeout++; //超时处理
-        if(timeout>maxDelay) break;	
-	}
 	OSIntExit();  											 
 } 
 

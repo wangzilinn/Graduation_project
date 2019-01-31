@@ -1,113 +1,99 @@
 /******************************************************************************
-*  Include headers
+Include headers
 ******************************************************************************/
 #include "hardware_init.h"
-
 /******************************************************************************
-*  @Function: 汇编指令封装
-*
-*  @Description:
-*
-*  @Created: by Wang Zilin
-*
-*  @Modified: 2018-12-17 20:56 by Wang Zilin
+@Function: 汇编指令封装
+
+@Description:
+
+@Created: by Wang Zilin
+
+@Modified: 2018-12-17 20:56 by Wang Zilin
 ******************************************************************************/
 //THUMB指令不支持汇编内联
-//采用如下方法实现执行汇编指令WFI
+//采用如下方法实现执行汇编指令WFI  
 void __attribute__((noinline)) WFI_SET(void)
 {
-    __asm__ ("wfi");
+    __asm__("wfi");
 }
 
-
-//关闭所有中断(但是不包括fault和NMI中断)
+//关闭所有中断(但是不包括fault和NMI中断)   
 void __attribute__((noinline)) INTX_DISABLE(void)
 {
-    __asm__ ("cpsid i \t\n"
-             "bx lr");
+    __asm__("cpsid i \t\n"
+            "bx lr");
 }
-
 
 //开启所有中断
 void __attribute__((noinline)) INTX_ENABLE(void)
 {
-    __asm__ ("cpsie i \t\n"
-             "bx lr");
+    __asm__("cpsie i \t\n"
+            "bx lr");
 }
-
 
 //设置栈顶地址
 //addr:栈顶地址
-void __attribute__((noinline)) MSR_MSP(u32 addr)
+void __attribute__((noinline)) MSR_MSP(u32 addr) 
 {
-    __asm__ ("msr msp, r0 \t\n"
-             "bx r14");
+    __asm__("msr msp, r0 \t\n"
+            "bx r14");
 }
-
-
 /******************************************************************************
-*  @Function: Cache_Enable
-*
-*  @Description:打开Cache
-*
-*  @Created: by Wang Zilin
-*
-*  @Modified:
+@Function: Cache_Enable
+
+@Description:打开Cache
+
+@Created: by Wang Zilin
+
+@Modified: 
 ******************************************************************************/
-#define Write_Through()    (*(__IO uint32_t *)0XE000EF9C = 1UL << 2) //Cache透写模式
+#define Write_Through() (*(__IO uint32_t*)0XE000EF9C=1UL<<2) //Cache透写模式
 void Cache_Enable(void)
 {
-    SCB_EnableICache();  //使能I-Cache
-    SCB_EnableDCache();  //使能D-Cache
-    SCB->CACR |= 1 << 2; //强制D-Cache透写,如不开启,实际使用中可能遇到各种问题
+    SCB_EnableICache();//使能I-Cache
+    SCB_EnableDCache();//使能D-Cache   
+	SCB->CACR|=1<<2;   //强制D-Cache透写,如不开启,实际使用中可能遇到各种问题	
 }
-
-
 /******************************************************************************
-*  @Function: Get_xCahceSta
-*
-*  @Description:
-*  判断x_Cache是否打开
-*  返回值:0 关闭，1 打开
-*
-*  @Created: by Wang Zilin
-*
-*  @Modified: 2018-12-17 20:55 by Wang Zilin
+@Function: Get_xCahceSta
+
+@Description:
+判断x_Cache是否打开
+返回值:0 关闭，1 打开
+
+@Created: by Wang Zilin
+
+@Modified: 2018-12-17 20:55 by Wang Zilin
 ******************************************************************************/
 u8 Get_ICahceSta(void)
 {
     u8 sta;
-
-    sta = ((SCB->CCR) >> 17) & 0X01;
+    sta=((SCB->CCR)>>17)&0X01;
     return sta;
 }
-
-
 u8 Get_DCahceSta(void)
 {
     u8 sta;
-
-    sta = ((SCB->CCR) >> 16) & 0X01;
+    sta=((SCB->CCR)>>16)&0X01;
     return sta;
 }
-
-
 /******************************************************************************
-*  @Function: SystemClockInit
-*
-*  @Description:400MHz
-*
-*  @Created: by Wang Zilin
-*
-*  @Modified: 2018-12-17 20:53 by Wang Zilin
+@Function: SystemClockInit
+
+@Description:400MHz
+
+@Created: by Wang Zilin
+
+@Modified: 2018-12-17 20:53 by Wang Zilin
 ******************************************************************************/
 void SystemClockInit()
 {
-    __HAL_RCC_CSI_ENABLE();
-    __HAL_RCC_SYSCFG_CLK_ENABLE();
-    HAL_EnableCompensationCell();
-
-    RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
+	__HAL_RCC_CSI_ENABLE() ;
+	__HAL_RCC_SYSCFG_CLK_ENABLE() ;  
+	HAL_EnableCompensationCell();
+    
+        RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
     RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
 
     /**Supply configuration update enable
@@ -138,9 +124,7 @@ void SystemClockInit()
     RCC_OscInitStruct.PLL.PLLFRACN   = 0;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
     {
-        while (1)
-        {
-        }
+        while(1);
     }
 
     /**Initializes the CPU, AHB and APB busses clocks
@@ -158,52 +142,46 @@ void SystemClockInit()
 
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
     {
-        while (1)
-        {
-        }
+         while(1);
     }
 }
-
-
 /******************************************************************************
-*  @Function: SystickInit
-*
-*  @Description:
-*
-*  @Created: by Wang Zilin
-*
-*  @Modified: 2018-12-16 18:04 by Wang Zilin
+@Function: SystickInit
+
+@Description:
+
+@Created: by Wang Zilin
+
+@Modified: 2018-12-16 18:04 by Wang Zilin
 ******************************************************************************/
 void SystickInit(u16 SYSCLK)
 {
-    HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK); //SysTick频率为HCLK
+    HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);//SysTick频率为HCLK
     u32 reload;
-    reload  = SYSCLK;                                    //每秒钟的计数次数 单位为K
-    reload *= 1000000 / OSCfg_TickRate_Hz;               //根据delay_ostickspersec设定溢出时间
-                                                         //reload为24位寄存器,最大值:16777216,在216M下,约合77.7ms左右
-    SysTick->CTRL |= SysTick_CTRL_TICKINT_Msk;           //开启SYSTICK中断
-    SysTick->LOAD  = reload;                             //每1/OS_TICKS_PER_SEC秒中断一次
-    SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;            //开启SYSTICK
-}
-
-
+	reload=SYSCLK;					        //每秒钟的计数次数 单位为K	   
+	reload*=1000000/OSCfg_TickRate_Hz;	    //根据delay_ostickspersec设定溢出时间
+											//reload为24位寄存器,最大值:16777216,在216M下,约合77.7ms左右	
+	SysTick->CTRL|=SysTick_CTRL_TICKINT_Msk;//开启SYSTICK中断
+	SysTick->LOAD=reload; 					//每1/OS_TICKS_PER_SEC秒中断一次	
+	SysTick->CTRL|=SysTick_CTRL_ENABLE_Msk; //开启SYSTICK
+}	
 /******************************************************************************
-*  @Function: hardwareInit
-*
-*  @Description:硬件初始化
-*
-*  @Created: by Wang Zilin
-*
-*  @Modified: 2018-12-17 20:46 by Wang Zilin
+@Function: hardwareInit
+
+@Description:硬件初始化
+
+@Created: by Wang Zilin
+
+@Modified: 2018-12-17 20:46 by Wang Zilin
 ******************************************************************************/
 void HardwareInit(void)
 {
     Cache_Enable();                 //打开L1-Cache
-    HAL_Init();                     //初始化HAL库
-    SystemClockInit();              //设置时钟,400Mhz
-    SystickInit(400);               //延时初始化
-    Uart1Init(115200);              //串口初始化
+	HAL_Init();				        //初始化HAL库
+    SystemClockInit();              //设置时钟,400Mhz 
+    SystickInit(400);				//延时初始化
+    Uart1Init(115200);				//串口初始化
     //Uart2Init(115200);
     //Uart3Init(115200);
-    LEDInit();                      //初始化LED
+	LEDInit();						//初始化LED
 }

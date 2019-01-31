@@ -5,15 +5,18 @@ Include headers
 ******************************************************************************/	
 #include "public.h"
 
-#define USART_REC_LEN  			200  	//定义最大接收字节数 200
-#define EN_USART1_RX 			1		//使能（1）/禁止（0）串口1接收
-	  	
-extern u8  USART_RX_BUF[USART_REC_LEN]; //接收缓冲,最大USART_REC_LEN个字节.末字节为换行符 
-extern u16 USART_RX_STA;         		//接收状态标记	
-extern UART_HandleTypeDef UART1_Handler; //UART句柄
+#define USART1_RX_BUFFER_LENGTH  3
+#define USART2_RX_BUFFER_LENGTH  3
+#define USART3_RX_BUFFER_LENGTH  3
 
-#define RXBUFFERSIZE   1 //缓存大小
-extern u8 aRxBuffer[RXBUFFERSIZE];//HAL库USART接收Buffer
+extern u8 Usart1RxBuffer[];
+extern u8 Usart2RxBuffer[];
+extern u8 Usart3RxBuffer[];
+extern UART_HandleTypeDef UART1_Handler;
+extern UART_HandleTypeDef UART2_Handler;
+extern UART_HandleTypeDef UART3_Handler;
 
-void Uart1Init(u32 bound);
+void Uart1Init(u32 baudRate);
+void Uart2Init(u32 baudRate);
+void Uart3Init(u32 baudrate);
 #endif
