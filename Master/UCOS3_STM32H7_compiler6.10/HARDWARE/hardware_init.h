@@ -11,6 +11,8 @@ Peripheral header file
 #include "usart.h" 
 #include "led.h"
 #include "ITM.h"
+#include "dht11.h"
+//#include "pcf8574.h"
 /******************************************************************************
 Private function declarations
 ******************************************************************************/

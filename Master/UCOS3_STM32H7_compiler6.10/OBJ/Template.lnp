@@ -8,6 +8,8 @@
 "..\obj\led.o"
 "..\obj\hardware_init.o"
 "..\obj\itm.o"
+"..\obj\dht11.o"
+"..\obj\delay.o"
 "..\obj\startup_stm32h743xx.o"
 "..\obj\stm32h7xx_hal.o"
 "..\obj\stm32h7xx_hal_cortex.o"

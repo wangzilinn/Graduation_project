@@ -10,13 +10,13 @@ OS_TCB  StartTaskTCB;                              //任务控制块
 CPU_STK START_TASK_STK[START_STK_SIZE];            //任务堆栈
 
 OS_TCB  LED0TaskTCB;                               //任务控制块
-CPU_STK LED0_TASK_STK[LED0_STK_SIZE];              //任务堆栈
+__attribute__((aligned(8))) CPU_STK LED0_TASK_STK[LED0_STK_SIZE];              //任务堆栈
 
 OS_TCB  LED1TaskTCB;                               //任务控制块
 CPU_STK LED1_TASK_STK[LED1_STK_SIZE];              //任务堆栈
 
 OS_TCB FloatTaskTCB;                               //任务控制块
-__align(8) CPU_STK FLOAT_TASK_STK[FLOAT_STK_SIZE]; //任务堆栈
+__attribute__((aligned(8)))  CPU_STK FLOAT_TASK_STK[FLOAT_STK_SIZE]; //任务堆栈
 
 /******************************************************************************
 *  @Function: StartTask
@@ -117,8 +117,13 @@ void LED0Task(void *p_arg)
         OSTimeDlyHMSM(0, 0, 0, 600, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
         HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);
-//        u8 data[] = {0x01,0x02,0x03};
-//        HAL_UART_Transmit(&UART2_Handler,(uint8_t*)data, 3,1000);
+        //PCF8574_ReadBit(BEEP_IO);   //读取一次PCF8574的任意一个IO，使其释放掉PB12引脚，
+                                        //否则读取DHT11可能会出问题
+        float data[2];
+        DHT11_Read_Data(&data[0],&data[1]);		//读取温湿度值	
+        char str[40];
+        sprintf(str,"temp %f,humi %f\r\n", data[0], data[1]);
+        UartSendString(&UART2_Handler, str, 1000);       
     }
 }
 

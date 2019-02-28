@@ -1,26 +1,13 @@
-../obj/app.o: ../APP/app.cpp ../APP/app.h ../INITIALIZATION\public.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdio.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__config \
+../obj/delay.o: ../HARDWARE/delay.c ../HARDWARE/delay.h \
+  ../INITIALIZATION\public.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\ctype.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\ctype.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdlib.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\math.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\type_traits \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\cstddef \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__nullptr \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\limits \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__undef_macros \
   ../INITIALIZATION/stm32h7xx.h ../INITIALIZATION/stm32h743xx.h \
-  ../CORE\core_cm7.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdint.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  ../CORE\core_cm7.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ../CORE/cmsis_compiler.h ../CORE/cmsis_armclang.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
@@ -117,6 +104,4 @@
   ../UCOSIII/uC-LIB\lib_ascii.h ../UCOSIII/uCOS-III/Source/os_type.h \
   ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView\os_cpu.h \
   ../UCOSIII/uC-LIB\lib_math.h ../UCOSIII/UCOS-CONFIG\app_cfg.h \
-  ../UCOSIII/UCOS-BSP\bsp.h ../HARDWARE\hardware_init.h \
-  ../HARDWARE/usart.h ../HARDWARE/led.h ../HARDWARE/ITM.h \
-  ../HARDWARE/dht11.h ../HARDWARE/sys.h
+  ../UCOSIII/UCOS-BSP\bsp.h

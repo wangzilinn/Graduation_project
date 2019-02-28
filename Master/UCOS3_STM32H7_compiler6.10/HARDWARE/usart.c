@@ -151,3 +151,17 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
         HAL_NVIC_EnableIRQ(USART3_IRQn);
     }
 }
+/******************************************************************************
+@Function: UartSendString
+
+@Description:发送字符串
+
+@Created: by Wang Zilin
+
+@Modified: 2019-02-28 19:37 by Wang Zilin
+******************************************************************************/
+void UartSendString(UART_HandleTypeDef *huart, const char* str, uint32_t Timeout)
+{
+    //calcualte string length
+    HAL_UART_Transmit(huart,(uint8_t*)str, strlen(str),Timeout);   
+}

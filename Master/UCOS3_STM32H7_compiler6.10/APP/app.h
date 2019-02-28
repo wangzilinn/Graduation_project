@@ -7,20 +7,16 @@ extern "C" {
 Include headers
 ******************************************************************************/
 #include "public.h"  
-#include "includes.h"   
+#include "includes.h"   //OS support
 #include "hardware_init.h"
 /******************************************************************************
 Define task parameters
 ******************************************************************************/
 #define START_TASK_PRIO		3
-#define START_STK_SIZE 		512//任务堆栈大小	
-
-    
-#define START_TASK_PRIO		3
-#define START_STK_SIZE 		512 //任务堆栈大小
+#define START_STK_SIZE 		256//任务堆栈大小	
 
 #define LED0_TASK_PRIO		4
-#define LED0_STK_SIZE 		128	//任务堆栈大小	
+#define LED0_STK_SIZE 		512	//任务堆栈大小	
     
 
 #define LED1_TASK_PRIO		5

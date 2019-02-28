@@ -168,7 +168,7 @@ void SystemClockInit()
 /******************************************************************************
 *  @Function: SystickInit
 *
-*  @Description:
+*  @Description:SYSCLK 系统时钟频率(MHz)
 *
 *  @Created: by Wang Zilin
 *

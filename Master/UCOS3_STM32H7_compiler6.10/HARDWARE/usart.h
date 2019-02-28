@@ -19,4 +19,5 @@ extern UART_HandleTypeDef UART3_Handler;
 void Uart1Init(u32 baudRate);
 void Uart2Init(u32 baudRate);
 void Uart3Init(u32 baudrate);
+void UartSendString(UART_HandleTypeDef *huart, const char* str, uint32_t Timeout);
 #endif
