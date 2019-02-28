@@ -110,20 +110,23 @@ void StartTask(void *p_arg)
 void LED0Task(void *p_arg)
 {
     OS_ERR err;
-
+    bool Dht11Exist = false;
     p_arg = p_arg;
+    if (DHT11_Init() == 0)
+        Dht11Exist = true;
     while (1)
     {
         OSTimeDlyHMSM(0, 0, 0, 600, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
         HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);
-        //PCF8574_ReadBit(BEEP_IO);   //读取一次PCF8574的任意一个IO，使其释放掉PB12引脚，
-                                        //否则读取DHT11可能会出问题
+        if (!Dht11Exist)
+        {
         float data[2];
         DHT11_Read_Data(&data[0],&data[1]);		//读取温湿度值	
         char str[40];
-        sprintf(str,"temp %f,humi %f\r\n", data[0], data[1]);
-        UartSendString(&UART2_Handler, str, 1000);       
+        printf("temp %f,humi %f\r\n", data[0], data[1]);
+//        UartSendString(&UART2_Handler, str, 1000);
+        }            
     }
 }
 
@@ -186,8 +189,8 @@ void FloatTask(void *p_arg)
 ******************************************************************************/
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-    //printf("%x%x%x", Usart2RxBuffer[0], Usart2RxBuffer[1], Usart2RxBuffer[2]);
-    u8 data[] = {0x01,0x02,0x03};
-    HAL_UART_Transmit(&UART2_Handler,(uint8_t*)data, 3,1000);
+    printf("%x%x%x\r\n", Usart2RxBuffer[0], Usart2RxBuffer[1], Usart2RxBuffer[2]);
+//    u8 data[] = {0x01,0x02,0x03};
+//    HAL_UART_Transmit(&UART2_Handler,(uint8_t*)data, 3,1000);
     HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, USART2_RX_BUFFER_LENGTH);//该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
 }
