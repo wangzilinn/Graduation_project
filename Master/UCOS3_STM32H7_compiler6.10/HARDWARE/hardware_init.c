@@ -203,7 +203,7 @@ void HardwareInit(void)
     SystemClockInit();              //设置时钟,400Mhz
     SystickInit(400);               //延时初始化
     Uart1Init(115200);              //串口初始化
-    //Uart2Init(115200);
+    Uart2Init(115200);
     //Uart3Init(115200);
     LEDInit();                      //初始化LED
 }

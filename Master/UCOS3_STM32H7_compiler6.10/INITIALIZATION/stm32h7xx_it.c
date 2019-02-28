@@ -172,11 +172,24 @@ void SysTick_Handler(void)
 void USART1_IRQHandler(void)                	
 { 
 	OSIntEnter();    
-	
 	HAL_UART_IRQHandler(&UART1_Handler);	//调用HAL库中断处理公用函数
 	OSIntExit();  											 
 } 
+/******************************************************************************
+@Function: USART2_IRQHandler
 
+@Description:
+
+@Created: by Wang Zilin
+
+@Modified: 2019-02-28 16:02 by Wang Zilin
+******************************************************************************/
+void USART2_IRQHandler(void)   
+{
+    OSIntEnter();
+    HAL_UART_IRQHandler(&UART2_Handler);	//调用HAL库中断处理公用函数
+	OSIntExit();  											 
+} 
 /**
   * @}
   */

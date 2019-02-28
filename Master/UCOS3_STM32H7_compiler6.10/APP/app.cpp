@@ -117,6 +117,8 @@ void LED0Task(void *p_arg)
         OSTimeDlyHMSM(0, 0, 0, 600, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
         HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);
+//        u8 data[] = {0x01,0x02,0x03};
+//        HAL_UART_Transmit(&UART2_Handler,(uint8_t*)data, 3,1000);
     }
 }
 
@@ -133,14 +135,13 @@ void LED0Task(void *p_arg)
 void LED1Task(void *p_arg)
 {
     OS_ERR err;
-
     p_arg = p_arg;
     while (1)
     {
         OSTimeDlyHMSM(0, 0, 0, 500, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
         HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1);
         HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_3);
-        //printf("test");
+//        printf("test");
     }
 }
 
@@ -157,7 +158,6 @@ void LED1Task(void *p_arg)
 void FloatTask(void *p_arg)
 {
     OS_ERR err;
-
     CPU_SR_ALLOC();
     static double double_num = 0.00;
     while (1)
@@ -181,7 +181,8 @@ void FloatTask(void *p_arg)
 ******************************************************************************/
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-    printf("%x%x%x", Usart1RxBuffer[0], Usart1RxBuffer[1], Usart1RxBuffer[2]);
-
-    HAL_UART_Receive_IT(&UART1_Handler, (u8 *)Usart1RxBuffer, USART1_RX_BUFFER_LENGTH);//该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
+    //printf("%x%x%x", Usart2RxBuffer[0], Usart2RxBuffer[1], Usart2RxBuffer[2]);
+    u8 data[] = {0x01,0x02,0x03};
+    HAL_UART_Transmit(&UART2_Handler,(uint8_t*)data, 3,1000);
+    HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, USART2_RX_BUFFER_LENGTH);//该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
 }
