@@ -110,16 +110,17 @@ void StartTask(void *p_arg)
 void LED0Task(void *p_arg)
 {
     OS_ERR err;
-    bool Dht11Exist = false;
+    u8 Dht11Exist = 0;
     p_arg = p_arg;
+    OSTimeDlyHMSM(0, 0, 0, 1000, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
     if (DHT11_Init() == 0)
-        Dht11Exist = true;
+        Dht11Exist = 1;
     while (1)
     {
         OSTimeDlyHMSM(0, 0, 0, 600, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
         HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);
-        if (!Dht11Exist)
+        if (Dht11Exist)
         {
         float data[2];
         DHT11_Read_Data(&data[0],&data[1]);		//读取温湿度值	
