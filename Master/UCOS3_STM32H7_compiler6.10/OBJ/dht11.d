@@ -1,4 +1,4 @@
-../obj/dht11.o: ../HARDWARE/dht11.c ../HARDWARE/dht11.h ../HARDWARE/sys.h \
+../obj/dht11.o: ../HARDWARE/dht11.c ../HARDWARE/dht11.h \
   ../INITIALIZATION\public.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \

@@ -105,4 +105,4 @@
   ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView\os_cpu.h \
   ../UCOSIII/uC-LIB\lib_math.h ../UCOSIII/UCOS-CONFIG\app_cfg.h \
   ../UCOSIII/UCOS-BSP\bsp.h ../HARDWARE/usart.h ../HARDWARE/led.h \
-  ../HARDWARE/ITM.h ../HARDWARE/dht11.h ../HARDWARE/sys.h
+  ../HARDWARE/ITM.h ../HARDWARE/dht11.h ../HARDWARE/delay.h

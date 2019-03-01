@@ -122,10 +122,10 @@ void LED0Task(void *p_arg)
         HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);
         if (Dht11Exist)
         {
-        float data[2];
-        DHT11_Read_Data(&data[0],&data[1]);		//读取温湿度值	
-        char str[40];
-        printf("temp %f,humi %f\r\n", data[0], data[1]);
+            float data[2];
+            DHT11_Read_Data(&data[0],&data[1]);		//读取温湿度值	
+            char str[40];
+            printf("temp %f,humi %f\r\n", data[0], data[1]);
 //        UartSendString(&UART2_Handler, str, 1000);
         }            
     }
