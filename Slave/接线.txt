@@ -1,2 +1,0 @@
-TX1RX1引出
-TX2RX2为ZigBee

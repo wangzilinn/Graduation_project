@@ -1,6 +1,0 @@
-Added Component: Designator=TESTGND(TP-1.5)
-Add component. Clean all parameters for all variants
-Added Pin To Net: NetName=GND Pin=TESTGND-1
-Added Member To Class: ClassName=Sheet2 Member=Component TESTGND TEST POINT
-Added Member To Class: ClassName=Sheet2 Member=Component ZigBee ZigBee XL2530-D01
-Added Room: Name=Sheet2
