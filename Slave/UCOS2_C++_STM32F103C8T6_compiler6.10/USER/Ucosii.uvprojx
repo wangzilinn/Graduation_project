@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\UCOSII\PORT;..\UCOSII\CORE;..\UCOSII\CONFIG;..\HARDWARE\;..\MAIN;..\APP\</IncludePath>
+              <IncludePath>..\UCOSII\PORT;..\UCOSII\CORE;..\UCOSII\CONFIG;..\HARDWARE\;..\MAIN;..\APP\;..\TRANSMISSION</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -527,6 +527,21 @@
               <FileName>debug.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\APP\debug.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>TRANSMISSION</GroupName>
+          <Files>
+            <File>
+              <FileName>applicationLayer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\TRANSMISSION\applicationLayer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>transportLayer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\TRANSMISSION\transportLayer.cpp</FilePath>
             </File>
           </Files>
         </Group>

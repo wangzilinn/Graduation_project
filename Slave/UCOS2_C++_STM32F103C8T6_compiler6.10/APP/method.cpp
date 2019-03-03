@@ -2,8 +2,6 @@
 Include header files
 ******************************************************************************/
 #include "method.h"
-
-
 /******************************************************************************
 @Function: ClearStringBuff
 
@@ -41,7 +39,7 @@ void Method::ClearStringBuff(char* str, int length)
 		str[i] = '\0';
 	}
 }
-/****************************************************.;**************************
+/******************************************************************************
 @Function: ByteToInt
 
 @Description:
@@ -59,7 +57,42 @@ int Method::ByteToInt(u8 * headPointer)
     }
     return byteToInt.idata;
 }
+/******************************************************************************
+@Function: static void FloatToU8(float floatNumber, u8* u8Array);
 
+@Description:
+
+@Created: by Wang Zilin
+
+@Modified: 2019-03-03 21:01 by Wang Zilin
+******************************************************************************/
+void Method::FloatToU8(float floatNumber, u8* u8Array)
+{
+    floatOr4ByteTypeDef floatToU8;
+    floatToU8.fdata = floatNumber;
+    for (u8 i = 0; i < 4; i++)
+    {
+        u8Array[i] = floatToU8.u8Data[i];
+    }
+}
+/******************************************************************************
+@Function: static void U16ToU8(u16 u16Number, u8* u8Array);
+
+@Description:
+
+@Created: by Wang Zilin
+
+@Modified: 2019-03-03 21:15 by Wang Zilin
+******************************************************************************/
+void Method::U16ToU8(u16 u16Number, u8* u8Array)
+{
+    u16Or2ByteTypeDef u16ToU8;
+    u16ToU8.u16Data = u16Number;
+    for (u8 i = 0; i < 2; i++)
+    {
+        u8Array[i] = u16ToU8.u8Data[i];
+    }
+}
 /******************************************************************************
 @Function: DelayUs
 
@@ -80,19 +113,57 @@ void Method::DelayUs(u32 nTime)
         }
 	}
 }
-/*****************************************************************************/
-// FUNCTION NAME: void Method::DelayMs(u32 time)
-//
-// DESCRIPTION:
-//  
-//
-// CREATED:  by zilin Wang
-// MODIFIED:2018-11-05 16:39 by Wang Zilin
-//
-/*****************************************************************************/
+/******************************************************************************
+@Function: void Method::DelayMs(u32 time)
+
+@Description:
+
+@Created: by Wang Zilin
+
+@Modified: 2018-11-05 16:39 by Wang Zilin
+******************************************************************************/
 void Method::DelayMs(u32 time)
 {
     for (int i = 0; i < time; i++)
         Method::DelayUs(1000);
 }
+/******************************************************************************
+@Function: uint16_t Method::ModbusCRC16(uint8_t *puchMsg, uint8_t usDataLen)
 
+@Description:函数功能：逐位计算法CRC16校验，在Modbus中CRC结果要进行高低字节交换，即低字节在前，高字节在后
+//入口参数：puchMsg是要进行CRC校验的消息；usDataLen是消息中字节数
+//出口参数：计算出来的CRC校验码，16位长度
+
+@Created: by Xiao Haihui 
+
+@Modified: 2019-03-03 20:18 by Wang Zilin
+******************************************************************************/
+uint16_t Method::ModbusCRC16(uint8_t *puchMsg, uint8_t usDataLen)
+{
+	uint16_t CRC_Cal = 0xFFFF;
+	uint8_t CRC_High, CRC_Low;
+	uint8_t i, j;
+	
+	for(j = 0; j < usDataLen; j++)
+	{
+		CRC_Cal = CRC_Cal ^ *puchMsg++;
+		
+		for (i = 0; i < 8; i++)
+		{
+			if((CRC_Cal & 0x0001) == 0x0001)
+			{
+				CRC_Cal = CRC_Cal >> 1;
+				CRC_Cal = CRC_Cal ^ 0xA001;
+			}
+			else
+			{
+				CRC_Cal = CRC_Cal >> 1;
+			}
+		}
+	}
+	
+	CRC_High = (uint8_t)(CRC_Cal >> 8);
+	CRC_Low = (uint8_t)(CRC_Cal & 0x00FF);
+	
+	return (CRC_Low << 8 | CRC_High);
+}    
