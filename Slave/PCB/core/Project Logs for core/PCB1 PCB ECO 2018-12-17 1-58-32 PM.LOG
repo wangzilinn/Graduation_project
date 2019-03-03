@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=VCC3.3 Pin=BOOT-1
+Removed Pin From Net: NetName=VCC3.3 Pin=BOOT-2
+Removed Pin From Net: NetName=GND Pin=BOOT-5
+Removed Pin From Net: NetName=GND Pin=BOOT-6
+Removed Member From Class: ClassName=Sheet2 Member=BOOT
+Added Pin To Net: NetName=GND Pin=R6-2
+Added Pin To Net: NetName=GND Pin=R7-1
+Added Member To Class: ClassName=Sheet2 Member=Component Y1 XTAL
+Added Member To Class: ClassName=Sheet2 Member=Component ZigBee ZigBee XL2530-D01
+Added Room: Name=Sheet2
