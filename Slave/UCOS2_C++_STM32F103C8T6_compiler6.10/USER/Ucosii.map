@@ -730,8 +730,8 @@ Removing Unused input sections from the image.
     Removing main.o(.ARM.exidx), (16 bytes).
     Removing main.o(.ARM.use_no_argv), (4 bytes).
     Removing task.o(.ARM.exidx), (16 bytes).
-    Removing method.o(.text), (232 bytes).
-    Removing method.o(.ARM.exidx), (64 bytes).
+    Removing method.o(.text), (268 bytes).
+    Removing method.o(.ARM.exidx), (80 bytes).
     Removing stm32f10x_it.o(.ARM.exidx), (104 bytes).
     Removing debug.o(.text), (48 bytes).
     Removing debug.o(.ARM.exidx), (8 bytes).
@@ -868,7 +868,7 @@ Removing Unused input sections from the image.
     Removing libunwind.cpp.o(.ARM.exidx.text._ZN9libunwind13Registers_arm15getRegisterNameEi), (8 bytes).
     Removing libunwind.cpp.o(.rodata._ZTVN9libunwind12UnwindCursorINS_17LocalAddressSpaceENS_13Registers_armEEE), (72 bytes).
 
-162 unused section(s) (total 17042 bytes) removed from the image.
+162 unused section(s) (total 17094 bytes) removed from the image.
 
 ==============================================================================
 

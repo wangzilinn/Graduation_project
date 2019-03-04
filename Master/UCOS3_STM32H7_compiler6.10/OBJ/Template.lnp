@@ -4,6 +4,7 @@
 "..\obj\main.o"
 "..\obj\stm32h7xx_it.o"
 "..\obj\app.o"
+"..\obj\method.o"
 "..\obj\usart.o"
 "..\obj\led.o"
 "..\obj\hardware_init.o"
@@ -53,6 +54,8 @@
 "..\obj\os_cpu_c.o"
 "..\obj\os_cpu_a.o"
 "..\obj\os_app_hooks.o"
+"..\obj\applicationlayer.o"
+"..\obj\transportlayer.o"
 --strict --scatter "..\OBJ\Template.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

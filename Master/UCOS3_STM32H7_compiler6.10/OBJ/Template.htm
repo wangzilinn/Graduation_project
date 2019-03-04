@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6100100: Last Updated: Fri Mar  1 11:59:02 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6100100: Last Updated: Mon Mar  4 22:11:29 2019
 <BR><P>
 <H3>Maximum Stack Usage =        324 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -822,6 +822,10 @@ Global Symbols
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPost
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPend
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexCreate
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_StatTask
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskStkChk
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskResume
+<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatReset
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickTask
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdateTimeout
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdateDly
@@ -829,10 +833,6 @@ Global Symbols
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskResume
 <LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPend
 <LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskDel
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_StatTask
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskStkChk
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskResume
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatReset
 </UL>
 
 <P><STRONG><a name="[e0]"></a>CPU_SR_Restore</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, cpu_a.o(.text))
@@ -858,6 +858,10 @@ Global Symbols
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPost
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPend
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexCreate
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_StatTask
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskStkChk
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskResume
+<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatReset
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickTask
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdateTimeout
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdateDly
@@ -865,10 +869,6 @@ Global Symbols
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskResume
 <LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPend
 <LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskDel
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_StatTask
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskStkChk
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskResume
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatReset
 </UL>
 
 <P><STRONG><a name="[1bb]"></a>CPU_WaitForInt</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, cpu_a.o(.text), UNUSED)
@@ -957,10 +957,10 @@ Global Symbols
 <P><STRONG><a name="[cd]"></a>_printf_fp_dec_real</STRONG> (Thumb, 620 bytes, Stack size 104 bytes, _printf_fp_dec.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 324<LI>Call Chain = _printf_fp_dec_real &rArr; _fp_digits &rArr; _btod_etento &rArr; _btod_emul &rArr; _e2e
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
+<BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_infnan
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_locale
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec
 </UL>
@@ -990,8 +990,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b2]"></a>__rt_locale</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, rt_locale_intlibspace.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_lc_common
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
+<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_fp_dec_real
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_lc_common
 </UL>
 
 <P><STRONG><a name="[cc]"></a>_ll_udiv10</STRONG> (Thumb, 138 bytes, Stack size 12 bytes, lludiv10.o(.text))
@@ -1149,6 +1149,10 @@ Global Symbols
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPost
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPend
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexCreate
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_StatTask
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskStkChk
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskResume
+<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatReset
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickTask
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdateTimeout
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdateDly
@@ -1156,10 +1160,6 @@ Global Symbols
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskResume
 <LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPend
 <LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskDel
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_StatTask
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskStkChk
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskResume
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatReset
 </UL>
 
 <P><STRONG><a name="[df]"></a>CPU_IntDisMeasStop</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, cpu_core.o(.text.CPU_IntDisMeasStop))
@@ -1184,6 +1184,10 @@ Global Symbols
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPost
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPend
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexCreate
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_StatTask
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskStkChk
+<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskResume
+<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatReset
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickTask
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdateTimeout
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdateDly
@@ -1191,10 +1195,6 @@ Global Symbols
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskResume
 <LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPend
 <LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskDel
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_StatTask
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskStkChk
-<LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskResume
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatReset
 </UL>
 
 <P><STRONG><a name="[e6]"></a>CPU_NameClr</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, cpu_core.o(.text.CPU_NameClr))
@@ -1228,15 +1228,15 @@ Global Symbols
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_IntDisMeasStart
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MutexGrpPostAll
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPost
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_StatTask
+<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatReset
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdateTimeout
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdateDly
 <LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskInitTCB
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPost
 <LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPend
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_StatTask
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatReset
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrTask
 <LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSwHook
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrTask
 </UL>
 
 <P><STRONG><a name="[ed]"></a>DHT11_Check</STRONG> (Thumb, 138 bytes, Stack size 16 bytes, dht11.o(.text.DHT11_Check))
@@ -1254,9 +1254,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 120 + Unknown Stack Size
 <LI>Call Chain = DHT11_Init &rArr; DHT11_Rst &rArr; delay_ms &rArr; delay_us &rArr; delay_osschedunlock &rArr; OSSchedUnlock &rArr; OSSched &rArr; OS_PrioGetHighest
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Rst
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Rst
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Check
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED0Task
 </UL>
@@ -1328,9 +1328,9 @@ Global Symbols
 <P><STRONG><a name="[f1]"></a>HAL_GPIO_Init</STRONG> (Thumb, 402 bytes, Stack size 48 bytes, stm32h7xx_hal_gpio.o(.text.HAL_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = HAL_GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LEDInit
+<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Init
+<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LEDInit
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
-<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Init
 </UL>
 
 <P><STRONG><a name="[ee]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32h7xx_hal_gpio.o(.text.HAL_GPIO_ReadPin))
@@ -1546,9 +1546,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[11d]"></a>HAL_UART_Receive_IT</STRONG> (Thumb, 166 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(.text.HAL_UART_Receive_IT))
-<BR><BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2Init
+<BR><BR>[Called By]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2Init
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1Init
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
 
 <P><STRONG><a name="[11c]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, app.o(.text.HAL_UART_RxCpltCallback))
@@ -1575,13 +1575,13 @@ Global Symbols
 <P><STRONG><a name="[11e]"></a>HardwareInit</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, hardware_init.o(.text.HardwareInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = HardwareInit &rArr; SystemClockInit &rArr; HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority
 </UL>
-<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LEDInit
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2Init
-<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1Init
-<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystickInit
+<BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystickInit
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClockInit
 <LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cache_Enable
+<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LEDInit
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart2Init
+<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1645,8 +1645,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 156 + Unknown Stack Size
 <LI>Call Chain = OSInit &rArr; OS_TmrInit &rArr; OSTaskCreate &rArr; OSTaskStkInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSCfg_Init
-<LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrInit
+<BR>[Calls]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrInit
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickTaskInit
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskInit
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_StatTaskInit
@@ -1661,6 +1660,7 @@ Global Symbols
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagInit
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Dbg_Init
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSInitHook
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSCfg_Init
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1886,10 +1886,10 @@ Global Symbols
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove
 <LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQFreeAll
 <LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskChangePrio
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MutexGrpPrioFindHighest
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MutexGrpPostAll
-<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQFreeAll
 <LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskInitTCB
 <LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskDbgListRemove
 <LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskDelHook
@@ -2023,8 +2023,8 @@ Global Symbols
 <LI>Call Chain = OSTimeTick &rArr; OSTaskSemPost &rArr; OS_TaskSemPost &rArr; OS_Post &rArr; OS_PendListRemove &rArr; OS_PendListRemove1
 </UL>
 <BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
-<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPost
 <LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeTickHook
+<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPost
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
@@ -2302,8 +2302,8 @@ Global Symbols
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_IntDisMeasStop
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_IntDisMeasStart
 <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDly
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_IntDisMeasMaxGet
+<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskStkChk
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatTaskHook
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatReset
@@ -2592,8 +2592,8 @@ Global Symbols
 <P><STRONG><a name="[121]"></a>Uart1Init</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, usart.o(.text.Uart1Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = Uart1Init &rArr; HAL_UART_Init &rArr; UART_SetConfig &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
+<BR>[Calls]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardwareInit
 </UL>
@@ -2601,8 +2601,8 @@ Global Symbols
 <P><STRONG><a name="[122]"></a>Uart2Init</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, usart.o(.text.Uart2Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = Uart2Init &rArr; HAL_UART_Init &rArr; UART_SetConfig &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
+<BR>[Calls]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardwareInit
 </UL>
@@ -2718,8 +2718,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_e2e
 <LI><a href="#[192]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__btod_div_common
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_etento
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_etento
 </UL>
 
 <P><STRONG><a name="[cb]"></a>_btod_emul</STRONG> (Thumb, 42 bytes, Stack size 28 bytes, btod.o(CL$$btod_emul))
@@ -2728,8 +2728,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__btod_mult_common
 <LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_e2e
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_etento
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_etento
 </UL>
 
 <P><STRONG><a name="[194]"></a>__btod_mult_common</STRONG> (Thumb, 580 bytes, Stack size 16 bytes, btod.o(CL$$btod_mult_common))

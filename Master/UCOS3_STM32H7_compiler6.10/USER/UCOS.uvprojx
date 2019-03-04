@@ -413,6 +413,11 @@
               <FileType>8</FileType>
               <FilePath>..\APP\app.cpp</FilePath>
             </File>
+            <File>
+              <FileName>method.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\APP\method.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -757,6 +762,21 @@
               <FileName>os_cfg_app.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\UCOSIII\UCOS-CONFIG\os_cfg_app.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>TRANSMISSION</GroupName>
+          <Files>
+            <File>
+              <FileName>applicationLayer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\TRANSMISSION\applicationLayer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>transportLayer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\TRANSMISSION\transportLayer.cpp</FilePath>
             </File>
           </Files>
         </Group>
