@@ -2,69 +2,75 @@
 Include headers
 ******************************************************************************/
 #include "transportLayer.h"
-/******************************************************************************
-Global variable definition
-******************************************************************************/
-bool receiveFinished = false;
-bool isValidPackage = false;
-u8 totalSliceNumber = 0;
-u8 currentSliceNumber = 0;
-u8 uplevelDataBufferCnt = 0;
-/******************************************************************************
-@Function: bool ZigBeeReceive(u8* const receivedData, u8* const uplevelDataBuffer, int const uplevelDataBufferLength)
-
-@Description:
-receivedData:ZigBee receive data's head pointer
-uplevelDataBuffer:received uplevel data's buffer
-uplevelDataBufferLength:buffer length
-return:
-receive finished:true
-not finish:false
-@Created: by Wang Zilin
-
-@Modified: 2019-03-04 21:19 by Wang Zilin
-******************************************************************************/
-bool ZigBeeReceive(u8* const receivedData, u8* const uplevelDataBuffer, int const uplevelDataBufferLength)
+u8 framePointer = 0;
+enum
 {
-    //CRC check first:
-    if ((receivedData[16] << 8 | receivedData[17]) == Method::ModbusCRC16(&receivedData[2], 14))//CRC check pass
+    RECEIVE_FIXED_PART,
+    RECEIVE_VARIABLE_PART,
+    RECEIVE_RESTART
+}receiveStatus;
+u8 fixedFrameArray[6] = {0};
+/******************************************************************************
+*  @Function: HAL_UART_RxCpltCallback
+*
+*  @Description:
+*
+*  @Created: by Wang Zilin
+*
+*  @Modified:2019-03-06 16:02 by Wang Zilin
+******************************************************************************/
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+    if ((framePointer == 0) && (Usart2RxBuffer[0] == (u8)(LOCAL_SHORT_ADDRESS >> 8)))
     {
-        u8 receivedCurrentSliceNumber = receivedData[15];
-        u8 receivedTotalSliceNumber = receivedData[14];
-        if (receivedCurrentSliceNumber == 1)//the first slice
-        {
-            currentSliceNumber = receivedCurrentSliceNumber;
-            totalSliceNumber = receivedTotalSliceNumber;
-            uplevelDataBufferCnt = 0;
-            isValidPackage = true;
-        }
-        else
-        {
-            currentSliceNumber++;//if not the first slice, then check received slice number
-            if ((currentSliceNumber != receivedCurrentSliceNumber) || 
-                (totalSliceNumber != receivedTotalSliceNumber))// check if lose packages
-            {
-                u8* earserPointer = uplevelDataBuffer;//earse uplevelDataBuffer
-                do
-                {
-                    *earserPointer++ = 0;
-                }while(earserPointer != &uplevelDataBuffer[uplevelDataBufferCnt]);
-                isValidPackage = false;
-            }
-        }
-        if (isValidPackage == true)
-        {
-            for (u8 i = 2; i < 14 && uplevelDataBufferCnt < uplevelDataBufferLength; i++)
-            {
-                uplevelDataBuffer[uplevelDataBufferCnt++] = receivedData[i];
-            }
-            if (uplevelDataBufferCnt == uplevelDataBufferLength)//data receive finished
-                return true;
-        }
+        fixedFrameArray[framePointer++] = Usart2RxBuffer[0];
+        HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);
+        receiveStatus = RECEIVE_FIXED_PART;
     }
     else
+        receiveStatus = RECEIVE_RESTART;
+    if ((framePointer == 1) && (Usart2RxBuffer[0] == (u8)LOCAL_SHORT_ADDRESS))
     {
-        isValidPackage = false;        
+        fixedFrameArray[framePointer++] = Usart2RxBuffer[0];
+        HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);
     }
-    return false;
+    else
+        receiveStatus = RECEIVE_RESTART;
+    if (framePointer >= 2 && framePointer <=5)
+    {
+        fixedFrameArray[framePointer++] = Usart2RxBuffer[0];
+        HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);
+    }
+    //fixed frames receive finished, check fixed frame part
+    if (framePointer > 5 && receiveStatus == RECEIVE_FIXED_PART)
+    {
+        u8 sum = 0;
+        for (u8 i = 0; i < 5; i++)
+        {
+            sum += fixedFrameArray[i];
+        }
+        if (sum == fixedFrameArray[5])//sum check passed
+        {
+            HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, fixedFrameArray[4]);//start receive variable frame part
+            receiveStatus = RECEIVE_VARIABLE_PART;
+        }
+        else
+            receiveStatus = RECEIVE_RESTART;
+    }
+    else if (receiveStatus == RECEIVE_VARIABLE_PART)
+    {
+        //check variable part CRC result
+        u16 CRCCheck = Method::ModbusCRC16(Usart2RxBuffer, fixedFrameArray[4]);
+        if ((fixedFrameArray[2] << 8 | fixedFrameArray[3]) == CRCCheck)
+        { 
+            printf("receive finished");          
+        }
+        receiveStatus = RECEIVE_RESTART;
+    }
+    if (receiveStatus == RECEIVE_RESTART)
+    {
+        framePointer = 0;  
+        receiveStatus = RECEIVE_FIXED_PART;
+    }
 }

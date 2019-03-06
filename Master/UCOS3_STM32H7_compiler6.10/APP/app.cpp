@@ -93,7 +93,8 @@ void StartTask(void *p_arg)
                  (void * )0,
                  (OS_OPT      )OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR | OS_OPT_TASK_SAVE_FP,
                  (OS_ERR * )&err);
-    OS_CRITICAL_EXIT();                            //进入临界区
+    OS_CRITICAL_EXIT();                            //退出临界区
+    HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);//开始允许接收串口2中断
     OS_TaskSuspend((OS_TCB *)&StartTaskTCB, &err); //挂起开始任务
 }
 
@@ -178,20 +179,3 @@ void FloatTask(void *p_arg)
     }
 }
 
-
-/******************************************************************************
-*  @Function: HAL_UART_RxCpltCallback
-*
-*  @Description:
-*
-*  @Created: by Wang Zilin
-*
-*  @Modified:
-******************************************************************************/
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-    printf("%x%x%x\r\n", Usart2RxBuffer[0], Usart2RxBuffer[1], Usart2RxBuffer[2]);
-//    u8 data[] = {0x01,0x02,0x03};
-//    HAL_UART_Transmit(&UART2_Handler,(uint8_t*)data, 3,1000);
-    HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, USART2_RX_BUFFER_LENGTH);//该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
-}

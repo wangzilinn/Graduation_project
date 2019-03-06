@@ -23,7 +23,6 @@
 "..\outhex\method.o"
 "..\outhex\stm32f10x_it.o"
 "..\outhex\debug.o"
-"..\outhex\applicationlayer.o"
 "..\outhex\transportlayer.o"
 "..\outhex\misc.o"
 "..\outhex\stm32f10x_adc.o"

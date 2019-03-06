@@ -4,9 +4,11 @@
 Include headers
 ******************************************************************************/
 #include "public.h"
+#include "usart.h"
 #include "method.h"
+#define LOCAL_SHORT_ADDRESS 0x0001
 /******************************************************************************
 Function declaraction 
 ******************************************************************************/
-bool ZigBeeReceive(u8* const receivedData, u8* const uplevelDataBuffer, int const uplevelDataBufferLength);
+
 #endif

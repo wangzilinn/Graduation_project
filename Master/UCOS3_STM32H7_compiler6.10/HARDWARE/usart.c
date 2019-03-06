@@ -59,7 +59,7 @@ void Uart2Init(u32 baudRate)
     UART2_Handler.Init.Mode       = UART_MODE_TX_RX;     //收发模式
     HAL_UART_Init(&UART2_Handler);                       //enable UART2
 
-    HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, USART2_RX_BUFFER_LENGTH);
+    
 }
 
 

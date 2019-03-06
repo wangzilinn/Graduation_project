@@ -769,11 +769,6 @@
           <GroupName>TRANSMISSION</GroupName>
           <Files>
             <File>
-              <FileName>applicationLayer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\TRANSMISSION\applicationLayer.cpp</FilePath>
-            </File>
-            <File>
               <FileName>transportLayer.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\TRANSMISSION\transportLayer.cpp</FilePath>
