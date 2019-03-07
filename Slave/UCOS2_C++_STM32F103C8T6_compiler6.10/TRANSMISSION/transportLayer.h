@@ -8,5 +8,5 @@ Include headers
 /******************************************************************************
 Function declaration
 ******************************************************************************/
-void SendDataPackage(USART_TypeDef * usart,const u16 targetShortAddress, u8* const data, const int dataLength);
+void SendDataPackage(USART_TypeDef * usart,u16 targetShortAddress,u8* const data, u8 dataLength);
 #endif

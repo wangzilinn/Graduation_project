@@ -52,7 +52,7 @@ F (..\UCOSII\PORT\os_cpu.h)(0x5BE8221C)()
 F (..\UCOSII\PORT\os_cpu_a.S)(0x5BE8221C)(--cpu Cortex-M3 -g-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\StdPeriph_Driver\inc--pd "__UVISION_VERSION SETA 526"--pd "_RTE_ SETA 1"--pd "STM32F10X_MD SETA 1"--list .\os_cpu_a.lst--xref -o ..\outhex\os_cpu_a.o--depend ..\outhex\os_cpu_a.d)
 F (..\HARDWARE\bsp.cpp)(0x5C7A3A2E)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/bsp.o -MD)
 I (..\HARDWARE\bsp.h)(0x5C792A36)
-I (..\APP\public.h)(0x5C78F799)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
@@ -98,7 +98,7 @@ I (..\HARDWARE\bitBand.h)(0x5C78FCAE)
 I (..\HARDWARE\delay.h)(0x5C7A3A2E)
 F (..\HARDWARE\led.cpp)(0x5BE8231F)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/led.o -MD)
 I (..\HARDWARE\led.h)(0x5BE8231F)
-I (..\APP\public.h)(0x5C78F799)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
@@ -139,7 +139,7 @@ I (..\UCOSII\PORT\os_cpu.h)(0x5BE8221C)
 I (..\APP\method.h)(0x5C7D3094)
 F (..\HARDWARE\usart.cpp)(0x5C768814)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/usart.o -MD)
 I (..\HARDWARE\usart.h)(0x5BE8231F)
-I (..\APP\public.h)(0x5C78F799)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
@@ -180,7 +180,7 @@ I (..\UCOSII\PORT\os_cpu.h)(0x5BE8221C)
 I (..\APP\method.h)(0x5C7D3094)
 F (..\HARDWARE\delay.cpp)(0x5C7A38F6)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/delay.o -MD)
 I (..\HARDWARE\delay.h)(0x5C7A3A2E)
-I (..\APP\public.h)(0x5C78F799)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
@@ -221,7 +221,7 @@ I (..\UCOSII\PORT\os_cpu.h)(0x5BE8221C)
 I (..\APP\method.h)(0x5C7D3094)
 F (..\HARDWARE\dht11.cpp)(0x5C7A3377)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/dht11.o -MD)
 I (..\HARDWARE\dht11.h)(0x5C7A32CC)
-I (..\APP\public.h)(0x5C78F799)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
@@ -264,7 +264,7 @@ I (..\HARDWARE\bitBand.h)(0x5C78FCAE)
 I (..\HARDWARE\delay.h)(0x5C7A3A2E)
 F (..\HARDWARE\bitBand.cpp)(0x5C78FB91)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/bitband.o -MD)
 I (..\HARDWARE\bitBand.h)(0x5C78FCAE)
-I (..\APP\public.h)(0x5C78F799)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
@@ -305,7 +305,7 @@ I (..\UCOSII\PORT\os_cpu.h)(0x5BE8221C)
 I (..\APP\method.h)(0x5C7D3094)
 F (..\MAIN\main.cpp)(0x5C35D63A)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/main.o -MD)
 I (..\MAIN\main.h)(0x5BE7F76D)
-I (..\APP\public.h)(0x5C78F799)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
@@ -344,7 +344,7 @@ I (..\UCOSII\CORE\ucos_ii.h)(0x5BE820C7)
 I (..\UCOSII\CONFIG\os_cfg.h)(0x5BE3C59D)
 I (..\UCOSII\PORT\os_cpu.h)(0x5BE8221C)
 I (..\APP\method.h)(0x5C7D3094)
-I (..\APP\task.h)(0x5C7A32D6)
+I (..\APP\task.h)(0x5C7FB78D)
 I (..\HARDWARE\bsp.h)(0x5C792A36)
 I (..\HARDWARE\led.h)(0x5BE8231F)
 I (..\HARDWARE\usart.h)(0x5BE8231F)
@@ -352,9 +352,10 @@ I (..\HARDWARE\dht11.h)(0x5C7A32CC)
 I (..\HARDWARE\bitBand.h)(0x5C78FCAE)
 I (..\HARDWARE\delay.h)(0x5C7A3A2E)
 I (..\APP\debug.h)(0x5BDE66DF)
-F (..\APP\task.cpp)(0x5C7A35CB)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/task.o -MD)
-I (..\APP\task.h)(0x5C7A32D6)
-I (..\APP\public.h)(0x5C78F799)
+I (..\TRANSMISSION\transportLayer.h)(0x5C7FB78D)
+F (..\APP\task.cpp)(0x5C7FB8AA)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/task.o -MD)
+I (..\APP\task.h)(0x5C7FB78D)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
@@ -400,9 +401,10 @@ I (..\HARDWARE\dht11.h)(0x5C7A32CC)
 I (..\HARDWARE\bitBand.h)(0x5C78FCAE)
 I (..\HARDWARE\delay.h)(0x5C7A3A2E)
 I (..\APP\debug.h)(0x5BDE66DF)
+I (..\TRANSMISSION\transportLayer.h)(0x5C7FB78D)
 F (..\APP\method.cpp)(0x5C7D320F)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/method.o -MD)
 I (..\APP\method.h)(0x5C7D3094)
-I (..\APP\public.h)(0x5C78F799)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
@@ -442,7 +444,7 @@ I (..\UCOSII\CONFIG\os_cfg.h)(0x5BE3C59D)
 I (..\UCOSII\PORT\os_cpu.h)(0x5BE8221C)
 F (..\APP\stm32f10x_it.cpp)(0x5C0CC8A0)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/stm32f10x_it.o -MD)
 I (..\APP\stm32f10x_it.h)(0x5C0CC871)
-I (..\APP\public.h)(0x5C78F799)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
@@ -489,7 +491,7 @@ I (..\HARDWARE\bitBand.h)(0x5C78FCAE)
 I (..\HARDWARE\delay.h)(0x5C7A3A2E)
 F (..\APP\debug.cpp)(0x5BDE66DF)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/debug.o -MD)
 I (..\APP\debug.h)(0x5BDE66DF)
-I (..\APP\public.h)(0x5C78F799)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
@@ -530,8 +532,8 @@ I (..\UCOSII\PORT\os_cpu.h)(0x5BE8221C)
 I (..\APP\method.h)(0x5C7D3094)
 I (..\HARDWARE\usart.h)(0x5BE8231F)
 F (..\TRANSMISSION\transportLayer.cpp)(0x5C7F7CAC)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -fno-ldm-stm -O1 -fno-function-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../UCOSII/PORT -I ../UCOSII/CORE -I ../UCOSII/CONFIG -I ../HARDWARE/ -I ../MAIN -I ../APP/ -I ../TRANSMISSION-I./RTE/Device/STM32F103C8-I./RTE/_Target_1-IC:/Keil_v5/ARM/PACK/ARM/CMSIS/5.4.0/CMSIS/Core/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/Include-IC:/Keil_v5/ARM/PACK/Keil/STM32F1xx_DFP/2.3.0/Device/StdPeriph_Driver/inc-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ../outhex/transportlayer.o -MD)
-I (..\TRANSMISSION\transportLayer.h)(0x5C7F7CAC)
-I (..\APP\public.h)(0x5C78F799)
+I (..\TRANSMISSION\transportLayer.h)(0x5C7FB78D)
+I (..\APP\public.h)(0x5C7FB78D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)

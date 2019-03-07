@@ -46,16 +46,12 @@ void MainTask(void *pdata)
         exist = 1;
     }
     OSTimeDlyHMSM(0, 0, 0, 1000);
-    float data[] = {0x00,0x00,0x00};
+    u8 data[] = {0x00,0x01,0x02};
     while(1)
     {     
-        char str[40];
-        DHT11_Read_Data(&data[0],&data[1]);
-        sprintf(str,"%4.1f and %4.1f %5.0f\r\n",data[0],data[1],data[2]);
-        outputUsart.SendString(str);
+        SendDataPackage(USART_ZIGBEE, 0x01, data, 3);
         pilotLED.Toggle();
         OSTimeDlyHMSM(0, 0, 0, 500);
-        data[2]++;
     }
 }
 

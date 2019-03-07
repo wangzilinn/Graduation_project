@@ -36,4 +36,4 @@
   ../UCOSII/PORT\os_cpu.h ../APP/method.h ../APP/public.h ../APP\task.h \
   ../HARDWARE\bsp.h ../HARDWARE/led.h ../HARDWARE/usart.h \
   ../HARDWARE/dht11.h ../HARDWARE/bitBand.h ../HARDWARE/delay.h \
-  ../APP/debug.h
+  ../APP/debug.h ../TRANSMISSION\transportLayer.h
