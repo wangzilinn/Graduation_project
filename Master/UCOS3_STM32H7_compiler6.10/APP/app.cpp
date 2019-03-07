@@ -9,15 +9,19 @@
 OS_TCB  StartTaskTCB;                              //任务控制块
 CPU_STK START_TASK_STK[START_STK_SIZE];            //任务堆栈
 
-OS_TCB  LED0TaskTCB;                               //任务控制块
-__attribute__((aligned(8))) CPU_STK LED0_TASK_STK[LED0_STK_SIZE];              //任务堆栈
+OS_TCB ReceiveDataTaskTCB;
+__attribute__((aligned(8))) CPU_STK RECEIVE_DATA_TASK_STK[RECEIVE_DATA_STK_SIZE];
 
 OS_TCB  LED1TaskTCB;                               //任务控制块
 CPU_STK LED1_TASK_STK[LED1_STK_SIZE];              //任务堆栈
 
 OS_TCB FloatTaskTCB;                               //任务控制块
 __attribute__((aligned(8)))  CPU_STK FLOAT_TASK_STK[FLOAT_STK_SIZE]; //任务堆栈
-
+/******************************************************************************
+消息队列缓冲区
+******************************************************************************/
+NodeDataStruct nodeDataBuffer[NODE_DATA_BUFFER_LENGTH];
+u8 nodeDataBufferPointer = 0;
 /******************************************************************************
 *  @Function: StartTask
 *
@@ -49,20 +53,20 @@ void StartTask(void *p_arg)
 #endif
 
     OS_CRITICAL_ENTER();    //进入临界区
-    //创建LED0任务
-    OSTaskCreate((OS_TCB * )&LED0TaskTCB,
-                 (CPU_CHAR * )"led0 task",
-                 (OS_TASK_PTR )LED0Task,
+    
+    OSTaskCreate((OS_TCB * )&ReceiveDataTaskTCB,
+                 (CPU_CHAR * )"receive data task",
+                 (OS_TASK_PTR )ReceiveDataTask,
                  (void * )0,
-                 (OS_PRIO     )LED0_TASK_PRIO,
-                 (CPU_STK * )&LED0_TASK_STK[0],
-                 (CPU_STK_SIZE)LED0_STK_SIZE / 10,
-                 (CPU_STK_SIZE)LED0_STK_SIZE,
+                 (OS_PRIO     )RECEIVE_DATA_TASK_PRIO,
+                 (CPU_STK * )&RECEIVE_DATA_TASK_STK[0],
+                 (CPU_STK_SIZE)RECEIVE_DATA_STK_SIZE / 10,
+                 (CPU_STK_SIZE)RECEIVE_DATA_STK_SIZE,
                  (OS_MSG_QTY  )0,
                  (OS_TICK     )0,
                  (void * )0,
                  (OS_OPT      )OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR | OS_OPT_TASK_SAVE_FP,
-                 (OS_ERR * )&err);
+                 (OS_ERR * )&err);             
 
     //创建LED1任务
     OSTaskCreate((OS_TCB * )&LED1TaskTCB,
@@ -100,15 +104,15 @@ void StartTask(void *p_arg)
 
 
 /******************************************************************************
-*  @Function: LED0Task
+*  @Function: ReceiveDataTask
 *
 *  @Description:
 *
 *  @Created: by Wang Zilin
 *
-*  @Modified:
+*  @Modified:2019-03-07 14:52 by Wang Zilin
 ******************************************************************************/
-void LED0Task(void *p_arg)
+void ReceiveDataTask(void *p_arg)
 {
     OS_ERR err;
     u8 Dht11Exist = 0;
@@ -118,17 +122,15 @@ void LED0Task(void *p_arg)
         Dht11Exist = 1;
     while (1)
     {
-        OSTimeDlyHMSM(0, 0, 0, 600, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
-        HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-        HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);
-        if (Dht11Exist)
+        OS_MSG_SIZE msg_size;
+        NodeDataStruct* nodeData = (NodeDataStruct*)OSTaskQPend(0, OS_OPT_PEND_BLOCKING, &msg_size, NULL, &err);
+        if(err == OS_ERR_NONE)
         {
-            float data[2];
-            DHT11_Read_Data(&data[0],&data[1]);		//读取温湿度值	
-            char str[40];
-            printf("temp %f,humi %f\r\n", data[0], data[1]);
-//        UartSendString(&UART2_Handler, str, 1000);
-        }            
+            printf("t=%f, h=%f, id=%d\r\n",nodeData->temperature, nodeData->humidity, nodeData->localShortAddress);
+        }
+        OSTimeDlyHMSM(0, 0, 0, 300, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
+        HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+        HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);    
     }
 }
 

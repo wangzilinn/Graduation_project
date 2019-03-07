@@ -6,16 +6,11 @@ enum
 {
     RECEIVE_FIXED_PART,
     RECEIVE_VARIABLE_PART,
-    RECEIVE_RESTART
 }receiveStatus = RECEIVE_FIXED_PART;
+/******************************************************************************
+帧固定部分
+******************************************************************************/
 u8 fixedFrameArray[6] = {0};
-struct nodeData
-{
-    u16 localShortAddress;
-    float temperature;
-    float humidity;
-    u8 controlWord;
-};
 /******************************************************************************
 *  @Function: HAL_UART_RxCpltCallback
 *
@@ -25,7 +20,6 @@ struct nodeData
 *
 *  @Modified:2019-03-06 16:02 by Wang Zilin
 ******************************************************************************/
-
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
     if (receiveStatus == RECEIVE_FIXED_PART)
@@ -52,17 +46,19 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     }  
     else if (receiveStatus == RECEIVE_VARIABLE_PART)
     {
+        u8 structLength = fixedFrameArray[4];
         //check variable part CRC result
-        u16 CRCCheck = Method::ModbusCRC16(Usart2RxBuffer, fixedFrameArray[4]);
+        u16 CRCCheck = Method::ModbusCRC16(Usart2RxBuffer, structLength);
         if ((fixedFrameArray[2] << 8 | fixedFrameArray[3]) == CRCCheck)
         { 
-            u8 a[fixedFrameArray[4]];
-            for (u8 i = 0; i < fixedFrameArray[4]; i++)
+            memcpy(&nodeDataBuffer[nodeDataBufferPointer], Usart2RxBuffer, structLength);
+            //发送到消息队列
+            OS_ERR err;
+            OSTaskQPost(&ReceiveDataTaskTCB, &nodeDataBuffer[nodeDataBufferPointer++], structLength, OS_OPT_POST_FIFO, &err); 
+            if (nodeDataBufferPointer >= NODE_DATA_BUFFER_LENGTH)
             {
-                a[i] = Usart2RxBuffer[i];
-            }
-            struct nodeData *NodeData = (struct nodeData*)a;
-            printf("t:%d, h:%d\r\n", (int)NodeData->temperature, (int)NodeData->humidity);
+                nodeDataBufferPointer = 0;
+            }           
         }
         //no matter check success or fail, restart again
         receiveStatus = RECEIVE_FIXED_PART;
