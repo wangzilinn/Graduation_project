@@ -2,7 +2,6 @@
 Include headers
 ******************************************************************************/
 #include "transportLayer.h"
-u8 framePointer = 0;
 enum
 {
     RECEIVE_FIXED_PART,
@@ -24,54 +23,25 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
     if (receiveStatus == RECEIVE_FIXED_PART)
     {
-        if ((framePointer == 0) && (Usart2RxBuffer[0] == (u8)(LOCAL_SHORT_ADDRESS >> 8)))
+        //放入接受队列
+        Method::BytewiseShiftLeft(fixedFrameArray, 6);
+        fixedFrameArray[5] = Usart2RxBuffer[0];
+        //检查队列中的值:
+        if (fixedFrameArray[0] == (u8)(LOCAL_SHORT_ADDRESS >> 8) && fixedFrameArray[1] == (u8)(LOCAL_SHORT_ADDRESS))
         {
-            fixedFrameArray[framePointer] = Usart2RxBuffer[0];
-        }
-        else if ((framePointer == 1) && (Usart2RxBuffer[0] == (u8)LOCAL_SHORT_ADDRESS))
-        {
-            fixedFrameArray[framePointer] = Usart2RxBuffer[0];
-        }
-        else if ((framePointer >= 2) && (framePointer <=5))
-        {
-            fixedFrameArray[framePointer] = Usart2RxBuffer[0];
-            if (framePointer == 5)//fixed frames receive finished, check fixed frame part
+            u8 sum = 0;
+            for (u8 i = 0; i < 5; i++)
             {
-                u8 sum = 0;
-                for (u8 i = 0; i < 5; i++)
-                {
-                    sum += fixedFrameArray[i];
-                }
-                if (sum == fixedFrameArray[5])//sum check passed
-                {
-                    HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, fixedFrameArray[4]);//start receive variable frame part
-                    receiveStatus = RECEIVE_VARIABLE_PART;
-                }
-                else
-                {
-                    receiveStatus = RECEIVE_RESTART;
-                }
+                sum += fixedFrameArray[i];
+            }
+            if (sum == fixedFrameArray[5])//sum check passed
+            {
+                HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, fixedFrameArray[4]);//start receive variable frame part
+                receiveStatus = RECEIVE_VARIABLE_PART;
+                return;
             }
         }
-        else
-        {
-            receiveStatus = RECEIVE_RESTART;
-        }
-    
-        if (receiveStatus == RECEIVE_FIXED_PART)
-        {
-            framePointer++;
-            HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);
-        }
-        else
-        {
-            if (receiveStatus == RECEIVE_RESTART)
-            {
-                receiveStatus = RECEIVE_FIXED_PART;
-                HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);
-            }
-            framePointer = 0;
-        }
+        HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);
     }  
     else if (receiveStatus == RECEIVE_VARIABLE_PART)
     {
@@ -83,7 +53,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         }
         //no matter check success or fail, restart again
         receiveStatus = RECEIVE_FIXED_PART;
-        framePointer = 0;
         HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);                       
     }
 }

@@ -193,4 +193,21 @@ uint16_t Method::ModbusCRC16(uint8_t *puchMsg, uint8_t usDataLen)
 	CRC_Low = (uint8_t)(CRC_Cal & 0x00FF);
 	
 	return (CRC_Low << 8 | CRC_High);
-}    
+}
+/******************************************************************************
+@Function: void Method::BytewiseShiftLeft(u8* array, int arrayLength)
+
+@Description:将数组元素左移一个Byte, 最右边一位补0
+
+@Created: by Wang Zilin
+
+@Modified: 2019-03-07 11:40 by Wang Zilin
+******************************************************************************/
+void Method::BytewiseShiftLeft(u8* array, int arrayLength)
+{
+    for (int i = 0; i < arrayLength - 1; i++)
+    {
+        array[i] = array[i + 1];
+    }
+    array[arrayLength - 1] = 0;
+}

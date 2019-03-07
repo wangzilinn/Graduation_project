@@ -170,11 +170,6 @@
         <Ww>
           <count>1</count>
           <WinNumber>2</WinNumber>
-          <ItemText>framePointer</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>2</WinNumber>
           <ItemText>receiveStatus</ItemText>
         </Ww>
       </WatchWindow2>
