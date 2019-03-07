@@ -8,6 +8,16 @@ Task stack definition
 OS_STK GUARDIAN_TASK_STK[GUARDIAN_TASK_STK_SIZE];
 __attribute__((aligned(8))) OS_STK MAIN_TASK_STK[MAIN_TASK_STK_SIZE];
 /******************************************************************************
+Struct definition
+******************************************************************************/
+struct
+{
+    u16 localShortAddress;
+    float temperature;
+    float humidity;
+    u8 controlWord;
+}NodeData;
+/******************************************************************************
 @Function: GuardianTask
 
 @Description:
@@ -39,17 +49,17 @@ void MainTask(void *pdata)
     LED pilotLED(GPIOC, GPIO_Pin_13, 1, LED::ON);
     USART outputUsart(USART_DEBUG);  
     USART zigBeeUsart(USART_ZIGBEE);
-    
     u8 exist = 0;
     if (DHT11_Init() == 0)
     {
         exist = 1;
     }
     OSTimeDlyHMSM(0, 0, 0, 1000);
-    u8 data[] = {0x00,0x01,0x02};
+    NodeData.localShortAddress = LOCAL_SHORT_ADDRESS;
     while(1)
     {     
-        SendDataPackage(USART_ZIGBEE, 0x01, data, 3);
+        DHT11_Read_Data(&NodeData.temperature, &NodeData.humidity);
+        SendDataPackage(USART_ZIGBEE, 0x0001, (u8*)&NodeData, sizeof(NodeData));
         pilotLED.Toggle();
         OSTimeDlyHMSM(0, 0, 0, 500);
     }

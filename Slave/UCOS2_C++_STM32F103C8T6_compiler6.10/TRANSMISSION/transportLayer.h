@@ -6,6 +6,10 @@ Include headers
 #include "public.h"
 #include "usart.h"
 /******************************************************************************
+Define
+******************************************************************************/
+#define LOCAL_SHORT_ADDRESS 0x0003
+/******************************************************************************
 Function declaration
 ******************************************************************************/
 void SendDataPackage(USART_TypeDef * usart,u16 targetShortAddress,u8* const data, u8 dataLength);

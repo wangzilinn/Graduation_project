@@ -9,6 +9,13 @@ enum
     RECEIVE_RESTART
 }receiveStatus = RECEIVE_FIXED_PART;
 u8 fixedFrameArray[6] = {0};
+struct nodeData
+{
+    u16 localShortAddress;
+    float temperature;
+    float humidity;
+    u8 controlWord;
+};
 /******************************************************************************
 *  @Function: HAL_UART_RxCpltCallback
 *
@@ -49,7 +56,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         u16 CRCCheck = Method::ModbusCRC16(Usart2RxBuffer, fixedFrameArray[4]);
         if ((fixedFrameArray[2] << 8 | fixedFrameArray[3]) == CRCCheck)
         { 
-            printf("receive finished\r\n"); 
+            u8 a[fixedFrameArray[4]];
+            for (u8 i = 0; i < fixedFrameArray[4]; i++)
+            {
+                a[i] = Usart2RxBuffer[i];
+            }
+            struct nodeData *NodeData = (struct nodeData*)a;
+            printf("t:%d, h:%d\r\n", (int)NodeData->temperature, (int)NodeData->humidity);
         }
         //no matter check success or fail, restart again
         receiveStatus = RECEIVE_FIXED_PART;

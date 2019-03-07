@@ -3,11 +3,11 @@
 <title>Static Call Graph - [..\outHEX\Ucosii.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\outHEX\Ucosii.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6100100: Last Updated: Wed Mar  6 20:10:20 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6100100: Last Updated: Thu Mar  7 13:49:41 2019
 <BR><P>
-<H3>Maximum Stack Usage =        144 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        160 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; OSInit &rArr; OSTmr_Init &rArr; OSTmr_InitTask &rArr; OSTaskCreateExt &rArr; OS_TCBInit
+MainTask(void*) &rArr; DHT11_Read_Data(float*, float*) &rArr; DHT11_Read_Byte() &rArr; DHT11_Read_Bit() &rArr; delay_us(unsigned) &rArr; delay_osschedunlock() &rArr; OSSchedUnlock &rArr; OS_Sched
 <P>
 <H3>
 Functions with no stack information
@@ -1209,20 +1209,29 @@ Global Symbols
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Init()
 </UL>
 
-<P><STRONG><a name="[d9]"></a>DHT11_Read_Bit()</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, dht11.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us(unsigned)
+<P><STRONG><a name="[d9]"></a>DHT11_Read_Bit()</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, dht11.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48 + Unknown Stack Size
+<LI>Call Chain = DHT11_Read_Bit() &rArr; delay_us(unsigned) &rArr; delay_osschedunlock() &rArr; OSSchedUnlock &rArr; OS_Sched
+</UL>
+<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us(unsigned)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Byte()
 </UL>
 
-<P><STRONG><a name="[da]"></a>DHT11_Read_Byte()</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, dht11.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Bit()
+<P><STRONG><a name="[da]"></a>DHT11_Read_Byte()</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, dht11.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64 + Unknown Stack Size
+<LI>Call Chain = DHT11_Read_Byte() &rArr; DHT11_Read_Bit() &rArr; delay_us(unsigned) &rArr; delay_osschedunlock() &rArr; OSSchedUnlock &rArr; OS_Sched
+</UL>
+<BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Bit()
 </UL>
 <BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
 </UL>
 
-<P><STRONG><a name="[db]"></a>DHT11_Read_Data(float*, float*)</STRONG> (Thumb, 186 bytes, Stack size 48 bytes, dht11.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Rst()
+<P><STRONG><a name="[db]"></a>DHT11_Read_Data(float*, float*)</STRONG> (Thumb, 186 bytes, Stack size 48 bytes, dht11.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 112 + Unknown Stack Size
+<LI>Call Chain = DHT11_Read_Data(float*, float*) &rArr; DHT11_Read_Byte() &rArr; DHT11_Read_Bit() &rArr; delay_us(unsigned) &rArr; delay_osschedunlock() &rArr; OSSchedUnlock &rArr; OS_Sched
+</UL>
+<BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Rst()
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Byte()
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Check()
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
@@ -1231,6 +1240,8 @@ Global Symbols
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+</UL>
+<BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MainTask(void*)
 </UL>
 
 <P><STRONG><a name="[e2]"></a>DHT11_Init()</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, dht11.o(.text))
@@ -1271,12 +1282,13 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
-<P><STRONG><a name="[3c]"></a>MainTask(void*)</STRONG> (Thumb, 122 bytes, Stack size 48 bytes, task.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112 + Unknown Stack Size
-<LI>Call Chain = MainTask(void*) &rArr; DHT11_Init() &rArr; DHT11_Rst() &rArr; delay_ms(unsigned short) &rArr; delay_us(unsigned) &rArr; delay_osschedunlock() &rArr; OSSchedUnlock &rArr; OS_Sched
+<P><STRONG><a name="[3c]"></a>MainTask(void*)</STRONG> (Thumb, 134 bytes, Stack size 48 bytes, task.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
+<LI>Call Chain = MainTask(void*) &rArr; DHT11_Read_Data(float*, float*) &rArr; DHT11_Read_Byte() &rArr; DHT11_Read_Bit() &rArr; delay_us(unsigned) &rArr; delay_osschedunlock() &rArr; OSSchedUnlock &rArr; OS_Sched
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyHMSM
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED::Toggle()
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Init()
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART::USART__sub_object(USART_TypeDef*)
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED::LED__sub_object(GPIO_TypeDef*, unsigned short, int, LED::status)
@@ -1870,8 +1882,10 @@ Global Symbols
 <LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[e1]"></a>__aeabi_d2f</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, d2f.o(x$fpl$d2f), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
+<P><STRONG><a name="[e1]"></a>__aeabi_d2f</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, d2f.o(x$fpl$d2f))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2f
+</UL>
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
 </UL>
 
 <P><STRONG><a name="[fc]"></a>_d2f</STRONG> (Thumb, 98 bytes, Stack size 32 bytes, d2f.o(x$fpl$d2f), UNUSED)
@@ -1879,8 +1893,10 @@ Global Symbols
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[e0]"></a>__aeabi_dadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
+<P><STRONG><a name="[e0]"></a>__aeabi_dadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_dadd
+</UL>
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
 </UL>
 
 <P><STRONG><a name="[ff]"></a>_dadd</STRONG> (Thumb, 332 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd), UNUSED)
@@ -1889,14 +1905,16 @@ Global Symbols
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsub1
 </UL>
 
-<P><STRONG><a name="[de]"></a>__aeabi_ui2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dfltu), UNUSED)
+<P><STRONG><a name="[de]"></a>__aeabi_ui2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dfltu))
 <BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
 </UL>
 
 <P><STRONG><a name="[180]"></a>_dfltu</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dfltu), UNUSED)
 
-<P><STRONG><a name="[df]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
+<P><STRONG><a name="[df]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dmul
+</UL>
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
 </UL>
 
 <P><STRONG><a name="[102]"></a>_dmul</STRONG> (Thumb, 332 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul), UNUSED)
@@ -1924,8 +1942,10 @@ Global Symbols
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd1
 </UL>
 
-<P><STRONG><a name="[dd]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
+<P><STRONG><a name="[dd]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_f2d
+</UL>
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
 </UL>
 
 <P><STRONG><a name="[105]"></a>_f2d</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d), UNUSED)
@@ -1933,7 +1953,7 @@ Global Symbols
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
 </UL>
 
-<P><STRONG><a name="[dc]"></a>__aeabi_ui2f</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu), UNUSED)
+<P><STRONG><a name="[dc]"></a>__aeabi_ui2f</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu))
 <BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DHT11_Read_Data(float*, float*)
 </UL>
 
