@@ -2,11 +2,12 @@
 Include headers
 ******************************************************************************/
 #include "transportLayer.h"
-enum
+enum receiveStatusEnum
 {
-    RECEIVE_FIXED_PART,
+    RECEIVE_FIXED_PART = 0,
     RECEIVE_VARIABLE_PART,
-}receiveStatus = RECEIVE_FIXED_PART;
+};
+enum receiveStatusEnum receiveStatus = RECEIVE_FIXED_PART;
 /******************************************************************************
 帧固定部分
 ******************************************************************************/

@@ -2,7 +2,6 @@
 *  Include headers
 ******************************************************************************/
 #include "app.h"
-
 /******************************************************************************
 *  Task variable definition
 ******************************************************************************/
@@ -12,11 +11,11 @@ CPU_STK START_TASK_STK[START_STK_SIZE];            //任务堆栈
 OS_TCB ReceiveDataTaskTCB;
 __attribute__((aligned(8))) CPU_STK RECEIVE_DATA_TASK_STK[RECEIVE_DATA_STK_SIZE];
 
-OS_TCB  LED1TaskTCB;                               //任务控制块
-CPU_STK LED1_TASK_STK[LED1_STK_SIZE];              //任务堆栈
+OS_TCB  DisplayTaskTCB;                               //任务控制块
+CPU_STK DISPLAY_TASK_STK[DISPLAY_STK_SIZE];              //任务堆栈
 
-OS_TCB FloatTaskTCB;                               //任务控制块
-__attribute__((aligned(8)))  CPU_STK FLOAT_TASK_STK[FLOAT_STK_SIZE]; //任务堆栈
+OS_TCB UploadDataTaskTCB;                               //任务控制块
+CPU_STK UPLOAD_DATA_TASK_STK[UPLOAD_DATA_STK_SIZE]; //任务堆栈
 /******************************************************************************
 消息队列缓冲区
 ******************************************************************************/
@@ -69,29 +68,29 @@ void StartTask(void *p_arg)
                  (OS_ERR * )&err);             
 
     //创建LED1任务
-    OSTaskCreate((OS_TCB * )&LED1TaskTCB,
-                 (CPU_CHAR * )"led1 task",
-                 (OS_TASK_PTR )LED1Task,
+    OSTaskCreate((OS_TCB * )&UploadDataTaskTCB,
+                 (CPU_CHAR * )"upload data task",
+                 (OS_TASK_PTR )UploadDataTask,
                  (void * )0,
-                 (OS_PRIO     )LED1_TASK_PRIO,
-                 (CPU_STK * )&LED1_TASK_STK[0],
-                 (CPU_STK_SIZE)LED1_STK_SIZE / 10,
-                 (CPU_STK_SIZE)LED1_STK_SIZE,
+                 (OS_PRIO     )UPLOAD_DATA_TASK_PRIO,
+                 (CPU_STK * )&UPLOAD_DATA_TASK_STK[0],
+                 (CPU_STK_SIZE)UPLOAD_DATA_STK_SIZE / 10,
+                 (CPU_STK_SIZE)UPLOAD_DATA_STK_SIZE,
                  (OS_MSG_QTY  )0,
                  (OS_TICK     )0,
                  (void * )0,
                  (OS_OPT      )OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR | OS_OPT_TASK_SAVE_FP,
                  (OS_ERR * )&err);
 
-    //创建浮点测试任务
-    OSTaskCreate((OS_TCB * )&FloatTaskTCB,
-                 (CPU_CHAR * )"float test task",
-                 (OS_TASK_PTR )FloatTask,
+                 //显示任务
+    OSTaskCreate((OS_TCB * )&DisplayTaskTCB,
+                 (CPU_CHAR * )"display task",
+                 (OS_TASK_PTR )DisplayTask,
                  (void * )0,
-                 (OS_PRIO     )FLOAT_TASK_PRIO,
-                 (CPU_STK * )&FLOAT_TASK_STK[0],
-                 (CPU_STK_SIZE)FLOAT_STK_SIZE / 10,
-                 (CPU_STK_SIZE)FLOAT_STK_SIZE,
+                 (OS_PRIO     )DISPLAY_TASK_PRIO,
+                 (CPU_STK * )&DISPLAY_TASK_STK[0],
+                 (CPU_STK_SIZE)DISPLAY_STK_SIZE / 10,
+                 (CPU_STK_SIZE)DISPLAY_STK_SIZE,
                  (OS_MSG_QTY  )0,
                  (OS_TICK     )0,
                  (void * )0,
@@ -127,10 +126,10 @@ void ReceiveDataTask(void *p_arg)
         if(err == OS_ERR_NONE)
         {
             printf("t=%f, h=%f, id=%d\r\n",nodeData->temperature, nodeData->humidity, nodeData->localShortAddress);
+            HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+            HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_3);    
         }
         OSTimeDlyHMSM(0, 0, 0, 300, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
-        HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-        HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);    
     }
 }
 
@@ -144,15 +143,15 @@ void ReceiveDataTask(void *p_arg)
 *
 *  @Modified:
 ******************************************************************************/
-void LED1Task(void *p_arg)
+void UploadDataTask(void *p_arg)
 {
     OS_ERR err;
     p_arg = p_arg;
     while (1)
     {
         OSTimeDlyHMSM(0, 0, 0, 500, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
-        HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1);
-        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_3);
+        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_7);
+        HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);
 //        printf("test");
     }
 }
@@ -167,16 +166,12 @@ void LED1Task(void *p_arg)
 *
 *  @Modified:
 ******************************************************************************/
-void FloatTask(void *p_arg)
+void DisplayTask(void *p_arg)
 {
     OS_ERR err;
-    CPU_SR_ALLOC();
-    static double double_num = 0.00;
     while (1)
     {
-        double_num += 0.01f;
         OSTimeDlyHMSM(0, 0, 0, 400, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
-        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_7);
         HAL_GPIO_TogglePin(GPIOH, GPIO_PIN_8);
     }
 }

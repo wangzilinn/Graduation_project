@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6100100: Last Updated: Thu Mar  7 16:07:50 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6100100: Last Updated: Thu Mar  7 16:42:52 2019
 <BR><P>
 <H3>Maximum Stack Usage =        324 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -82,6 +82,7 @@ Function Pointers
  <LI><a href="#[6e]">DMAMUX1_OVR_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[86]">DMAMUX2_OVR_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[b]">DebugMon_Handler</a> from stm32h7xx_it.o(.text.DebugMon_Handler) referenced from startup_stm32h743xx.o(RESET)
+ <LI><a href="#[a4]">DisplayTask</a> from app.o(.text.DisplayTask) referenced 2 times from app.o(.text.StartTask)
  <LI><a href="#[4a]">ETH_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[4b]">ETH_WKUP_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[14]">EXTI0_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
@@ -99,7 +100,6 @@ Function Pointers
  <LI><a href="#[12]">FLASH_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[3d]">FMC_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[59]">FPU_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
- <LI><a href="#[a4]">FloatTask</a> from app.o(.text.FloatTask) referenced 2 times from app.o(.text.StartTask)
  <LI><a href="#[75]">HRTIM1_FLT_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[6f]">HRTIM1_Master_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[70]">HRTIM1_TIMA_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
@@ -118,7 +118,6 @@ Function Pointers
  <LI><a href="#[68]">I2C4_ER_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[67]">I2C4_EV_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[81]">JPEG_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
- <LI><a href="#[a3]">LED1Task</a> from app.o(.text.LED1Task) referenced 2 times from app.o(.text.StartTask)
  <LI><a href="#[65]">LPTIM1_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[90]">LPTIM2_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[91]">LPTIM3_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
@@ -199,6 +198,7 @@ Function Pointers
  <LI><a href="#[34]">USART2_IRQHandler</a> from stm32h7xx_it.o(.text.USART2_IRQHandler) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[35]">USART3_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[50]">USART6_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
+ <LI><a href="#[a3]">UploadDataTask</a> from app.o(.text.UploadDataTask) referenced 2 times from app.o(.text.StartTask)
  <LI><a href="#[9]">UsageFault_Handler</a> from stm32h7xx_it.o(.text.UsageFault_Handler) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[97]">WAKEUP_PIN_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
  <LI><a href="#[e]">WWDG_IRQHandler</a> from startup_stm32h743xx.o(.text) referenced from startup_stm32h743xx.o(RESET)
@@ -921,7 +921,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_d
 </UL>
 
-<P><STRONG><a name="[11d]"></a>__aeabi_memcpy</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy_v6.o(.text))
+<P><STRONG><a name="[11f]"></a>__aeabi_memcpy</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy_v6.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
 
@@ -1261,7 +1261,7 @@ Global Symbols
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskInitTCB
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPost
 <LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPend
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskQPost
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskQPost
 <LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSwHook
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrTask
 </UL>
@@ -1301,9 +1301,9 @@ Global Symbols
 <P><STRONG><a name="[b]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_it.o(.text.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h743xx.o(RESET)
 </UL>
-<P><STRONG><a name="[a4]"></a>FloatTask</STRONG> (Thumb, 104 bytes, Stack size 48 bytes, app.o(.text.FloatTask))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
-<LI>Call Chain = FloatTask &rArr; OSTimeDlyHMSM &rArr; OS_TickListInsertDly &rArr; OS_TickListInsert
+<P><STRONG><a name="[a4]"></a>DisplayTask</STRONG> (Thumb, 50 bytes, Stack size 32 bytes, app.o(.text.DisplayTask))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
+<LI>Call Chain = DisplayTask &rArr; OSTimeDlyHMSM &rArr; OS_TickListInsertDly &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyHMSM
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -1333,9 +1333,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[f8]"></a>HAL_GPIO_TogglePin</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32h7xx_hal_gpio.o(.text.HAL_GPIO_TogglePin))
-<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReceiveDataTask
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED1Task
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FloatTask
+<BR><BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UploadDataTask
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReceiveDataTask
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayTask
 </UL>
 
 <P><STRONG><a name="[f5]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32h7xx_hal_gpio.o(.text.HAL_GPIO_WritePin))
@@ -1539,21 +1539,21 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
 
-<P><STRONG><a name="[120]"></a>HAL_UART_Receive_IT</STRONG> (Thumb, 166 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(.text.HAL_UART_Receive_IT))
+<P><STRONG><a name="[11d]"></a>HAL_UART_Receive_IT</STRONG> (Thumb, 166 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(.text.HAL_UART_Receive_IT))
 <BR><BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTask
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Uart1Init
 <LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
 
-<P><STRONG><a name="[11b]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 266 bytes, Stack size 40 bytes, transportlayer.o(.text.HAL_UART_RxCpltCallback))
+<P><STRONG><a name="[11b]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 300 bytes, Stack size 40 bytes, transportlayer.o(.text.HAL_UART_RxCpltCallback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168 + Unknown Stack Size
 <LI>Call Chain = HAL_UART_RxCpltCallback &rArr; OSTaskQPost &rArr; OS_TaskQPost &rArr; OS_Post &rArr; OS_PendListRemove &rArr; OS_PendListRemove1
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Method::BytewiseShiftLeft(unsigned char*, int)
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Method::ModbusCRC16(unsigned char*, unsigned char)
-<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskQPost
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Method::BytewiseShiftLeft(unsigned char*, int)
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Method::ModbusCRC16(unsigned char*, unsigned char)
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskQPost
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Receive_IT
 </UL>
@@ -1583,15 +1583,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a3]"></a>LED1Task</STRONG> (Thumb, 60 bytes, Stack size 32 bytes, app.o(.text.LED1Task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
-<LI>Call Chain = LED1Task &rArr; OSTimeDlyHMSM &rArr; OS_TickListInsertDly &rArr; OS_TickListInsert
-</UL>
-<BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyHMSM
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> app.o(.text.StartTask)
-</UL>
 <P><STRONG><a name="[126]"></a>LEDInit</STRONG> (Thumb, 200 bytes, Stack size 40 bytes, led.o(.text.LEDInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = LEDInit &rArr; HAL_GPIO_Init
 </UL>
@@ -1904,7 +1895,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReceiveDataTask
 </UL>
 
-<P><STRONG><a name="[11e]"></a>OSTaskQPost</STRONG> (Thumb, 38 bytes, Stack size 32 bytes, os_task.o(.text.OSTaskQPost))
+<P><STRONG><a name="[120]"></a>OSTaskQPost</STRONG> (Thumb, 38 bytes, Stack size 32 bytes, os_task.o(.text.OSTaskQPost))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128 + Unknown Stack Size
 <LI>Call Chain = OSTaskQPost &rArr; OS_TaskQPost &rArr; OS_Post &rArr; OS_PendListRemove &rArr; OS_PendListRemove1
 </UL>
@@ -2026,9 +2017,9 @@ Global Symbols
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListInsertDly
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReceiveDataTask
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED1Task
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FloatTask
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UploadDataTask
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReceiveDataTask
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayTask
 </UL>
 
 <P><STRONG><a name="[171]"></a>OSTimeTick</STRONG> (Thumb, 110 bytes, Stack size 16 bytes, os_time.o(.text.OSTimeTick))
@@ -2404,7 +2395,7 @@ Global Symbols
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQPut
 </UL>
-<BR>[Called By]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskQPost
+<BR>[Called By]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskQPost
 </UL>
 
 <P><STRONG><a name="[167]"></a>OS_TaskResume</STRONG> (Thumb, 200 bytes, Stack size 16 bytes, os_task.o(.text.OS_TaskResume))
@@ -2548,8 +2539,8 @@ Global Symbols
 <P><STRONG><a name="[a]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_it.o(.text.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h743xx.o(RESET)
 </UL>
-<P><STRONG><a name="[a5]"></a>StartTask</STRONG> (Thumb, 316 bytes, Stack size 64 bytes, app.o(.text.StartTask))
-<BR><BR>[Stack]<UL><LI>Max Depth = 156 + Unknown Stack Size
+<P><STRONG><a name="[a5]"></a>StartTask</STRONG> (Thumb, 324 bytes, Stack size 72 bytes, app.o(.text.StartTask))
+<BR><BR>[Stack]<UL><LI>Max Depth = 164 + Unknown Stack Size
 <LI>Call Chain = StartTask &rArr; OSTaskCreate &rArr; OSTaskStkInit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskCreate
@@ -2560,7 +2551,7 @@ Global Symbols
 <LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskSuspend
 <LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatTaskCPUUsageInit
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinCfg
-<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_IntDisMeasMaxCurReset
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_Init
 </UL>
@@ -2647,7 +2638,7 @@ Global Symbols
 <P><STRONG><a name="[124]"></a>Uart1Init</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, usart.o(.text.Uart1Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = Uart1Init &rArr; HAL_UART_Init &rArr; UART_SetConfig &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
+<BR>[Calls]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardwareInit
@@ -2661,6 +2652,15 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardwareInit
 </UL>
 
+<P><STRONG><a name="[a3]"></a>UploadDataTask</STRONG> (Thumb, 62 bytes, Stack size 32 bytes, app.o(.text.UploadDataTask))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
+<LI>Call Chain = UploadDataTask &rArr; OSTimeDlyHMSM &rArr; OS_TickListInsertDly &rArr; OS_TickListInsert
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyHMSM
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> app.o(.text.StartTask)
+</UL>
 <P><STRONG><a name="[9]"></a>UsageFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_it.o(.text.UsageFault_Handler))
 <BR><BR>[Calls]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UsageFault_Handler
 </UL>
@@ -2668,13 +2668,13 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h743xx.o(RESET)
 </UL>
-<P><STRONG><a name="[11c]"></a>Method::ModbusCRC16(unsigned char*, unsigned char)</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, method.o(.text._ZN6Method11ModbusCRC16EPhh))
+<P><STRONG><a name="[11e]"></a>Method::ModbusCRC16(unsigned char*, unsigned char)</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, method.o(.text._ZN6Method11ModbusCRC16EPhh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Method::ModbusCRC16(unsigned char*, unsigned char)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
 
-<P><STRONG><a name="[11f]"></a>Method::BytewiseShiftLeft(unsigned char*, int)</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, method.o(.text._ZN6Method17BytewiseShiftLeftEPhi))
+<P><STRONG><a name="[11c]"></a>Method::BytewiseShiftLeft(unsigned char*, int)</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, method.o(.text._ZN6Method17BytewiseShiftLeftEPhi))
 <BR><BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
 
