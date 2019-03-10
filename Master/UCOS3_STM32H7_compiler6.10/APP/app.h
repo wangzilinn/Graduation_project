@@ -9,7 +9,7 @@ Include headers
 #include "public.h"  
 #include "includes.h"   //OS support
 #include "hardware_init.h"
-//#include "lcd.h"
+#include "graph.h"
 /******************************************************************************
 Define task parameters
 ******************************************************************************/
@@ -23,7 +23,7 @@ Define task parameters
 #define UPLOAD_DATA_STK_SIZE 256 //任务堆栈大小
 
 #define DISPLAY_TASK_PRIO  6
-#define DISPLAY_STK_SIZE       128 //任务堆栈大小	
+#define DISPLAY_STK_SIZE       512 //任务堆栈大小	
 
 /******************************************************************************
 Task variable declaration

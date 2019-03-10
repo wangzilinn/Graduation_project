@@ -158,32 +158,23 @@ void UploadDataTask(void *p_arg)
 
 
 /******************************************************************************
-*  @Function: FloatTask
+*  @Function: void DisplayTask(void *p_arg)
 *
 *  @Description:
 *
 *  @Created: by Wang Zilin
 *
-*  @Modified:
+*  @Modified:2019-03-10 20:36 by Wang Zilin
 ******************************************************************************/
 void DisplayTask(void *p_arg)
 {
     OS_ERR err;
-    u8 i = 0;
+    u8 i = 0;  
     while (1)
     {
         OSTimeDlyHMSM(0, 0, 0, 1000, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
         HAL_GPIO_TogglePin(GPIOH, GPIO_PIN_8);
-        LCD_Clear(WHITE);
-        char str[10];
-        sprintf(str,"%d", i);
-//        LCD_ShowString(10 + i,40,260,32,32,(u8*)str); 	
-//        LCD_ShowString(10 + 10 * i,80,260,32,32,(u8*)"test"); 	
-        LCD_DrawLine(20,20,20,380);
-        LCD_DrawLine(20,20,780,20);
-        LCD_DrawLine(20,380,780,380);
-        LCD_DrawLine(780,20,780,380);
-        i++;
+        UIDrawRectangle(0, 0, 30, 272, 0xB825);
     }
 }
 

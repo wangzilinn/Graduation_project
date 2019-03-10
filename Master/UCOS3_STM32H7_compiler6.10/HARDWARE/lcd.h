@@ -86,6 +86,9 @@ GUI颜色
 #define DARKBLUE      	 0X01CF	//深蓝色
 #define LIGHTBLUE      	 0X7D7C	//浅蓝色  
 #define GRAYBLUE       	 0X5458 //灰蓝色
+#define AREA1 0xB825
+#define AREA2 0xB005
+#define AREA3 0x10C4
 //以上三色为PANEL的颜色 
  
 #define LIGHTGREEN     	 0X841F //浅绿色
