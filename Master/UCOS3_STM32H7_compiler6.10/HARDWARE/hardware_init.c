@@ -202,8 +202,11 @@ void HardwareInit(void)
     HAL_Init();                     //初始化HAL库
     SystemClockInit();              //设置时钟,400Mhz
     SystickInit(400);               //延时初始化
+    SDRAM_Init();                   //初始化SDRAM
+    LCD_Init();                     //初始化LCD
     Uart1Init(115200);              //串口初始化
     Uart2Init(115200);
     //Uart3Init(115200);
     LEDInit();                      //初始化LED
+
 }

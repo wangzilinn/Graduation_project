@@ -12,7 +12,8 @@ Peripheral header file
 #include "led.h"
 #include "ITM.h"
 #include "dht11.h"
-//#include "pcf8574.h"
+#include "lcd.h"
+#include "sdram.h"
 /******************************************************************************
 Private function declarations
 ******************************************************************************/
