@@ -10,6 +10,7 @@ Include headers
 #include "includes.h"   //OS support
 #include "hardware_init.h"
 #include "graph.h"
+#include "deviceParameters.h"
 /******************************************************************************
 Define task parameters
 ******************************************************************************/
@@ -39,16 +40,36 @@ extern CPU_STK	UPLOAD_DATA_TASK_STK[];//任务堆栈
 
 extern OS_TCB DisplayTaskTCB;//任务控制块
 extern CPU_STK DISPLAY_TASK_STK[];//任务堆栈	
-
-typedef struct nodeData
-{
-    u16 localShortAddress;
-    float temperature;
-    float humidity;
-    u8 controlWord;
-}NodeDataStruct;
-#define NODE_DATA_BUFFER_LENGTH 10
-extern NodeDataStruct nodeDataBuffer[];
+//typedef struct coordinate
+//{
+//    int x;
+//    int y;
+//    int z;
+//}CoordinateStruct;
+//typedef enum deviceStatus
+//{
+//    RUNNING = 0,
+//    OFFLINE,
+//}DeviceStatusEnum;
+//typedef struct collectionNodeParameter
+//{
+//    int offLineDisplayTime;
+//}CollectionNodeParameterStruct;
+//typedef struct receivedNodeData
+//{
+//    u16 localShortAddress;
+//    float temperature;
+//    float humidity;
+//    u8 controlWord;
+//}ReceivedNodeDataStruct;
+//typedef struct nodeData
+//{
+//    ReceivedNodeDataStruct receivedNodeData;
+//    CoordinateStruct coordinate;
+//    DeviceStatusEnum deviceStatus;
+//}NodeDataStruct;
+#define RECEIVED_NODE_DATA_BUFFER_LENGTH 10
+extern ReceivedNodeDataStruct nodeDataBuffer[];
 extern u8 nodeDataBufferPointer;
 /******************************************************************************
 Task function declaration

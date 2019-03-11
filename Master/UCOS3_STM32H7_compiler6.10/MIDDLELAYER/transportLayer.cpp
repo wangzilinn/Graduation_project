@@ -56,7 +56,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
             //发送到消息队列
             OS_ERR err;
             OSTaskQPost(&ReceiveDataTaskTCB, &nodeDataBuffer[nodeDataBufferPointer++], structLength, OS_OPT_POST_FIFO, &err); 
-            if (nodeDataBufferPointer >= NODE_DATA_BUFFER_LENGTH)
+            if (nodeDataBufferPointer >= RECEIVED_NODE_DATA_BUFFER_LENGTH)
             {
                 nodeDataBufferPointer = 0;
             }           

@@ -17,6 +17,7 @@
 "..\obj\method_1.o"
 "..\obj\transportlayer_1.o"
 "..\obj\graph.o"
+"..\obj\deviceparameters.o"
 "..\obj\startup_stm32h743xx.o"
 "..\obj\stm32h7xx_hal.o"
 "..\obj\stm32h7xx_hal_cortex.o"

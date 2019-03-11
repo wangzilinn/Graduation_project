@@ -19,7 +19,7 @@ CPU_STK UPLOAD_DATA_TASK_STK[UPLOAD_DATA_STK_SIZE]; //任务堆栈
 /******************************************************************************
 消息队列缓冲区
 ******************************************************************************/
-NodeDataStruct nodeDataBuffer[NODE_DATA_BUFFER_LENGTH];
+ReceivedNodeDataStruct nodeDataBuffer[RECEIVED_NODE_DATA_BUFFER_LENGTH];
 u8 nodeDataBufferPointer = 0;
 /******************************************************************************
 *  @Function: StartTask
@@ -122,17 +122,21 @@ void ReceiveDataTask(void *p_arg)
     while (1)
     {
         OS_MSG_SIZE msg_size;
-        NodeDataStruct* nodeData = (NodeDataStruct*)OSTaskQPend(0, OS_OPT_PEND_BLOCKING, &msg_size, NULL, &err);
+        ReceivedNodeDataStruct* receivedNodeData = (ReceivedNodeDataStruct*)OSTaskQPend(0, OS_OPT_PEND_BLOCKING, &msg_size, NULL, &err);
         if(err == OS_ERR_NONE)
         {
-            printf("t=%f, h=%f, id=%d\r\n",nodeData->temperature, nodeData->humidity, nodeData->localShortAddress);
-            HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-            HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_3);    
+            u8 nodeID = receivedNodeData->localShortAddress;
+            nodeDataArray[nodeID]={
+                .receivedNodeData = *receivedNodeData,
+                .deviceStatus = RUNNING
+            };
+            //printf("t=%f, h=%f, id=%d\r\n",receivedNodeData->temperature, receivedNodeData->humidity, receivedNodeData->localShortAddress);
+            HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);           
         }
         OSTimeDlyHMSM(0, 0, 0, 300, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
+        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_3);    
     }
 }
-
 
 /******************************************************************************
 *  @Function: LED1Task
@@ -169,12 +173,12 @@ void UploadDataTask(void *p_arg)
 void DisplayTask(void *p_arg)
 {
     OS_ERR err;
-    u8 i = 0;  
+    UIDrawBackground();
     while (1)
     {
-        OSTimeDlyHMSM(0, 0, 0, 1000, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
+        
+        OSTimeDlyHMSM(0, 0, 0, 500, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
         HAL_GPIO_TogglePin(GPIOH, GPIO_PIN_8);
-        UIDrawRectangle(0, 0, 30, 272, 0xB825);
     }
 }
 

@@ -488,6 +488,11 @@
               <FileType>1</FileType>
               <FilePath>..\MIDDLELAYER\graph.c</FilePath>
             </File>
+            <File>
+              <FileName>deviceParameters.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MIDDLELAYER\deviceParameters.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
