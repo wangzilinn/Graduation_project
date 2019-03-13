@@ -27,7 +27,7 @@ int main(void)
 	CPU_SR_ALLOC();    
 	HardwareInit();                 //初始化硬件
 	OSInit(&err);		            //初始化UCOSIII  
-    DeviceParametersInit();
+    LocalDataSetInit();
 	OS_CRITICAL_ENTER();            //进入临界区
 	//创建开始任务
 	OSTaskCreate((OS_TCB 	* )&StartTaskTCB,		//任务控制块

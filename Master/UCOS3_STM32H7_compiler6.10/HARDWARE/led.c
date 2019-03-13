@@ -31,4 +31,23 @@ void LEDInit(void)
     HAL_GPIO_Init(GPIOH,&GPIO_Initure);   
 	//HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);	//PB1置1 
 }
-
+void TogglePilotLED(int LEDNumber)
+{
+    switch (LEDNumber)
+    {
+        case 1:
+            HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); 
+            break;
+        case 2:
+            HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_3); 
+            break;
+        case 3:
+            HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_7); 
+            break;
+        case 4:
+            HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);
+            break;
+        case 5:
+            HAL_GPIO_TogglePin(GPIOH, GPIO_PIN_8); 
+    }        
+}

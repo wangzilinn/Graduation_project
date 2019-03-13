@@ -12,7 +12,7 @@ OS_TCB ReceiveDataTaskTCB;
 __attribute__((aligned(8))) CPU_STK RECEIVE_DATA_TASK_STK[RECEIVE_DATA_STK_SIZE];
 
 OS_TCB  DisplayTaskTCB;                               //任务控制块
-CPU_STK DISPLAY_TASK_STK[DISPLAY_STK_SIZE];              //任务堆栈
+__attribute__((aligned(8))) CPU_STK DISPLAY_TASK_STK[DISPLAY_STK_SIZE];              //任务堆栈
 
 OS_TCB UploadDataTaskTCB;                               //任务控制块
 CPU_STK UPLOAD_DATA_TASK_STK[UPLOAD_DATA_STK_SIZE]; //任务堆栈
@@ -21,6 +21,10 @@ CPU_STK UPLOAD_DATA_TASK_STK[UPLOAD_DATA_STK_SIZE]; //任务堆栈
 ******************************************************************************/
 ReceivedNodeDataStruct nodeDataBuffer[RECEIVED_NODE_DATA_BUFFER_LENGTH];
 u8 nodeDataBufferPointer = 0;
+/******************************************************************************
+Mutex definition
+******************************************************************************/
+OS_MUTEX loaclDataSetAccessMutex;
 /******************************************************************************
 *  @Function: StartTask
 *
@@ -51,7 +55,11 @@ void StartTask(void *p_arg)
     OSSchedRoundRobinCfg(DEF_ENABLED, 10, &err);
 #endif
 
-    OS_CRITICAL_ENTER();    //进入临界区
+    //创建互斥量
+    OSMutexCreate(&loaclDataSetAccessMutex, (CPU_CHAR * )"loacl data set access mutex", &err);
+    
+    //进入临界区
+    OS_CRITICAL_ENTER();    
     
     OSTaskCreate((OS_TCB * )&ReceiveDataTaskTCB,
                  (CPU_CHAR * )"receive data task",
@@ -96,8 +104,7 @@ void StartTask(void *p_arg)
                  (void * )0,
                  (OS_OPT      )OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR | OS_OPT_TASK_SAVE_FP,
                  (OS_ERR * )&err);
-    OS_CRITICAL_EXIT();                            //退出临界区
-    HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);//开始允许接收串口2中断
+    OS_CRITICAL_EXIT();                            //退出临界区  
     OS_TaskSuspend((OS_TCB *)&StartTaskTCB, &err); //挂起开始任务
 }
 
@@ -114,32 +121,27 @@ void StartTask(void *p_arg)
 void ReceiveDataTask(void *p_arg)
 {
     OS_ERR err;
-    u8 Dht11Exist = 0;
     p_arg = p_arg;
+    HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);//开始允许接收串口2中断
     OSTimeDlyHMSM(0, 0, 0, 1000, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
-    if (DHT11_Init() == 0)
-        Dht11Exist = 1;
     while (1)
     {
         OS_MSG_SIZE msg_size;
         ReceivedNodeDataStruct* receivedNodeData = (ReceivedNodeDataStruct*)OSTaskQPend(0, OS_OPT_PEND_BLOCKING, &msg_size, NULL, &err);
         if(err == OS_ERR_NONE)
         {
-            u8 nodeID = receivedNodeData->localShortAddress;
-            nodeDataArray[nodeID]={
-                .receivedNodeData = *receivedNodeData,
-                .deviceStatus = RUNNING
-            };
-            //printf("t=%f, h=%f, id=%d\r\n",receivedNodeData->temperature, receivedNodeData->humidity, receivedNodeData->localShortAddress);
-            HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);           
+            printf("t=%f, h=%f, id=%d\r\n",receivedNodeData->temperature, receivedNodeData->humidity, receivedNodeData->localShortAddress);
+            TogglePilotLED(1); 
+            OSMutexPend(&loaclDataSetAccessMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
+                UpdateLocatDataSet(receivedNodeData);  
+            OSMutexPost(&loaclDataSetAccessMutex, OS_OPT_POST_NONE, &err);
         }
-        OSTimeDlyHMSM(0, 0, 0, 300, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
-        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_3);    
+        OSTimeDlyHMSM(0, 0, 0, 300, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms     
     }
 }
 
 /******************************************************************************
-*  @Function: LED1Task
+*  @Function: void UploadDataTask(void *p_arg)
 *
 *  @Description:
 *
@@ -154,9 +156,7 @@ void UploadDataTask(void *p_arg)
     while (1)
     {
         OSTimeDlyHMSM(0, 0, 0, 500, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
-        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_7);
-        HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);
-//        printf("test");
+        TogglePilotLED(3);
     }
 }
 
@@ -176,9 +176,11 @@ void DisplayTask(void *p_arg)
     UIDrawBackground();
     while (1)
     {
-        
+        OSMutexPend(&loaclDataSetAccessMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
+            UIDrawNodeData(&localDataSet, 1);
+        OSMutexPost(&loaclDataSetAccessMutex, OS_OPT_POST_NONE, &err);
         OSTimeDlyHMSM(0, 0, 0, 500, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
-        HAL_GPIO_TogglePin(GPIOH, GPIO_PIN_8);
+        TogglePilotLED(2);
     }
 }
 

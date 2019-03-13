@@ -22,10 +22,27 @@ void UIDrawLine(u16 offset, u16 width, u32 color)
         LCD_Color_Fill(offset + 3 * i, 0, offset + 3 * i + 3, 272, *__colorBuffer);
     }
 }
-void UIDrawNodeData(NodeDataStruct* nodedataArray, int * refreshCnt)
+void UIDrawNodeData(LocalDataSetStruct* localDataSet, int page)
 {
-    int lineCnt = 0;
-}  
+    for (int i = page; i < page + 5; i++)
+    {
+        int displayNodeNumber = localDataSet->activeNodeArray[i];
+        if (displayNodeNumber != 0)
+        {
+            char displayStr[40] = {0};
+            sprintf(displayStr, "%d (%d,%d,%d) %f %f %d", 
+                                localDataSet->nodeData[displayNodeNumber].receivedNodeData.localShortAddress, 
+                                localDataSet->nodeData[displayNodeNumber].coordinate.x,
+                                localDataSet->nodeData[displayNodeNumber].coordinate.y,
+                                localDataSet->nodeData[displayNodeNumber].coordinate.z,
+                                localDataSet->nodeData[displayNodeNumber].receivedNodeData.temperature,
+                                localDataSet->nodeData[displayNodeNumber].receivedNodeData.humidity,
+                                localDataSet->nodeData[displayNodeNumber].deviceStatus
+                );
+            LCD_ShowString(100, 50 + i * 24, 390, 16, 16, (u8*)displayStr);
+        }
+    }
+}
 u16 ConvertColor(u32 color)
 {
     u8 red = ((u8)(color >> 16))>>3;

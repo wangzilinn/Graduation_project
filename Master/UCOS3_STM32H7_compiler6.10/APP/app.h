@@ -18,10 +18,10 @@ Define task parameters
 #define START_STK_SIZE 		256//任务堆栈大小	
 
 #define RECEIVE_DATA_TASK_PRIO 4
-#define RECEIVE_DATA_STK_SIZE 256
+#define RECEIVE_DATA_STK_SIZE 512
     
 #define UPLOAD_DATA_TASK_PRIO 5
-#define UPLOAD_DATA_STK_SIZE 256 //任务堆栈大小
+#define UPLOAD_DATA_STK_SIZE 128 //任务堆栈大小
 
 #define DISPLAY_TASK_PRIO  6
 #define DISPLAY_STK_SIZE       512 //任务堆栈大小	

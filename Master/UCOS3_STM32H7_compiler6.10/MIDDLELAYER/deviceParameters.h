@@ -1,6 +1,9 @@
 #ifndef __DEVICEPARAMETER__
 #define __DEVICEPARAMETER__
 #include "public.h"
+#ifdef __cplusplus
+extern "C" { 
+#endif
 #define MAX_NUMBER_OF_NODES 255
 typedef struct coordinate
 {
@@ -27,14 +30,19 @@ typedef struct nodeData
     ReceivedNodeDataStruct receivedNodeData;
     CoordinateStruct coordinate;
     DeviceStatusEnum deviceStatus;
+    int refreshCnt;
 }NodeDataStruct;
-typedef struct collectionNodeParameter
+typedef struct localDataSetStruct
 {
-    int offLineTime;
-    int activeNodeArray[MAX_NUMBER_OF_NODES];
-    NodeDataStruct* nodeData;
+    int offlineRefreshCntThreshold;
+    int closedRefreshCntThreshold;
+    int activeNodeArray[MAX_NUMBER_OF_NODES + 1];
+    NodeDataStruct nodeData[MAX_NUMBER_OF_NODES + 1];
 }LocalDataSetStruct;
 extern LocalDataSetStruct localDataSet;
-extern NodeDataStruct nodeDataArray[];
-void DeviceParametersInit();
+extern void LocalDataSetInit();
+extern void UpdateLocatDataSet(ReceivedNodeDataStruct* receivedNodeData);
+#ifdef __cplusplus
+}
+#endif
 #endif

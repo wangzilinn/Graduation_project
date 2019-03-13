@@ -8,4 +8,5 @@ Include headers
 Function declaration
 ******************************************************************************/
 void LEDInit(void); //LED初始化函数
+void TogglePilotLED(int LEDNumber);
 #endif

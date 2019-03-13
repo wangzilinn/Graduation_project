@@ -10,13 +10,7 @@ __attribute__((aligned(8))) OS_STK MAIN_TASK_STK[MAIN_TASK_STK_SIZE];
 /******************************************************************************
 Struct definition
 ******************************************************************************/
-struct
-{
-    u16 localShortAddress;
-    float temperature;
-    float humidity;
-    u8 controlWord;
-}NodeData;
+NodeDataStruct NodeData;
 /******************************************************************************
 @Function: GuardianTask
 
@@ -49,19 +43,18 @@ void MainTask(void *pdata)
     LED pilotLED(GPIOC, GPIO_Pin_13, 1, LED::ON);
     USART outputUsart(USART_DEBUG);  
     USART zigBeeUsart(USART_ZIGBEE);
-    u8 exist = 0;
-    if (DHT11_Init() == 0)
-    {
-        exist = 1;
-    }
+    DHT11_Init();
     OSTimeDlyHMSM(0, 0, 0, 1000);
     NodeData.localShortAddress = LOCAL_SHORT_ADDRESS;
     while(1)
-    {     
-        DHT11_Read_Data(&NodeData.temperature, &NodeData.humidity);
-        SendDataPackage(USART_ZIGBEE, 0x0001, (u8*)&NodeData, sizeof(NodeData));
-        pilotLED.Toggle();
-        OSTimeDlyHMSM(0, 0, 0, 500);
+    {           
+        if (DHT11_Read_Data(&NodeData.temperature, &NodeData.humidity) == 0)
+        {
+            SendDataPackage(USART_ZIGBEE, 0x0001, (u8*)&NodeData, sizeof(NodeData));
+            pilotLED.Toggle(); 
+            OSTimeDlyHMSM(0, 0, 0, 500);            
+        }                
+        OSTimeDlyHMSM(0, 0, 0, 50);       
     }
 }
 

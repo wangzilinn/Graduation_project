@@ -28,6 +28,13 @@ Task priority definition
 ******************************************************************************/
 #define GUARDIAN_TASK_PRIO              10
 #define MAIN_TASK_PRIO       			5 
+typedef struct nodeData
+{
+    u16 localShortAddress;
+    float temperature;
+    float humidity;
+    u8 controlWord;
+}NodeDataStruct;
 /******************************************************************************
 Task stack declaration
 ******************************************************************************/

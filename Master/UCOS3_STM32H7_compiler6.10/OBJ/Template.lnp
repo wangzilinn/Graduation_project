@@ -1,8 +1,8 @@
 --cpu Cortex-M7.fp.dp
 "..\obj\stm32h7xx_hal_msp.o"
 "..\obj\system_stm32h7xx.o"
-"..\obj\main.o"
 "..\obj\stm32h7xx_it.o"
+"..\obj\main.o"
 "..\obj\app.o"
 "..\obj\usart.o"
 "..\obj\led.o"

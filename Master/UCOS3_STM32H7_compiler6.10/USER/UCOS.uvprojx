@@ -394,14 +394,14 @@
               <FilePath>..\INITIALIZATION\system_stm32h7xx.c</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\INITIALIZATION\main.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32h7xx_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\INITIALIZATION\stm32h7xx_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\INITIALIZATION\main.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -489,9 +489,9 @@
               <FilePath>..\MIDDLELAYER\graph.c</FilePath>
             </File>
             <File>
-              <FileName>deviceParameters.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\MIDDLELAYER\deviceParameters.c</FilePath>
+              <FileName>deviceParameters.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\MIDDLELAYER\deviceParameters.cpp</FilePath>
             </File>
           </Files>
         </Group>
