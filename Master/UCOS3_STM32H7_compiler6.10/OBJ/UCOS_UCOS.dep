@@ -122,12 +122,12 @@ I (..\HARDWARE\led.h)(0x5C876FD3)
 I (..\HARDWARE\ITM.h)(0x5C179FEE)
 I (..\HARDWARE\dht11.h)(0x5C78ABE1)
 I (..\HARDWARE\delay.h)(0x5C7A3AAE)
-I (..\HARDWARE\lcd.h)(0x5C8491C4)
+I (..\HARDWARE\lcd.h)(0x5C88A996)
 I (..\HARDWARE\ltdc.h)(0x5C83C267)
 I (..\HARDWARE\sdram.h)(0x5C8366C8)
 I (..\APP\app.h)(0x5C8771CE)
-I (..\MIDDLELAYER\graph.h)(0x5C873B64)
-I (..\MIDDLELAYER\deviceParameters.h)(0x5C87ACC3)
+I (..\MIDDLELAYER\graph.h)(0x5C88B8D8)
+I (..\MIDDLELAYER\deviceParameters.h)(0x5C88B18F)
 F (..\INITIALIZATION\system_stm32h7xx.c)(0x5C15C53B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/system_stm32h7xx.o -MD)
 I (..\HALLIB\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x5C15C540)
 I (..\INITIALIZATION\stm32h7xx_hal_conf.h)(0x5C15C541)
@@ -475,13 +475,13 @@ I (..\HARDWARE\led.h)(0x5C876FD3)
 I (..\HARDWARE\ITM.h)(0x5C179FEE)
 I (..\HARDWARE\dht11.h)(0x5C78ABE1)
 I (..\HARDWARE\delay.h)(0x5C7A3AAE)
-I (..\HARDWARE\lcd.h)(0x5C8491C4)
+I (..\HARDWARE\lcd.h)(0x5C88A996)
 I (..\HARDWARE\ltdc.h)(0x5C83C267)
 I (..\HARDWARE\sdram.h)(0x5C8366C8)
 I (..\APP\app.h)(0x5C8771CE)
-I (..\MIDDLELAYER\graph.h)(0x5C873B64)
-I (..\MIDDLELAYER\deviceParameters.h)(0x5C87ACC3)
-F (..\APP\app.cpp)(0x5C886EA7)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/app.o -MD)
+I (..\MIDDLELAYER\graph.h)(0x5C88B8D8)
+I (..\MIDDLELAYER\deviceParameters.h)(0x5C88B18F)
+F (..\APP\app.cpp)(0x5C88BA6C)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/app.o -MD)
 I (..\APP\app.h)(0x5C8771CE)
 I (..\INITIALIZATION\public.h)(0x5C165410)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
@@ -617,11 +617,11 @@ I (..\HARDWARE\led.h)(0x5C876FD3)
 I (..\HARDWARE\ITM.h)(0x5C179FEE)
 I (..\HARDWARE\dht11.h)(0x5C78ABE1)
 I (..\HARDWARE\delay.h)(0x5C7A3AAE)
-I (..\HARDWARE\lcd.h)(0x5C8491C4)
+I (..\HARDWARE\lcd.h)(0x5C88A996)
 I (..\HARDWARE\ltdc.h)(0x5C83C267)
 I (..\HARDWARE\sdram.h)(0x5C8366C8)
-I (..\MIDDLELAYER\graph.h)(0x5C873B64)
-I (..\MIDDLELAYER\deviceParameters.h)(0x5C87ACC3)
+I (..\MIDDLELAYER\graph.h)(0x5C88B8D8)
+I (..\MIDDLELAYER\deviceParameters.h)(0x5C88B18F)
 F (..\HARDWARE\usart.c)(0x5C7F7DF3)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/usart.o -MD)
 I (..\HARDWARE\usart.h)(0x5C7F7D4E)
 I (..\INITIALIZATION\public.h)(0x5C165410)
@@ -944,7 +944,7 @@ I (..\HARDWARE\led.h)(0x5C876FD3)
 I (..\HARDWARE\ITM.h)(0x5C179FEE)
 I (..\HARDWARE\dht11.h)(0x5C78ABE1)
 I (..\HARDWARE\delay.h)(0x5C7A3AAE)
-I (..\HARDWARE\lcd.h)(0x5C8491C4)
+I (..\HARDWARE\lcd.h)(0x5C88A996)
 I (..\HARDWARE\ltdc.h)(0x5C83C267)
 I (..\HARDWARE\sdram.h)(0x5C8366C8)
 F (..\HARDWARE\ITM.c)(0x5C17A102)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/itm.o -MD)
@@ -1265,8 +1265,8 @@ I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5C15C541
 I (..\UCOSIII\uC-LIB\lib_math.h)(0x5C15C540)
 I (..\UCOSIII\UCOS-CONFIG\app_cfg.h)(0x5C15C540)
 I (..\UCOSIII\UCOS-BSP\bsp.h)(0x5C15C540)
-F (..\HARDWARE\lcd.c)(0x5C84D86E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/lcd.o -MD)
-I (..\HARDWARE\lcd.h)(0x5C8491C4)
+F (..\HARDWARE\lcd.c)(0x5C88A996)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/lcd.o -MD)
+I (..\HARDWARE\lcd.h)(0x5C88A996)
 I (..\INITIALIZATION\public.h)(0x5C165410)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5AB0B854)
@@ -1514,7 +1514,7 @@ I (..\HARDWARE\led.h)(0x5C876FD3)
 I (..\HARDWARE\ITM.h)(0x5C179FEE)
 I (..\HARDWARE\dht11.h)(0x5C78ABE1)
 I (..\HARDWARE\delay.h)(0x5C7A3AAE)
-I (..\HARDWARE\lcd.h)(0x5C8491C4)
+I (..\HARDWARE\lcd.h)(0x5C88A996)
 I (..\HARDWARE\sdram.h)(0x5C8366C8)
 F (..\HARDWARE\mpu.c)(0x5C83664A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/mpu.o -MD)
 I (..\HARDWARE\mpu.h)(0x5C8366C8)
@@ -1639,7 +1639,7 @@ I (..\HARDWARE\led.h)(0x5C876FD3)
 I (..\HARDWARE\ITM.h)(0x5C179FEE)
 I (..\HARDWARE\dht11.h)(0x5C78ABE1)
 I (..\HARDWARE\delay.h)(0x5C7A3AAE)
-I (..\HARDWARE\lcd.h)(0x5C8491C4)
+I (..\HARDWARE\lcd.h)(0x5C88A996)
 I (..\HARDWARE\ltdc.h)(0x5C83C267)
 I (..\HARDWARE\sdram.h)(0x5C8366C8)
 F (..\HARDWARE\sdram.c)(0x5BF60879)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/sdram.o -MD)
@@ -1765,7 +1765,7 @@ I (..\HARDWARE\led.h)(0x5C876FD3)
 I (..\HARDWARE\ITM.h)(0x5C179FEE)
 I (..\HARDWARE\dht11.h)(0x5C78ABE1)
 I (..\HARDWARE\delay.h)(0x5C7A3AAE)
-I (..\HARDWARE\lcd.h)(0x5C8491C4)
+I (..\HARDWARE\lcd.h)(0x5C88A996)
 I (..\HARDWARE\ltdc.h)(0x5C83C267)
 F (..\MIDDLELAYER\method.cpp)(0x5C8093C3)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/method_1.o -MD)
 I (..\MIDDLELAYER\method.h)(0x5C809297)
@@ -2018,13 +2018,13 @@ I (..\HARDWARE\led.h)(0x5C876FD3)
 I (..\HARDWARE\ITM.h)(0x5C179FEE)
 I (..\HARDWARE\dht11.h)(0x5C78ABE1)
 I (..\HARDWARE\delay.h)(0x5C7A3AAE)
-I (..\HARDWARE\lcd.h)(0x5C8491C4)
+I (..\HARDWARE\lcd.h)(0x5C88A996)
 I (..\HARDWARE\ltdc.h)(0x5C83C267)
 I (..\HARDWARE\sdram.h)(0x5C8366C8)
-I (..\MIDDLELAYER\graph.h)(0x5C873B64)
-I (..\MIDDLELAYER\deviceParameters.h)(0x5C87ACC3)
-F (..\MIDDLELAYER\graph.c)(0x5C873E81)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/graph.o -MD)
-I (..\MIDDLELAYER\graph.h)(0x5C873B64)
+I (..\MIDDLELAYER\graph.h)(0x5C88B8D8)
+I (..\MIDDLELAYER\deviceParameters.h)(0x5C88B18F)
+F (..\MIDDLELAYER\graph.c)(0x5C88BA29)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/graph.o -MD)
+I (..\MIDDLELAYER\graph.h)(0x5C88B8D8)
 I (..\INITIALIZATION\public.h)(0x5C165410)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5AB0B854)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5AB0B854)
@@ -2123,7 +2123,7 @@ I (..\HALLIB\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h)(0x5C15C540)
 I (..\HALLIB\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h)(0x5C15C540)
 I (..\HALLIB\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h)(0x5C15C540)
 I (..\HALLIB\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_hcd.h)(0x5C15C540)
-I (..\HARDWARE\lcd.h)(0x5C8491C4)
+I (..\HARDWARE\lcd.h)(0x5C88A996)
 I (..\HARDWARE\delay.h)(0x5C7A3AAE)
 I (..\HARDWARE\ltdc.h)(0x5C83C267)
 I (..\HARDWARE\hardware_init.h)(0x5C83C52B)
@@ -2149,9 +2149,9 @@ I (..\HARDWARE\led.h)(0x5C876FD3)
 I (..\HARDWARE\ITM.h)(0x5C179FEE)
 I (..\HARDWARE\dht11.h)(0x5C78ABE1)
 I (..\HARDWARE\sdram.h)(0x5C8366C8)
-I (..\MIDDLELAYER\deviceParameters.h)(0x5C87ACC3)
-F (..\MIDDLELAYER\deviceParameters.cpp)(0x5C88707A)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/deviceparameters.o -MD)
-I (..\MIDDLELAYER\deviceParameters.h)(0x5C87ACC3)
+I (..\MIDDLELAYER\deviceParameters.h)(0x5C88B18F)
+F (..\MIDDLELAYER\deviceParameters.cpp)(0x5C88BAF3)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../CORE -I ../INITIALIZATION -I ../USER -I ../APP -I ../SYSTEM/delay -I ../SYSTEM/sys -I ../HALLIB/STM32H7xx_HAL_Driver/Inc -I ../HARDWARE/ -I ../UCOSIII/uC-LIB -I ../UCOSIII/uC-CPU -I ../UCOSIII/UCOS-BSP -I ../UCOSIII/UCOS-CONFIG -I ../UCOSIII/uCOS-III/Source -I ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView -I ../UCOSIII/uC-LIB/Ports/ARM-Cortex-M4/RealView -I ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView -I ../MIDDLELAYER -D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"-I./RTE/_UCOS-IC:/Keil_v5/ARM/PACK/Keil/STM32H7xx_DFP/2.2.0/Drivers/CMSIS/Device/ST/STM32H7xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="526" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o ../obj/deviceparameters.o -MD)
+I (..\MIDDLELAYER\deviceParameters.h)(0x5C88B18F)
 I (..\INITIALIZATION\public.h)(0x5C165410)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5A6914D2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x5A6914D2)

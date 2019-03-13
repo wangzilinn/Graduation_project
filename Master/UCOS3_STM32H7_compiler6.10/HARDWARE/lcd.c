@@ -2090,7 +2090,7 @@ void LCD_ShowxNum(u16 x,u16 y,u32 num,u8 len,u8 size,u8 mode)
 //width,height:区域大小  
 //size:字体大小
 //*p:字符串起始地址		  
-void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p)
+void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p, u8 mode)
 {         
 	u8 x0=x;
 	width+=x;
@@ -2099,7 +2099,7 @@ void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p)
     {       
         if(x>=width){x=x0;y+=size;}
         if(y>=height)break;//退出
-        LCD_ShowChar(x,y,*p,size,1);
+        LCD_ShowChar(x,y,*p,size,mode);
         x+=size/2;
         p++;
     }  

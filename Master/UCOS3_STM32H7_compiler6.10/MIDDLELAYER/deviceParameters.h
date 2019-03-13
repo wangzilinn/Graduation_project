@@ -36,12 +36,13 @@ typedef struct localDataSetStruct
 {
     int offlineRefreshCntThreshold;
     int closedRefreshCntThreshold;
-    int activeNodeArray[MAX_NUMBER_OF_NODES + 1];
-    NodeDataStruct nodeData[MAX_NUMBER_OF_NODES + 1];
+    int activeNodeArray[MAX_NUMBER_OF_NODES + 1];//0节点不使用
+    NodeDataStruct nodeData[MAX_NUMBER_OF_NODES + 1];//0节点不使用
 }LocalDataSetStruct;
 extern LocalDataSetStruct localDataSet;
 extern void LocalDataSetInit();
 extern void UpdateLocatDataSet(ReceivedNodeDataStruct* receivedNodeData);
+extern char* deviceStatusEnumToStr(DeviceStatusEnum deviceStatus, char* str);
 #ifdef __cplusplus
 }
 #endif

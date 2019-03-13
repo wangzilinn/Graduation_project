@@ -130,7 +130,10 @@ void ReceiveDataTask(void *p_arg)
         ReceivedNodeDataStruct* receivedNodeData = (ReceivedNodeDataStruct*)OSTaskQPend(0, OS_OPT_PEND_BLOCKING, &msg_size, NULL, &err);
         if(err == OS_ERR_NONE)
         {
-            printf("t=%f, h=%f, id=%d\r\n",receivedNodeData->temperature, receivedNodeData->humidity, receivedNodeData->localShortAddress);
+            //printf("t=%f, h=%f, id=%d\r\n",receivedNodeData->temperature, receivedNodeData->humidity, receivedNodeData->localShortAddress);
+            char debugStr[10];
+            sprintf(debugStr, "ID:%d", receivedNodeData->localShortAddress);
+            DisplayDebugInformation(debugStr);
             TogglePilotLED(1); 
             OSMutexPend(&loaclDataSetAccessMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
                 UpdateLocatDataSet(receivedNodeData);  
@@ -179,7 +182,7 @@ void DisplayTask(void *p_arg)
         OSMutexPend(&loaclDataSetAccessMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
             UIDrawNodeData(&localDataSet, 1);
         OSMutexPost(&loaclDataSetAccessMutex, OS_OPT_POST_NONE, &err);
-        OSTimeDlyHMSM(0, 0, 0, 500, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
+        OSTimeDlyHMSM(0, 0, 0, 20, OS_OPT_TIME_HMSM_STRICT, &err);
         TogglePilotLED(2);
     }
 }

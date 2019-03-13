@@ -52,9 +52,9 @@ void MainTask(void *pdata)
         {
             SendDataPackage(USART_ZIGBEE, 0x0001, (u8*)&NodeData, sizeof(NodeData));
             pilotLED.Toggle(); 
-            OSTimeDlyHMSM(0, 0, 0, 500);            
+            OSTimeDlyHMSM(0, 0, 0, 5000);            
         }                
-        OSTimeDlyHMSM(0, 0, 0, 50);       
+        OSTimeDlyHMSM(0, 0, 0, 20);       
     }
 }
 
