@@ -106,4 +106,5 @@
   ../UCOSIII/uC-LIB\lib_math.h ../UCOSIII/UCOS-CONFIG\app_cfg.h \
   ../UCOSIII/UCOS-BSP\bsp.h ../HARDWARE/usart.h ../HARDWARE/led.h \
   ../HARDWARE/ITM.h ../HARDWARE/dht11.h ../HARDWARE/delay.h \
-  ../HARDWARE/lcd.h ../HARDWARE/ltdc.h ../HARDWARE/sdram.h
+  ../HARDWARE/lcd.h ../HARDWARE/ltdc.h ../HARDWARE/sdram.h \
+  ../HARDWARE/timer.h

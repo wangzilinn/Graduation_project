@@ -104,4 +104,10 @@
   ../UCOSIII/uC-LIB\lib_ascii.h ../UCOSIII/uCOS-III/Source/os_type.h \
   ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView\os_cpu.h \
   ../UCOSIII/uC-LIB\lib_math.h ../UCOSIII/UCOS-CONFIG\app_cfg.h \
-  ../UCOSIII/UCOS-BSP\bsp.h ../HARDWARE\usart.h
+  ../UCOSIII/UCOS-BSP\bsp.h ../FREEMODBUS/MODBUS/include\mb.h \
+  ../FREEMODBUS/MODBUS_port\port.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\assert.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
+  ../FREEMODBUS/MODBUS/include/mbport.h \
+  ../FREEMODBUS/MODBUS/include/mbproto.h ../HARDWARE\usart.h \
+  ../HARDWARE\timer.h

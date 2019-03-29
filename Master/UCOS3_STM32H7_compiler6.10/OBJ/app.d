@@ -121,4 +121,13 @@
   ../HARDWARE/usart.h ../HARDWARE/led.h ../HARDWARE/ITM.h \
   ../HARDWARE/dht11.h ../HARDWARE/delay.h ../HARDWARE/lcd.h \
   ../HARDWARE/ltdc.h ../HARDWARE/hardware_init.h ../HARDWARE/sdram.h \
-  ../MIDDLELAYER\graph.h ../MIDDLELAYER/deviceParameters.h
+  ../HARDWARE/timer.h ../MIDDLELAYER\graph.h \
+  ../MIDDLELAYER/deviceParameters.h ../FREEMODBUS/MODBUS/include\mb.h \
+  ../FREEMODBUS/MODBUS_port\port.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\assert.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\inttypes.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
+  ../FREEMODBUS/MODBUS/include/mbport.h \
+  ../FREEMODBUS/MODBUS/include/mbproto.h \
+  ../FREEMODBUS/MODBUS_port\mb_register_callback.h \
+  ../FREEMODBUS/MODBUS/include\mbutils.h

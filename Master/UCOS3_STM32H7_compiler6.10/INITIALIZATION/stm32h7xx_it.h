@@ -46,7 +46,9 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "public.h"
 #include "includes.h"
+#include "mb.h" //modbus support
 #include "usart.h"
+#include "timer.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/

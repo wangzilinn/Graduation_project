@@ -14,6 +14,7 @@ Peripheral header file
 #include "dht11.h"
 #include "lcd.h"
 #include "sdram.h"
+#include "timer.h"
 /******************************************************************************
 Private function declarations
 ******************************************************************************/

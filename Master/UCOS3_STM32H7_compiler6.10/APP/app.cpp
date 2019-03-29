@@ -2,6 +2,10 @@
 *  Include headers
 ******************************************************************************/
 #include "app.h"
+//////////////////////////
+#include "mb.h"
+#include "mbport.h"
+#include "mb_register_callback.h"//提供MODBUS相关寄存器初始化
 /******************************************************************************
 *  Task variable definition
 ******************************************************************************/
@@ -155,10 +159,25 @@ void ReceiveDataTask(void *p_arg)
 void UploadDataTask(void *p_arg)
 {
     OS_ERR err;
-    p_arg = p_arg;
-    while (1)
+	//定义要返回的值
+    usSRegInputBuf[0] =0;
+    usSRegInputBuf[1] =1;
+    usSRegInputBuf[2] =2;
+    usSRegInputBuf[3] =3;
+    usSRegInputBuf[4] =4;
+    usSRegInputBuf[5] =5;
+    usSRegInputBuf[6] =6;
+                 
+    eMBErrorCode    eStatus;
+
+    eStatus = eMBInit( MB_RTU, 0x0a, 0, 115200, MB_PAR_NONE );
+    /* Enable the Modbus Protocol Stack. */
+    eStatus = eMBEnable(  );
+    for( ;; )
     {
-        OSTimeDlyHMSM(0, 0, 0, 500, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
+        ( void )eMBPoll(  );
+        OSTimeDlyHMSM(0,0,0,50,OS_OPT_TIME_HMSM_STRICT,&err);
+        /* Here we simply count the number of poll cycles. */
         TogglePilotLED(3);
     }
 }

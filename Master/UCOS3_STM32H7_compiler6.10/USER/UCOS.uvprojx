@@ -339,7 +339,7 @@
               <MiscControls>-D__align(x)="__attribute__((aligned(x)))" -D__weak="__attribute__((weak))" -D__INLINE="__inline__"</MiscControls>
               <Define>USE_HAL_DRIVER, STM32H743xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\INITIALIZATION;..\USER;..\APP;..\SYSTEM\delay;..\SYSTEM\sys;..\HALLIB\STM32H7xx_HAL_Driver\Inc;..\HARDWARE\;..\UCOSIII\uC-LIB;..\UCOSIII\uC-CPU;..\UCOSIII\UCOS-BSP;..\UCOSIII\UCOS-CONFIG;..\UCOSIII\uCOS-III\Source;..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView;..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView;..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView;..\MIDDLELAYER</IncludePath>
+              <IncludePath>..\CORE;..\INITIALIZATION;..\USER;..\APP;..\SYSTEM\delay;..\SYSTEM\sys;..\HALLIB\STM32H7xx_HAL_Driver\Inc;..\HARDWARE\;..\UCOSIII\uC-LIB;..\UCOSIII\uC-CPU;..\UCOSIII\UCOS-BSP;..\UCOSIII\UCOS-CONFIG;..\UCOSIII\uCOS-III\Source;..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView;..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView;..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView;..\MIDDLELAYER;..\FREEMODBUS\MODBUS_port;..\FREEMODBUS\MODBUS\ascii;..\FREEMODBUS\MODBUS\include;..\FREEMODBUS\MODBUS\rtu;..\FREEMODBUS\MODBUS\tcp</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -468,6 +468,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\sdram.c</FilePath>
             </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\timer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -492,6 +497,31 @@
               <FileName>deviceParameters.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\MIDDLELAYER\deviceParameters.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FREEMODBUS_PORT</GroupName>
+          <Files>
+            <File>
+              <FileName>mb_register_callback.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS_port\mb_register_callback.c</FilePath>
+            </File>
+            <File>
+              <FileName>portevent.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS_port\portevent.c</FilePath>
+            </File>
+            <File>
+              <FileName>portserial.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS_port\portserial.c</FilePath>
+            </File>
+            <File>
+              <FileName>porttimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS_port\porttimer.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -862,6 +892,71 @@
               <FileName>stm32h7xx_hal_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HALLIB\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_adc.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FREEMODBUS</GroupName>
+          <Files>
+            <File>
+              <FileName>mbascii.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\ascii\mbascii.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfunccoils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\functions\mbfunccoils.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncdiag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\functions\mbfuncdiag.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncdisc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\functions\mbfuncdisc.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncholding.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\functions\mbfuncholding.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncinput.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\functions\mbfuncinput.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbfuncother.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\functions\mbfuncother.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbutils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\functions\mbutils.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbcrc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\rtu\mbcrc.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbrtu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\rtu\mbrtu.c</FilePath>
+            </File>
+            <File>
+              <FileName>mbtcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\tcp\mbtcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>mb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS\mb.c</FilePath>
             </File>
           </Files>
         </Group>

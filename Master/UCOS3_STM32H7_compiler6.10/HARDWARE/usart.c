@@ -34,7 +34,7 @@ void Uart1Init(u32 baudRate)
     UART1_Handler.Init.Mode       = UART_MODE_TX_RX;                                    //收发模式
     HAL_UART_Init(&UART1_Handler);                                                      //HAL_UART_Init()会使能UART1
 
-    HAL_UART_Receive_IT(&UART1_Handler, (u8 *)Usart1RxBuffer, USART1_RX_BUFFER_LENGTH); //该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
+    //HAL_UART_Receive_IT(&UART1_Handler, (u8 *)Usart1RxBuffer, USART1_RX_BUFFER_LENGTH); //该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
 }
 
 

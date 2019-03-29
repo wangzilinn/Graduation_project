@@ -36,6 +36,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
+
 #include "stm32h7xx_it.h"
 
 /** @addtogroup STM32H7xx_HAL_Examples
@@ -172,7 +173,18 @@ void SysTick_Handler(void)
 void USART1_IRQHandler(void)                	
 { 
 	OSIntEnter();    
-	HAL_UART_IRQHandler(&UART1_Handler);	//调用HAL库中断处理公用函数
+	if(__HAL_UART_GET_IT_SOURCE(&UART1_Handler, UART_IT_RXNE)!= RESET) 
+	{
+		pxMBFrameCBByteReceived(  );//接受中断
+	}
+
+	if(__HAL_UART_GET_IT_SOURCE(&UART1_Handler, UART_IT_TXE)!= RESET) 
+	{
+		pxMBFrameCBTransmitterEmpty(  );;//发送完成中断
+	}
+      
+    HAL_NVIC_ClearPendingIRQ(USART1_IRQn);
+    HAL_UART_IRQHandler(&UART1_Handler);  
 	OSIntExit();  											 
 } 
 /******************************************************************************
@@ -197,5 +209,20 @@ void USART2_IRQHandler(void)
 /**
   * @}
   */
+/******************************************************************************
+@Function: void TIM3_IRQHandler(void)
 
+@Description:用于MODBUS定时器的中断函数
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-23 15:45 by Wang Zilin
+******************************************************************************/
+void TIM3_IRQHandler(void)
+{
+    OSIntEnter();    
+    //HAL_NVIC_ClearPendingIRQ(TIM3_IRQn);
+    HAL_TIM_IRQHandler(&htimx);
+    OSIntExit();  	
+}
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
