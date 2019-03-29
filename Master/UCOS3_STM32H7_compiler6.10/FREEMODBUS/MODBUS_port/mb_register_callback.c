@@ -1,28 +1,50 @@
+/******************************************************************************
+Include headers
+******************************************************************************/
 #include "mb_register_callback.h"
-/* ----------------------- Defines ------------------------------------------*/
-/* ----------------------- Static variables ---------------------------------*/
-//Slave mode:DiscreteInputs variables
+/******************************************************************************
+Variables definitions:
+******************************************************************************/
+/*-----------------------------------------------------------------------------
+Slave mode:DiscreteInputs variables
+-----------------------------------------------------------------------------*/
 USHORT   usSDiscInStart                               = S_DISCRETE_INPUT_START;
 #if S_DISCRETE_INPUT_NDISCRETES%8
 UCHAR    ucSDiscInBuf[S_DISCRETE_INPUT_NDISCRETES/8+1];
 #else
 UCHAR    ucSDiscInBuf[S_DISCRETE_INPUT_NDISCRETES/8]  ;
 #endif
-//Slave mode:Coils variables
+/*-----------------------------------------------------------------------------
+Slave mode:Coils variables
+-----------------------------------------------------------------------------*/
 USHORT   usSCoilStart                                 = S_COIL_START;
 #if S_COIL_NCOILS%8
 UCHAR    ucSCoilBuf[S_COIL_NCOILS/8+1]                ;
 #else
 UCHAR    ucSCoilBuf[S_COIL_NCOILS/8]                  ;
 #endif
-//Slave mode:InputRegister variables
+/*-----------------------------------------------------------------------------
+Slave mode:InputRegister variables
+-----------------------------------------------------------------------------*/
 USHORT   usSRegInputStart                                = S_REG_INPUT_START;
 USHORT   usSRegInputBuf[S_REG_INPUT_NREGS]               ;
-//Slave mode:HoldingRegister variables
+/*-----------------------------------------------------------------------------
+Slave mode:HoldingRegister variables
+-----------------------------------------------------------------------------*/
 USHORT   usSRegHoldStart                              = S_REG_HOLDING_START;
 USHORT   usSRegHoldBuf[S_REG_HOLDING_NREGS]           ;
-/* ----------------------- Start implementation -----------------------------*/
-//function code :0x04
+/******************************************************************************
+Start implementation
+******************************************************************************/
+/******************************************************************************
+@Function: eMBRegInputCB
+
+@Description:输入寄存器回调函数 function code :0x04
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-29 21:11 by Wang Zilin
+******************************************************************************/
 eMBErrorCode
 eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
 {
@@ -60,7 +82,15 @@ eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
 
     return eStatus;
 }
+/******************************************************************************
+@Function: eMBRegHoldingCB
 
+@Description:读保持寄存器回调函数
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-29 21:12 by Wang Zilin
+******************************************************************************/
 eMBErrorCode
 eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
                  eMBRegisterMode eMode )
@@ -115,8 +145,15 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
     }
     return eStatus;
 }
+/******************************************************************************
+@Function: eMBRegCoilsCB
 
+@Description:读线圈回调函数
 
+@Created: by Wangzilin
+
+@Modified: 2019-03-29 21:12 by Wang Zilin
+******************************************************************************/
 eMBErrorCode
 eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils,
                eMBRegisterMode eMode )
@@ -185,7 +222,15 @@ eMBRegCoilsCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils,
     }
     return eStatus;
 }
+/******************************************************************************
+@Function: eMBRegDiscreteCB
 
+@Description:读离散量回调函数
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-29 21:13 by Wang Zilin
+******************************************************************************/
 eMBErrorCode
 eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )
 {

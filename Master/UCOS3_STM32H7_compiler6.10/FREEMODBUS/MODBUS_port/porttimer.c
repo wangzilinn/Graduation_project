@@ -18,75 +18,97 @@
  *
  * File: $Id$
  */
-
-/* ----------------------- Platform includes --------------------------------*/
-#include "port.h"
-/////////////2019-03-22 22:17 by Wang Zilin
-#include "public.h"//hal
+/******************************************************************************
+Include headers
+******************************************************************************/
+#include "public.h"//standard C library and HAL library
 #include "timer.h"//包含定时器初始化函数
+/*-----------------------------------------------------------------------------
+modbus support
+-----------------------------------------------------------------------------*/
+#include "port.h"//Platform includes
+#include "mb.h"//Modbus includes
+/******************************************************************************
+Function declaration
+******************************************************************************/
+static void prvvTIMERExpiredISR( void );//this function needs to be overwriten
+/******************************************************************************
+Start implementation
+******************************************************************************/
+/******************************************************************************
+@Function: xMBPortTimersInit
 
-/* ----------------------- Modbus includes ----------------------------------*/
-#include "mb.h"
-#include "mbport.h"
+@Description:定时器初始化,参数以50us为单位
 
-/* ----------------------- static functions ---------------------------------*/
-static void prvvTIMERExpiredISR( void );
+@Created: by Wangzilin
 
-/* ----------------------- Start implementation -----------------------------*/
+@Modified: 2019-03-29 21:46 by Wang Zilin
+******************************************************************************/
 BOOL
 xMBPortTimersInit( USHORT usTim1Timerout50us )
 {
-    TimerInit(usTim1Timerout50us * 50);
+    ModbusTimerInit(usTim1Timerout50us * 50);
     return TRUE;
 }
+/******************************************************************************
+@Function: vMBPortTimersEnable
 
+@Description:启动定时器
 
+@Created: by Wangzilin
+
+@Modified: 2019-03-29 21:47 by Wang Zilin
+******************************************************************************/
 inline void
 vMBPortTimersEnable(  )
 {
-    //2019-03-22 22:20 by Wang Zilin
-//    __HAL_TIM_CLEAR_IT(&htimx,TIM_IT_UPDATE);
-//    __HAL_TIM_SetCounter(&htimx,0);
-  
-  /* 在中断模式下启动定时器 */
-    HAL_TIM_Base_Start_IT(&htimx);
     /* Enable the timer with the timeout passed to xMBPortTimersInit( ) */
+    HAL_TIM_Base_Start_IT(&modbusTimerHandler);
 }
+/******************************************************************************
+@Function: vMBPortTimersDisable
 
+@Description:停止定时器
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-29 21:48 by Wang Zilin
+******************************************************************************/
 inline void
 vMBPortTimersDisable(  )
 {
-    //2019-03-22 22:20 by Wang Zilin
-    HAL_TIM_Base_Stop_IT(&htimx);
-  
-//  __HAL_TIM_SetCounter(&htimx,0);
-//  __HAL_TIM_CLEAR_IT(&htimx,TIM_IT_UPDATE);  
+    HAL_TIM_Base_Stop_IT(&modbusTimerHandler);
 }
+/******************************************************************************
+@Function: prvvTIMERExpiredISR
 
-/* Create an ISR which is called whenever the timer has expired. This function
- * must then call pxMBPortCBTimerExpired( ) to notify the protocol stack that
- * the timer has expired.
- */
+@Description:
+Create an ISR which is called whenever the timer has expired. This function
+must then call pxMBPortCBTimerExpired( ) to notify the protocol stack that
+the timer has expired.
+这个函数仅是一个示例,需要重新被实现
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-29 21:49 by Wang Zilin
+******************************************************************************/
 static void prvvTIMERExpiredISR( void )
 {
     ( void )pxMBPortCBTimerExpired(  );
 }
 /******************************************************************************
-@Function: 
+@Function: HAL_TIM_PeriodElapsedCallback
 
-@Description:定时器中断回掉函数
+@Description:定时器中断回调函数,调用Modbus的超时回调函数
 
 @Created: by Wang Zilin
 
 @Modified: 2019-03-22 22:21 by Wang Zilin
 ******************************************************************************/
-u8 test1 = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     if (htim->Instance == TIM3)
     {
-        //HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1);
         pxMBPortCBTimerExpired();
-        //test1 = (test1 == 0 ? 1 : 0); 
     }
 }

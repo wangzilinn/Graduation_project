@@ -2,7 +2,6 @@
 *  Include headers
 ******************************************************************************/
 #include "usart.h"
-
 /******************************************************************************
 *  Variable definitions
 ******************************************************************************/
@@ -12,11 +11,10 @@ UART_HandleTypeDef UART3_Handler;
 u8                 Usart1RxBuffer[USART1_RX_BUFFER_LENGTH];
 u8                 Usart2RxBuffer[USART2_RX_BUFFER_LENGTH];
 u8                 Usart3RxBuffer[USART3_RX_BUFFER_LENGTH];
-
 /******************************************************************************
 *  @Function: Uart1Init
 *
-*  @Description:
+*  @Description:modbus承载串口
 *
 *  @Created: by Wang Zilin
 *
@@ -33,11 +31,11 @@ void Uart1Init(u32 baudRate)
     UART1_Handler.Init.HwFlowCtl  = UART_HWCONTROL_NONE;                                //无硬件流控
     UART1_Handler.Init.Mode       = UART_MODE_TX_RX;                                    //收发模式
     HAL_UART_Init(&UART1_Handler);                                                      //HAL_UART_Init()会使能UART1
-
-    //HAL_UART_Receive_IT(&UART1_Handler, (u8 *)Usart1RxBuffer, USART1_RX_BUFFER_LENGTH); //该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
+    
+    //该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
+    //在使用FreeModbus时不能打开中断使能
+    //HAL_UART_Receive_IT(&UART1_Handler, (u8 *)Usart1RxBuffer, USART1_RX_BUFFER_LENGTH);
 }
-
-
 /******************************************************************************
 *  @Function: Usart2Init
 *
@@ -58,8 +56,6 @@ void Uart2Init(u32 baudRate)
     UART2_Handler.Init.HwFlowCtl  = UART_HWCONTROL_NONE; //无硬件流控
     UART2_Handler.Init.Mode       = UART_MODE_TX_RX;     //收发模式
     HAL_UART_Init(&UART2_Handler);                       //enable UART2
-
-    
 }
 
 

@@ -18,43 +18,90 @@
  *
  * File: $Id$
  */
-
-/* ----------------------- Modbus includes ----------------------------------*/
+/******************************************************************************
+在源代码中实现了两个变量实现的消息邮箱,或者称长度为1的消息队列,而在操作系统中最
+好使用事件标志组来实现消息的传递,但是我的实现(被注释掉的)并不能正常运行,所以暂时
+还是使用自带的消息邮箱
+******************************************************************************/
+/******************************************************************************
+Include headers
+******************************************************************************/
 #include "mb.h"
-#include "mbport.h"
-//2019-03-23 11:53 by Wang Zilin
-//#include "includes.h"//UCOS3支持文件
-/* ----------------------- Variables ----------------------------------------*/
-static eMBEventType eQueuedEvent;//不使用模拟的事件标志组,使用操作系统带的事件标志组
+/******************************************************************************
+Global variable definition
+******************************************************************************/
+/*-----------------------------------------------------------------------------
+使用两个变量模拟实现消息邮箱
+-----------------------------------------------------------------------------*/
+static eMBEventType eQueuedEvent;
 static BOOL     xEventInQueue;
+/*-----------------------------------------------------------------------------
+不使用模拟的消息邮箱,使用操作系统带的事件标志组
+-----------------------------------------------------------------------------*/
 //OS_FLAG_GRP xSlaveOsEvent;
 /* ----------------------- Start implementation -----------------------------*/
+/******************************************************************************
+@Function: xMBPortEventInit
+
+@Description:事件队列初始化
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-29 22:04 by Wang Zilin
+******************************************************************************/
 BOOL
 xMBPortEventInit( void )
 {
+    //使用模拟消息邮箱
     xEventInQueue = FALSE;
-    
-     ////////////////////////////
+    //使用事件标志组:
 //    OS_ERR err;
 //    OSFlagCreate(&xSlaveOsEvent, "modbus slave flag", 0, &err);
     return TRUE;
 }
+/******************************************************************************
+@Function: xMBPortEventPost
 
+@Description:向事件队列中发送一个事件
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-29 22:05 by Wang Zilin
+******************************************************************************/
 BOOL
 xMBPortEventPost( eMBEventType eEvent )
 {
-//    OS_ERR err;
-//    OSFlagPost(&xSlaveOsEvent, eEvent, OS_OPT_POST_FLAG_SET, &err);
-    
-     ////////////////////////////
+    //使用模拟消息邮箱
     xEventInQueue = TRUE;
     eQueuedEvent = eEvent;
+    //使用事件标志组
+//    OS_ERR err;
+//    OSFlagPost(&xSlaveOsEvent, eEvent, OS_OPT_POST_FLAG_SET, &err);   
     return TRUE;
 }
+/******************************************************************************
+@Function: xMBPortEventGet
 
+@Description:从事件队列中获取事件
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-29 22:05 by Wang Zilin
+******************************************************************************/
 BOOL
 xMBPortEventGet( eMBEventType * eEvent )
 {
+    //使用模拟消息邮箱
+    BOOL xEventHappened = FALSE;
+
+    if( xEventInQueue )
+    {
+        *eEvent = eQueuedEvent;
+        xEventInQueue = FALSE;
+        xEventHappened = TRUE;
+    }
+    return xEventHappened;
+    //使用事件标志组
 //    OS_ERR err;
 //    OS_FLAGS recvedEvent;
 //    recvedEvent = OSFlagPend(&xSlaveOsEvent, EV_READY | EV_FRAME_RECEIVED | EV_EXECUTE | EV_FRAME_SENT, 
@@ -75,16 +122,4 @@ xMBPortEventGet( eMBEventType * eEvent )
 //		break;
 //    }
 //    return TRUE;
-    
-    
-    ////////////////////////////
-    BOOL            xEventHappened = FALSE;
-
-    if( xEventInQueue )
-    {
-        *eEvent = eQueuedEvent;
-        xEventInQueue = FALSE;
-        xEventHappened = TRUE;
-    }
-    return xEventHappened;
 }

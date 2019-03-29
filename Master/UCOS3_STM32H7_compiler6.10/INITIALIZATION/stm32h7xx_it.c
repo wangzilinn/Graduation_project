@@ -137,20 +137,15 @@ void DebugMon_Handler(void)
 {
 }
 
-/**
-  * @brief  This function handles PendSVC exception.
-  * @param  None
-  * @retval None
-  */
-//void PendSV_Handler(void)
-//{
-//}
+/******************************************************************************
+@Function: SysTick_Handler
 
-/**
-  * @brief  This function handles SysTick Handler.
-  * @param  None
-  * @retval None
-  */
+@Description:系统滴答定时器,作为操作系统的心跳
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-29 21:17 by Wang Zilin
+******************************************************************************/
 void SysTick_Handler(void)
 {
     HAL_IncTick();
@@ -164,7 +159,7 @@ void SysTick_Handler(void)
 /******************************************************************************
 @Function: USART1_IRQHandler
 
-@Description:
+@Description:modbus使用的串口
 
 @Created: by Wang Zilin
 
@@ -175,14 +170,13 @@ void USART1_IRQHandler(void)
 	OSIntEnter();    
 	if(__HAL_UART_GET_IT_SOURCE(&UART1_Handler, UART_IT_RXNE)!= RESET) 
 	{
-		pxMBFrameCBByteReceived(  );//接受中断
+		pxMBFrameCBByteReceived();//接收中断
 	}
 
 	if(__HAL_UART_GET_IT_SOURCE(&UART1_Handler, UART_IT_TXE)!= RESET) 
 	{
-		pxMBFrameCBTransmitterEmpty(  );;//发送完成中断
-	}
-      
+		pxMBFrameCBTransmitterEmpty();//发送完成中断
+	}     
     HAL_NVIC_ClearPendingIRQ(USART1_IRQn);
     HAL_UART_IRQHandler(&UART1_Handler);  
 	OSIntExit();  											 
@@ -202,13 +196,6 @@ void USART2_IRQHandler(void)
     HAL_UART_IRQHandler(&UART2_Handler);	//调用HAL库中断处理公用函数
 	OSIntExit();  											 
 } 
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
 /******************************************************************************
 @Function: void TIM3_IRQHandler(void)
 
@@ -221,8 +208,7 @@ void USART2_IRQHandler(void)
 void TIM3_IRQHandler(void)
 {
     OSIntEnter();    
-    //HAL_NVIC_ClearPendingIRQ(TIM3_IRQn);
-    HAL_TIM_IRQHandler(&htimx);
+    HAL_TIM_IRQHandler(&modbusTimerHandler);
     OSIntExit();  	
 }
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
