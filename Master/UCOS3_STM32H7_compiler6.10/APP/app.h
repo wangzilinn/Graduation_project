@@ -1,16 +1,18 @@
-#ifndef _APP_H
-#define _APP_H
+#ifndef __APP__
+#define __APP__
 #ifdef __cplusplus
 extern "C" { 
 #endif
 /******************************************************************************
 Include headers
 ******************************************************************************/
-#include "public.h"  
+#include "public.h" // hal and stardand C lib
 #include "includes.h"   //OS support
 #include "hardware_init.h"
 #include "graph.h"
-#include "deviceParameters.h"
+#include "device_parameters.h"
+#include "mb.h"//modbus support
+#include "mb_register_callback.h"//提供MODBUS相关寄存器初始化
 /******************************************************************************
 Define task parameters
 ******************************************************************************/
@@ -25,7 +27,6 @@ Define task parameters
 
 #define DISPLAY_TASK_PRIO  6
 #define DISPLAY_STK_SIZE       512 //任务堆栈大小	
-
 /******************************************************************************
 Task variable declaration
 ******************************************************************************/
@@ -40,34 +41,9 @@ extern CPU_STK	UPLOAD_DATA_TASK_STK[];//任务堆栈
 
 extern OS_TCB DisplayTaskTCB;//任务控制块
 extern CPU_STK DISPLAY_TASK_STK[];//任务堆栈	
-//typedef struct coordinate
-//{
-//    int x;
-//    int y;
-//    int z;
-//}CoordinateStruct;
-//typedef enum deviceStatus
-//{
-//    RUNNING = 0,
-//    OFFLINE,
-//}DeviceStatusEnum;
-//typedef struct collectionNodeParameter
-//{
-//    int offLineDisplayTime;
-//}CollectionNodeParameterStruct;
-//typedef struct receivedNodeData
-//{
-//    u16 localShortAddress;
-//    float temperature;
-//    float humidity;
-//    u8 controlWord;
-//}ReceivedNodeDataStruct;
-//typedef struct nodeData
-//{
-//    ReceivedNodeDataStruct receivedNodeData;
-//    CoordinateStruct coordinate;
-//    DeviceStatusEnum deviceStatus;
-//}NodeDataStruct;
+/******************************************************************************
+ZigBee消息接收相关宏定义及声明
+******************************************************************************/
 #define RECEIVED_NODE_DATA_BUFFER_LENGTH 10
 extern ReceivedNodeDataStruct nodeDataBuffer[];
 extern u8 nodeDataBufferPointer;

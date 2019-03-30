@@ -484,19 +484,19 @@
               <FilePath>..\MIDDLELAYER\method.cpp</FilePath>
             </File>
             <File>
-              <FileName>transportLayer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\MIDDLELAYER\transportLayer.cpp</FilePath>
-            </File>
-            <File>
               <FileName>graph.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\MIDDLELAYER\graph.c</FilePath>
             </File>
             <File>
-              <FileName>deviceParameters.cpp</FileName>
+              <FileName>device_parameters.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\MIDDLELAYER\deviceParameters.cpp</FilePath>
+              <FilePath>..\MIDDLELAYER\device_parameters.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>transport_layer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\MIDDLELAYER\transport_layer.cpp</FilePath>
             </File>
           </Files>
         </Group>

@@ -8,10 +8,6 @@ if support OS
 #ifndef SYSTEM_SUPPORT_OS
 #define SYSTEM_SUPPORT_OS 1
 #endif
-
-#if SYSTEM_SUPPORT_OS
-#include "includes.h"					//ucos support  
-#endif
 /******************************************************************************
 Variable definitions
 ******************************************************************************/

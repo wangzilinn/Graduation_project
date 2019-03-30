@@ -18,21 +18,30 @@
  *
  * File: $Id$
  */
-
+/******************************************************************************
+Include headers
+******************************************************************************/
 #include "port.h"
-
-/* ----------------------- Modbus includes ----------------------------------*/
-#include "mb.h"
-#include "mbport.h"
-//2019-03-22 22:30 by Wang Zilin
+#include "mb.h"//Modbus includes
 #include "public.h" // hal support
 #include "usart.h"//usart support
-
-/* ----------------------- static functions ---------------------------------*/
+/******************************************************************************
+static functions declarations 这两个函数仅仅是示例,需要被重新实现
+******************************************************************************/
 static void prvvUARTTxReadyISR( void );
 static void prvvUARTRxISR( void );
+/******************************************************************************
+Start implementation
+******************************************************************************/
+/******************************************************************************
+@Function: vMBPortSerialEnable
 
-/* ----------------------- Start implementation -----------------------------*/
+@Description:使能串口
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-30 10:06 by Wang Zilin
+******************************************************************************/
 void
 vMBPortSerialEnable( BOOL xRxEnable, BOOL xTxEnable )
 {
@@ -56,13 +65,29 @@ vMBPortSerialEnable( BOOL xRxEnable, BOOL xTxEnable )
 		__HAL_UART_DISABLE_IT(&UART1_Handler,UART_IT_TXE);
 	}
 }
+/******************************************************************************
+@Function: xMBPortSerialInit
 
+@Description:初始化串口,其具体实现被放在了外部,这里仅仅返回真值
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-30 10:07 by Wang Zilin
+******************************************************************************/
 BOOL
 xMBPortSerialInit( UCHAR ucPORT, ULONG ulBaudRate, UCHAR ucDataBits, eMBParity eParity )
 {
-    return TRUE;//2019-03-22 22:28 by Wang Zilin 串口初始化在外部实现
+    return TRUE;
 }
+/******************************************************************************
+@Function: xMBPortSerialPutByte
 
+@Description:发送一个字节
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-30 10:08 by Wang Zilin
+******************************************************************************/
 BOOL
 xMBPortSerialPutByte( CHAR ucByte )
 {
@@ -74,45 +99,59 @@ xMBPortSerialPutByte( CHAR ucByte )
     else
         return TRUE;
 }
-u8 testReceiveBuffer[20];
+/******************************************************************************
+@Function: xMBPortSerialGetByte
+
+@Description:接收一个字节
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-30 10:08 by Wang Zilin
+******************************************************************************/
 BOOL
 xMBPortSerialGetByte( CHAR * pucByte )
 {
     /* Return the byte in the UARTs receive buffer. This function is called
      * by the protocol stack after pxMBFrameCBByteReceived( ) has been called.
      */
-    static u8 testcnt = 0;
-    HAL_StatusTypeDef err;
-    HAL_UART_Receive (&UART1_Handler ,(uint8_t *)&testReceiveBuffer[testcnt],1,0x01);
-    *pucByte = testReceiveBuffer[testcnt++];
-    if(testcnt == 8)
-        testcnt = 0;
-    if (err == HAL_OK)
-        return TRUE;
+    if(HAL_UART_Receive (&UART1_Handler ,(uint8_t *)pucByte,1,0x01) != HAL_OK )
+        return FALSE ;
     else
-        return FALSE;
-//    if(HAL_UART_Receive (&UART1_Handler ,(uint8_t *)pucByte,1,0x01) != HAL_OK )
-//        return FALSE ;
-//    else
-//        return TRUE;
+        return TRUE;
 }
+/******************************************************************************
+@Function: prvvUARTTxReadyISR
 
-/* Create an interrupt handler for the transmit buffer empty interrupt
- * (or an equivalent) for your target processor. This function should then
- * call pxMBFrameCBTransmitterEmpty( ) which tells the protocol stack that
- * a new character can be sent. The protocol stack will then call 
- * xMBPortSerialPutByte( ) to send the character.
- */
+@Description:
+Create an interrupt handler for the transmit buffer empty interrupt
+(or an equivalent) for your target processor. This function should then
+call pxMBFrameCBTransmitterEmpty( ) which tells the protocol stack that
+a new character can be sent. The protocol stack will then call 
+xMBPortSerialPutByte( ) to send the character.
+这个函数只是一个示例,并无作用,实际的调用在stm32h7xx_it.c中
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-30 10:09 by Wang Zilin
+******************************************************************************/
 static void prvvUARTTxReadyISR( void )
 {
     pxMBFrameCBTransmitterEmpty(  );
 }
+/******************************************************************************
+@Function: prvvUARTRxISR
 
-/* Create an interrupt handler for the receive interrupt for your target
- * processor. This function should then call pxMBFrameCBByteReceived( ). The
- * protocol stack will then call xMBPortSerialGetByte( ) to retrieve the
- * character.
- */
+@Description:
+Create an interrupt handler for the receive interrupt for your target
+processor. This function should then call pxMBFrameCBByteReceived( ). The
+protocol stack will then call xMBPortSerialGetByte( ) to retrieve the
+character.
+这个函数只是一个示例,并无作用,实际的调用在stm32h7xx_it.c中
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-30 10:10 by Wang Zilin
+******************************************************************************/
 static void prvvUARTRxISR( void )
 {
     pxMBFrameCBByteReceived(  );

@@ -1,19 +1,11 @@
+/******************************************************************************
+Include headers
+******************************************************************************/
 #include "mpu.h"
-//#include "led.h"
-#include "delay.h"
-//////////////////////////////////////////////////////////////////////////////////	 
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//ALIENTEK STM32H7开发板
-//MPU驱动代码	   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//创建日期:2017/8/15
-//版本：V1.0
-//版权所有，盗版必究。
-//Copyright(C) 广州市星翼电子科技有限公司 2014-2024
-//All rights reserved									  
-////////////////////////////////////////////////////////////////////////////////// 
+/******************************************************************************
+@Function: MPU_Set_Protection
 
+@Description:
 //设置某个区域的MPU保护
 //baseaddr:MPU保护区域的基址(首地址)
 //size:MPU保护区域的大小(必须是32的倍数,单位为字节),可设置的值参考:CORTEX_MPU_Region_Size
@@ -31,6 +23,11 @@
 //ben:是否允许缓冲;MPU_ACCESS_NOT_BUFFERABLE,不允许;MPU_ACCESS_BUFFERABLE,允许
 //返回值;0,成功.
 //    其他,错误.
+@Created: by 正点原子
+
+@Modified: 2019-03-30 10:38 by Wang Zilin
+******************************************************************************/
+
 u8 MPU_Set_Protection(u32 baseaddr,u32 size,u32 rnum,u8 ap,u8 sen,u8 cen,u8 ben)
 {
 	MPU_Region_InitTypeDef MPU_Initure;
@@ -52,10 +49,18 @@ u8 MPU_Set_Protection(u32 baseaddr,u32 size,u32 rnum,u8 ap,u8 sen,u8 cen,u8 ben)
 	HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);			        //开启MPU
     return 0;
 }
+/******************************************************************************
+@Function: MPU_Memory_Protection
 
+@Description:
 //设置需要保护的存储块
 //必须对部分存储区域进行MPU保护,否则可能导致程序运行异常
 //比如MCU屏不显示,摄像头采集数据出错等等问题...
+@Created: by 正点原子
+
+@Modified: 2019-03-30 10:38 by Wang Zilin
+******************************************************************************/
+
 void MPU_Memory_Protection(void)
 {
     //保护整个D1 SRAM 512KB

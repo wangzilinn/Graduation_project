@@ -95,4 +95,14 @@
   ../HALLIB/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
   ../HALLIB/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
   ../HALLIB/STM32H7xx_HAL_Driver/Inc\stm32h7xx_hal_hcd.h \
-  ../HARDWARE/delay.h
+  ../HARDWARE/delay.h ../UCOSIII/UCOS-CONFIG\includes.h \
+  ../UCOSIII/uCOS-III/Source\os.h ../UCOSIII/UCOS-CONFIG\os_cfg.h \
+  ../UCOSIII/uC-CPU\cpu_core.h \
+  ../UCOSIII/uC-CPU/ARM-Cortex-M4/RealView\cpu.h \
+  ../UCOSIII/uC-CPU\cpu_def.h ../UCOSIII/UCOS-CONFIG\cpu_cfg.h \
+  ../UCOSIII/uC-LIB\lib_def.h ../UCOSIII/uC-LIB\lib_mem.h \
+  ../UCOSIII/UCOS-CONFIG\lib_cfg.h ../UCOSIII/uC-LIB\lib_str.h \
+  ../UCOSIII/uC-LIB\lib_ascii.h ../UCOSIII/uCOS-III/Source/os_type.h \
+  ../UCOSIII/uCOS-III/Ports/ARM-Cortex-M4/Generic/RealView\os_cpu.h \
+  ../UCOSIII/uC-LIB\lib_math.h ../UCOSIII/UCOS-CONFIG\app_cfg.h \
+  ../UCOSIII/UCOS-BSP\bsp.h

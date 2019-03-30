@@ -37,3 +37,10 @@ Module.symvers
 Mkfile.old
 dkms.conf
 *.i
+
+#Uncrustify backup
+*.unc-backup.md5~
+*.unc-backup
+*.md5~
+*.md5~
+*.unc-backup~

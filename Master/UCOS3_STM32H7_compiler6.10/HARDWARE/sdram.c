@@ -1,20 +1,20 @@
-#include "sdram.h"
-#include "delay.h"
-//////////////////////////////////////////////////////////////////////////////////	 
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//ALIENTEK STM32F7开发板
-//SDRAM驱动代码	   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//创建日期:2015/11/27
-//版本：V1.0
-//版权所有，盗版必究。
-//Copyright(C) 广州市星翼电子科技有限公司 2014-2024
-//All rights reserved									  
-////////////////////////////////////////////////////////////////////////////////// 	
+/******************************************************************************
+Include headers
+******************************************************************************/
+#include "sdram.h"	
+/******************************************************************************
+外设句柄definition
+******************************************************************************/
 SDRAM_HandleTypeDef SDRAM_Handler;   //SDRAM句柄
+/******************************************************************************
+@Function: SDRAM_Init
 
-//SDRAM初始化
+@Description:SDRAM初始化
+
+@Created: by 正点原子@ALIENTEK
+
+@Modified: 2019-03-30 10:40 by Wang Zilin
+******************************************************************************/
 void SDRAM_Init(void)
 {
     FMC_SDRAM_TimingTypeDef SDRAM_Timing;
@@ -42,8 +42,15 @@ void SDRAM_Init(void)
 	
 	SDRAM_Initialization_Sequence(&SDRAM_Handler);//发送SDRAM初始化序列
 }
+/******************************************************************************
+@Function: SDRAM_Initialization_Sequence
 
-//发送SDRAM初始化序列
+@Description:发送SDRAM初始化序列
+
+@Created: by 正点原子@ALIENTEK
+
+@Modified: 2019-03-30 10:41 by Wang Zilin
+******************************************************************************/
 void SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram)
 {
 	u32 temp=0;
@@ -69,9 +76,18 @@ void SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram)
 	//所以,COUNT=64*1000*100/8192-20=677
 	HAL_SDRAM_ProgramRefreshRate(&SDRAM_Handler,677);	
 }	
+/******************************************************************************
+@Function: HAL_SDRAM_MspInit
+
+@Description:
 //SDRAM底层驱动，引脚配置，时钟使能
 //此函数会被HAL_SDRAM_Init()调用
 //hsdram:SDRAM句柄
+@Created: by 正点原子@ALIENTEK
+
+@Modified: 2019-03-30 10:42 by Wang Zilin
+******************************************************************************/
+
 void HAL_SDRAM_MspInit(SDRAM_HandleTypeDef *hsdram)
 {
     GPIO_InitTypeDef GPIO_Initure;
@@ -110,7 +126,10 @@ void HAL_SDRAM_MspInit(SDRAM_HandleTypeDef *hsdram)
     GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_8|GPIO_PIN_15;              
     HAL_GPIO_Init(GPIOG,&GPIO_Initure);	//初始化PG0,1,2,4,5,8,15 
 }
+/******************************************************************************
+@Function: SDRAM_Send_Cmd
 
+@Description:
 //向SDRAM发送命令
 //bankx:0,向BANK5上面的SDRAM发送指令
 //      1,向BANK6上面的SDRAM发送指令
@@ -118,6 +137,11 @@ void HAL_SDRAM_MspInit(SDRAM_HandleTypeDef *hsdram)
 //refresh:自刷新次数
 //regval:模式寄存器的定义
 //返回值:0,正常;1,失败.
+@Created: by 正点原子@ALIENTEK
+
+@Modified: 2019-03-30 10:42 by Wang Zilin
+******************************************************************************/
+
 u8 SDRAM_Send_Cmd(u8 bankx,u8 cmd,u8 refresh,u16 regval)
 {
     u32 target_bank=0;
@@ -135,11 +159,19 @@ u8 SDRAM_Send_Cmd(u8 bankx,u8 cmd,u8 refresh,u16 regval)
     }
     else return 1;    
 }
+/******************************************************************************
+@Function: FMC_SDRAM_WriteBuffer
 
+@Description:
 //在指定地址(WriteAddr+Bank5_SDRAM_ADDR)开始,连续写入n个字节.
 //pBuffer:字节指针
 //WriteAddr:要写入的地址
 //n:要写入的字节数
+@Created: by 正点原子@ALIENTEK
+
+@Modified: 2019-03-30 10:43 by Wang Zilin
+******************************************************************************/
+
 void FMC_SDRAM_WriteBuffer(u8 *pBuffer,u32 WriteAddr,u32 n)
 {
 	for(;n!=0;n--)
@@ -149,11 +181,18 @@ void FMC_SDRAM_WriteBuffer(u8 *pBuffer,u32 WriteAddr,u32 n)
 		pBuffer++;
 	}
 }
+/******************************************************************************
+@Function: FMC_SDRAM_ReadBuffer
 
+@Description:
 //在指定地址((WriteAddr+Bank5_SDRAM_ADDR))开始,连续读出n个字节.
 //pBuffer:字节指针
 //ReadAddr:要读出的起始地址
 //n:要写入的字节数
+@Created: by 正点原子@ALIENTEK
+
+@Modified: 2019-03-30 10:43 by Wang Zilin
+******************************************************************************/
 void FMC_SDRAM_ReadBuffer(u8 *pBuffer,u32 ReadAddr,u32 n)
 {
 	for(;n!=0;n--)

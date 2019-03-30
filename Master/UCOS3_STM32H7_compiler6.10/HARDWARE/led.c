@@ -1,6 +1,16 @@
+/******************************************************************************
+Include headers
+******************************************************************************/
 #include "led.h"
-//初始化PB0,PB1为输出.并使能这两个口的时钟		    
-//LED IO初始化
+/******************************************************************************
+@Function: LEDInit
+
+@Description:LED IO初始化
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-30 10:31 by Wang Zilin
+******************************************************************************/
 void LEDInit(void)
 {
     GPIO_InitTypeDef GPIO_Initure;
@@ -31,6 +41,15 @@ void LEDInit(void)
     HAL_GPIO_Init(GPIOH,&GPIO_Initure);   
 	//HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);	//PB1置1 
 }
+/******************************************************************************
+@Function: TogglePilotLED
+
+@Description:翻转LED
+
+@Created: by Wangzilin
+
+@Modified: 2019-03-30 10:31 by Wang Zilin
+******************************************************************************/
 void TogglePilotLED(int LEDNumber)
 {
     switch (LEDNumber)

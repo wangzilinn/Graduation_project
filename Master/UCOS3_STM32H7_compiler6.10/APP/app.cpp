@@ -2,10 +2,7 @@
 *  Include headers
 ******************************************************************************/
 #include "app.h"
-//////////////////////////
-#include "mb.h"
-#include "mbport.h"
-#include "mb_register_callback.h"//提供MODBUS相关寄存器初始化
+
 /******************************************************************************
 *  Task variable definition
 ******************************************************************************/
@@ -15,28 +12,31 @@ CPU_STK START_TASK_STK[START_STK_SIZE];            //任务堆栈
 OS_TCB ReceiveDataTaskTCB;
 __attribute__((aligned(8))) CPU_STK RECEIVE_DATA_TASK_STK[RECEIVE_DATA_STK_SIZE];
 
-OS_TCB  DisplayTaskTCB;                               //任务控制块
-__attribute__((aligned(8))) CPU_STK DISPLAY_TASK_STK[DISPLAY_STK_SIZE];              //任务堆栈
+OS_TCB DisplayTaskTCB;                                                  //任务控制块
+__attribute__((aligned(8))) CPU_STK DISPLAY_TASK_STK[DISPLAY_STK_SIZE]; //任务堆栈
 
-OS_TCB UploadDataTaskTCB;                               //任务控制块
-CPU_STK UPLOAD_DATA_TASK_STK[UPLOAD_DATA_STK_SIZE]; //任务堆栈
+OS_TCB  UploadDataTaskTCB;                                              //任务控制块
+CPU_STK UPLOAD_DATA_TASK_STK[UPLOAD_DATA_STK_SIZE];                     //任务堆栈
+
 /******************************************************************************
-消息队列缓冲区
+*  消息队列缓冲区
 ******************************************************************************/
 ReceivedNodeDataStruct nodeDataBuffer[RECEIVED_NODE_DATA_BUFFER_LENGTH];
 u8 nodeDataBufferPointer = 0;
+
 /******************************************************************************
-Mutex definition
+*  Mutex definition
 ******************************************************************************/
 OS_MUTEX loaclDataSetAccessMutex;
+
 /******************************************************************************
 *  @Function: StartTask
 *
-*  @Description:
+*  @Description:启动任务
 *
 *  @Created: by Wang Zilin
 *
-*  @Modified:
+*  @Modified:2019-03-30 10:50 by Wang Zilin
 ******************************************************************************/
 void StartTask(void *p_arg)
 {
@@ -61,10 +61,10 @@ void StartTask(void *p_arg)
 
     //创建互斥量
     OSMutexCreate(&loaclDataSetAccessMutex, (CPU_CHAR * )"loacl data set access mutex", &err);
-    
+
     //进入临界区
-    OS_CRITICAL_ENTER();    
-    
+    OS_CRITICAL_ENTER();
+
     OSTaskCreate((OS_TCB * )&ReceiveDataTaskTCB,
                  (CPU_CHAR * )"receive data task",
                  (OS_TASK_PTR )ReceiveDataTask,
@@ -77,7 +77,7 @@ void StartTask(void *p_arg)
                  (OS_TICK     )0,
                  (void * )0,
                  (OS_OPT      )OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR | OS_OPT_TASK_SAVE_FP,
-                 (OS_ERR * )&err);             
+                 (OS_ERR * )&err);
 
     //创建LED1任务
     OSTaskCreate((OS_TCB * )&UploadDataTaskTCB,
@@ -94,7 +94,7 @@ void StartTask(void *p_arg)
                  (OS_OPT      )OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR | OS_OPT_TASK_SAVE_FP,
                  (OS_ERR * )&err);
 
-                 //显示任务
+    //显示任务
     OSTaskCreate((OS_TCB * )&DisplayTaskTCB,
                  (CPU_CHAR * )"display task",
                  (OS_TASK_PTR )DisplayTask,
@@ -108,7 +108,7 @@ void StartTask(void *p_arg)
                  (void * )0,
                  (OS_OPT      )OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR | OS_OPT_TASK_SAVE_FP,
                  (OS_ERR * )&err);
-    OS_CRITICAL_EXIT();                            //退出临界区  
+    OS_CRITICAL_EXIT();                            //退出临界区
     OS_TaskSuspend((OS_TCB *)&StartTaskTCB, &err); //挂起开始任务
 }
 
@@ -116,7 +116,7 @@ void StartTask(void *p_arg)
 /******************************************************************************
 *  @Function: ReceiveDataTask
 *
-*  @Description:
+*  @Description:从ZigBee获取消息的处理任务
 *
 *  @Created: by Wang Zilin
 *
@@ -125,58 +125,61 @@ void StartTask(void *p_arg)
 void ReceiveDataTask(void *p_arg)
 {
     OS_ERR err;
+
     p_arg = p_arg;
-    HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);//开始允许接收串口2中断
-    OSTimeDlyHMSM(0, 0, 0, 1000, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms
+    HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1); //开始允许接收串口2中断
+    OSTimeDlyHMSM(0, 0, 0, 1000, OS_OPT_TIME_HMSM_STRICT, &err);  //延时500ms
     while (1)
     {
-        OS_MSG_SIZE msg_size;
-        ReceivedNodeDataStruct* receivedNodeData = (ReceivedNodeDataStruct*)OSTaskQPend(0, OS_OPT_PEND_BLOCKING, &msg_size, NULL, &err);
-        if(err == OS_ERR_NONE)
+        OS_MSG_SIZE            msg_size;
+        ReceivedNodeDataStruct *receivedNodeData = (ReceivedNodeDataStruct *)OSTaskQPend(0, OS_OPT_PEND_BLOCKING, &msg_size, NULL, &err);
+        if (err == OS_ERR_NONE)
         {
             //printf("t=%f, h=%f, id=%d\r\n",receivedNodeData->temperature, receivedNodeData->humidity, receivedNodeData->localShortAddress);
             char debugStr[10];
             sprintf(debugStr, "ID:%d", receivedNodeData->localShortAddress);
             DisplayDebugInformation(debugStr);
-            TogglePilotLED(1); 
+            TogglePilotLED(1);
             OSMutexPend(&loaclDataSetAccessMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-                UpdateLocatDataSet(receivedNodeData);  
+            UpdateLocatDataSet(receivedNodeData);
             OSMutexPost(&loaclDataSetAccessMutex, OS_OPT_POST_NONE, &err);
         }
-        OSTimeDlyHMSM(0, 0, 0, 300, OS_OPT_TIME_HMSM_STRICT, &err); //延时500ms     
+        OSTimeDlyHMSM(0, 0, 0, 300, OS_OPT_TIME_HMSM_STRICT, &err);
     }
 }
+
 
 /******************************************************************************
 *  @Function: void UploadDataTask(void *p_arg)
 *
-*  @Description:
+*  @Description:modbus处理任务
 *
 *  @Created: by Wang Zilin
 *
-*  @Modified:
+*  @Modified:2019-03-30 10:51 by Wang Zilin
 ******************************************************************************/
 void UploadDataTask(void *p_arg)
 {
     OS_ERR err;
-	//定义要返回的值
-    usSRegInputBuf[0] =0;
-    usSRegInputBuf[1] =1;
-    usSRegInputBuf[2] =2;
-    usSRegInputBuf[3] =3;
-    usSRegInputBuf[4] =4;
-    usSRegInputBuf[5] =5;
-    usSRegInputBuf[6] =6;
-                 
-    eMBErrorCode    eStatus;
 
-    eStatus = eMBInit( MB_RTU, 0x0a, 0, 115200, MB_PAR_NONE );
+    //定义要返回的值
+    usSRegInputBuf[0] = 0;
+    usSRegInputBuf[1] = 1;
+    usSRegInputBuf[2] = 2;
+    usSRegInputBuf[3] = 3;
+    usSRegInputBuf[4] = 4;
+    usSRegInputBuf[5] = 5;
+    usSRegInputBuf[6] = 6;
+
+    eMBErrorCode eStatus;
+
+    eStatus = eMBInit(MB_RTU, 0x0a, 0, 115200, MB_PAR_NONE);
     /* Enable the Modbus Protocol Stack. */
     eStatus = eMBEnable(  );
-    for( ;; )
+    for ( ; ;)
     {
         ( void )eMBPoll(  );
-        OSTimeDlyHMSM(0,0,0,50,OS_OPT_TIME_HMSM_STRICT,&err);
+        OSTimeDlyHMSM(0, 0, 0, 50, OS_OPT_TIME_HMSM_STRICT, &err);
         /* Here we simply count the number of poll cycles. */
         TogglePilotLED(3);
     }
@@ -186,7 +189,7 @@ void UploadDataTask(void *p_arg)
 /******************************************************************************
 *  @Function: void DisplayTask(void *p_arg)
 *
-*  @Description:
+*  @Description:显示任务
 *
 *  @Created: by Wang Zilin
 *
@@ -195,14 +198,14 @@ void UploadDataTask(void *p_arg)
 void DisplayTask(void *p_arg)
 {
     OS_ERR err;
+
     UIDrawBackground();
     while (1)
     {
         OSMutexPend(&loaclDataSetAccessMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-            UIDrawNodeData(&localDataSet, 1);
+        UIDrawNodeData(&localDataSet, 1);
         OSMutexPost(&loaclDataSetAccessMutex, OS_OPT_POST_NONE, &err);
         OSTimeDlyHMSM(0, 0, 0, 20, OS_OPT_TIME_HMSM_STRICT, &err);
         TogglePilotLED(2);
     }
 }
-

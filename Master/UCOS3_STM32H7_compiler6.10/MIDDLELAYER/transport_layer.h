@@ -1,5 +1,5 @@
-#ifndef __TRANSPORTLAYER__
-#define __TRANSPORTLAYER__
+#ifndef __TRANSPORT_LAYER__
+#define __TRANSPORT_LAYER__
 /******************************************************************************
 Include headers
 ******************************************************************************/
