@@ -19,6 +19,7 @@
 "..\obj\graph.o"
 "..\obj\device_parameters.o"
 "..\obj\transport_layer.o"
+"..\obj\callback.o"
 "..\obj\mb_register_callback.o"
 "..\obj\portevent.o"
 "..\obj\portserial.o"

@@ -13,6 +13,7 @@ Include headers
 #include "device_parameters.h"
 #include "mb.h"//modbus support
 #include "mb_register_callback.h"//提供MODBUS相关寄存器初始化
+
 /******************************************************************************
 Define task parameters
 ******************************************************************************/

@@ -498,6 +498,11 @@
               <FileType>8</FileType>
               <FilePath>..\MIDDLELAYER\transport_layer.cpp</FilePath>
             </File>
+            <File>
+              <FileName>callback.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\MIDDLELAYER\callback.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -96,19 +96,3 @@ static void prvvTIMERExpiredISR( void )
 {
     ( void )pxMBPortCBTimerExpired(  );
 }
-/******************************************************************************
-@Function: HAL_TIM_PeriodElapsedCallback
-
-@Description:定时器中断回调函数,调用Modbus的超时回调函数
-
-@Created: by Wang Zilin
-
-@Modified: 2019-03-22 22:21 by Wang Zilin
-******************************************************************************/
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-    if (htim->Instance == TIM3)
-    {
-        pxMBPortCBTimerExpired();
-    }
-}
