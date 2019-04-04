@@ -177,7 +177,7 @@ void USART1_IRQHandler(void)
 	{
 		pxMBFrameCBTransmitterEmpty();//发送完成中断
 	}     
-    HAL_NVIC_ClearPendingIRQ(USART1_IRQn);
+    HAL_NVIC_ClearPendingIRQ(USART1_IRQn);//调用HAL库中断处理公用函数
     HAL_UART_IRQHandler(&UART1_Handler);  
 	OSIntExit();  											 
 } 

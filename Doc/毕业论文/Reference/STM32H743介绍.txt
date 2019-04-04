@@ -1,0 +1,33 @@
+The STM32H743/753 lines offer the performance of the Cortex-M7 core (with double-precision floating point unit) running up to 400 MHz while reaching 2 times better dynamic power consumption (Run mode) versus the STM32F7 lines.
+Performance
+
+At 400 MHz fCPU, the STM32H743/753 lines deliver 2020 CoreMark /856 DMIPS performance executing from Flash memory, with 0-wait states thanks to its L1 cache. The DSP instructions and the double-precision FPU enlarge the range of addressable applications. External memory can be used with no performance penalty thanks to the L1 cache (16 Kbytes +16 Kbytes of I-cache and D-cache).
+Security
+
+Authenticate and protect your software IP while performing initial programming or firmware upgrades in the field*
+
+*Available in 2018
+
+Power efficiency:
+
+The multi-power domains architecture allows the different power domains to be set in low-power mode to optimize the power efficiency. In addition to the main regulator featuring voltage scaling to supply the core in different voltage ranges during Run and Stop modes, the device also embeds a USB regulator to supply the embedded physical layer (PHY) and a backup regulator.
+263 µ/MHz typical @VDD = 3.3 V and 25 °C  in Run mode (peripherals off)
+4 µA in Standby mode (low-power mode)
+Graphics
+
+The new LCD-TFT controller interface with dual-layer support takes advantage of the Chrom‑ART Accelerator™. This graphics accelerator creates content twice as fast as the core alone. As well as efficient 2-D raw data copy, additional functions are supported by the Chrom-ART Accelerator such as image format conversion or image blending (image mixing with some transparency). As a result, the Chrom-ART Accelerator boosts graphics content creation and saves the processing bandwidth of the MCU core for the rest of the application. In addition, the STM32H743/753 lines embed a JPEG hardware accelerator for fast JPEG encoding and decoding, off-loading the CPU which remains available for other tasks.
+
+Integration
+
+Audio: Two dedicated audio PLLs, three full-duplex I²S interfaces, a new serial audio interface (SAI) supporting time-division multiplex (TDM) mode and a DFSDM (Digital filters for sigma-delta modulators or MEMS microphone).
+Up to 35 communication interfaces including four USARTs in addition to four UARTs running at up to 12.5 Mbit/s, one low-power UART, six SPIs running at up to 100 Mbit/s, four I²C interfaces running at up to 1 MHz with a new optional digital filter capability, two FD-CAN, two SDIO, USB 2.0 full-speed device/host/OTG controller with an on-chip PHY and a USB 2.0 high-speed/full-speed device/host/OTG controller, on-chip full-speed PHY and ULPI, Ethernet MAC, SPDIF-IN, HDMI-CEC, camera interface, single wire protocol interface and MDIO slave.
+Analog: Two 12-bit DACs, three fast ADCs reaching 16-bit maximum resolution (3.6 Msamples/s), 22 16- and 32-bit timers running at up to 400 MHz on the 16-bit high-resolution timer. Easily extendable memory range using the flexible memory controller with a 32-bit parallel interface, and supporting Compact Flash, SRAM, PSRAM, NOR, NAND and SDRAM memories or using the Dual-mode Quad-SPI to allow code execution from external serial Flash memory. An analog true random number generator.
+The STM32H7x3 line provides from 1 to 2 Mbytes of Flash memory, 1 Mbyte of SRAM with a scattered architecture: 192 Kbytes of TCM RAM (including 64 Kbytes of ITCM RAM and 128 Kbytes of DTCM RAM for time-critical routines and data), 512 Kbytes, 288 Kbytes and 64 Kbytes of user SRAM, and 4 Kbytes of SRAM in backup domain to keep data in the lowest power modes and 100- to 240-pin packages in BGA and LQFP profiles.
+
+The STM32H753 integrates a crypto/hash processor providing hardware acceleration for AES-128, -192 and -256 encryption, with support for GCM and CCM, Triple DES, and hash (MD5, SHA-1 and SHA-2) algorithms.
+
+STM32H7 系列，是 ST 推出的基于ARM Cortex M7 内核的处理器，采用 6 级流水线，性
+能高达 5 CoreMark/MHz，在 400MHz 工作频率下测试数据高达 2010 CoreMarks，是此前性能最 高的 STM32F7（也是Cortex M7 内核）系列的两倍。 STM32H7x 系列（包括：STM32H743/753 等），主要有如下优势： 1， 更先进的内核，采用Cortex M7内核，具有 16KB指令/数据Cache，采用 ST 独有的自 适应实时加速技术（ART Accelerator），性能高达 5 CoreMark/MHz。
+2， 更丰富的外设，拥有高达 1060KB 的片内 SRAM，并且支持 SDRAM、带 TFTLCD 控 制器、带图形加速器（Chorme ART）、带摄像头接口（DCMI）、带硬件 JPEG 编解 码器、带 QSPI 接口、带 SAI&I2S 音频接口、带 SPDIF RX 接口、16 位 ADC、12 位 DAC、DMA、USB 高速OTG、真随机数发生器、OTP 存储器等。
+3， 更高的性能，STM32H743 最高运行频率可达 400Mhz，具有 6 级流水线，带有指令和 数据Cache，大大提高了性能，是 F7 的两倍，F4 的四倍！。而且 STM32H7xx 自带了 双精度硬件浮点单元（DPFPU），在做DSP 处理的时候，具有更好的性能。 STM32H7xx 系列，自带了 LCD控制器和 SDRAM接口，对于想要驱动大屏或需要大内存
+的朋友来说，是个非常不错的选择，更重要的是集成了硬件 JPEG 编解码器，可以秒解 JPEG 图片，做界面的时候，可以大大提高加载速度，并且，可以实现视频播放。本手册，我们将以 STM32H743 为例，向大家讲解 STM32H743 的学习。

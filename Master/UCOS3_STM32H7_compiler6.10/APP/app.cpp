@@ -141,7 +141,7 @@ void ReceiveDataTask(void *p_arg)
             DisplayDebugInformation(debugStr);
             TogglePilotLED(1);
             OSMutexPend(&loaclDataSetAccessMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-            UpdateLocatDataSet(receivedNodeData);
+                UpdateLocatDataSet(receivedNodeData);
             OSMutexPost(&loaclDataSetAccessMutex, OS_OPT_POST_NONE, &err);
         }
         OSTimeDlyHMSM(0, 0, 0, 300, OS_OPT_TIME_HMSM_STRICT, &err);
@@ -180,7 +180,6 @@ void UploadDataTask(void *p_arg)
     {
         ( void )eMBPoll(  );
         OSTimeDlyHMSM(0, 0, 0, 50, OS_OPT_TIME_HMSM_STRICT, &err);
-        /* Here we simply count the number of poll cycles. */
         TogglePilotLED(3);
     }
 }
