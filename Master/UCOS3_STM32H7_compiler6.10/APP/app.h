@@ -9,11 +9,12 @@ Include headers
 #include "public.h" // hal and stardand C lib
 #include "includes.h"   //OS support
 #include "hardware_init.h"
-#include "graph.h"
-#include "device_parameters.h"
+#include "graph_module.h"
+#include "monitoring_node_data_storage_module.h"
 #include "mb.h"//modbus support
 #include "mb_register_callback.h"//提供MODBUS相关寄存器初始化
-
+#include "communication_protocol_stack_module.h"    
+#include "method.h"
 /******************************************************************************
 Define task parameters
 ******************************************************************************/
@@ -24,7 +25,7 @@ Define task parameters
 #define RECEIVE_DATA_STK_SIZE 512
     
 #define UPLOAD_DATA_TASK_PRIO 5
-#define UPLOAD_DATA_STK_SIZE 128 //任务堆栈大小
+#define UPLOAD_DATA_STK_SIZE 512 //任务堆栈大小
 
 #define DISPLAY_TASK_PRIO  6
 #define DISPLAY_STK_SIZE       512 //任务堆栈大小	
@@ -46,8 +47,8 @@ extern CPU_STK DISPLAY_TASK_STK[];//任务堆栈
 ZigBee消息接收相关宏定义及声明
 ******************************************************************************/
 #define RECEIVED_NODE_DATA_BUFFER_LENGTH 10
-extern ReceivedNodeDataStruct nodeDataBuffer[];
-extern u8 nodeDataBufferPointer;
+extern ReceivedNodeDataStruct receivedNodeDataBuffer[];
+extern u8 receivedNodeDataBufferPointer;
 /******************************************************************************
 Task function declaration
 ******************************************************************************/

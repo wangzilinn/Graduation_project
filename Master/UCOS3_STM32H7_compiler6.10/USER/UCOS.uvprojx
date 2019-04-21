@@ -484,24 +484,24 @@
               <FilePath>..\MIDDLELAYER\method.cpp</FilePath>
             </File>
             <File>
-              <FileName>graph.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\MIDDLELAYER\graph.c</FilePath>
-            </File>
-            <File>
-              <FileName>device_parameters.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\MIDDLELAYER\device_parameters.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>transport_layer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\MIDDLELAYER\transport_layer.cpp</FilePath>
-            </File>
-            <File>
               <FileName>callback.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\MIDDLELAYER\callback.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>monitoring_node_data_storage_module.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\MIDDLELAYER\monitoring_node_data_storage_module.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>communication_protocol_stack_module.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\MIDDLELAYER\communication_protocol_stack_module.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>graph_module.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MIDDLELAYER\graph_module.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -527,6 +527,11 @@
               <FileName>porttimer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FREEMODBUS\MODBUS_port\porttimer.c</FilePath>
+            </File>
+            <File>
+              <FileName>mb_method.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FREEMODBUS\MODBUS_port\mb_method.c</FilePath>
             </File>
           </Files>
         </Group>

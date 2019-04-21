@@ -6,7 +6,7 @@ Include headers
 #include "public.h"
 
 #define USART1_RX_BUFFER_LENGTH  3
-#define USART2_RX_BUFFER_LENGTH  256
+#define USART2_RX_BUFFER_LENGTH  512
 #define USART3_RX_BUFFER_LENGTH  3
 
 extern u8 Usart1RxBuffer[];

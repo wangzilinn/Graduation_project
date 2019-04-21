@@ -5,6 +5,8 @@ Include headers
 ******************************************************************************/
 #include "mb.h"
 #include "mbutils.h"//增加xMBUtilSetBits函数声明
+#include "monitoring_node_data_storage_module.h"
+#include "mb_method.h"
 /******************************************************************************
 线圈,离散量,输入寄存器,保持寄存器相关宏定义
 ******************************************************************************/
@@ -32,4 +34,5 @@ Include headers
 #define          S_DI_RESERVE                     0
 
 extern USHORT usSRegInputBuf[]               ;
+extern USHORT usSRegHoldBuf[];
 #endif

@@ -36,6 +36,7 @@ struct Method
     static void DelayMs(u32 time);
     static uint16_t ModbusCRC16(uint8_t *puchMsg, uint8_t usDataLen);
     static void BytewiseShiftLeft(u8* array, int arrayLength);
+    static void ModbusConvertStringToHoldingBuffer(char* str, u16* bufferPointer, int bufferLength);
 };
 
 #endif

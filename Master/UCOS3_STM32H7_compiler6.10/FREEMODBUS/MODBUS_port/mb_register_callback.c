@@ -63,6 +63,12 @@ eMBRegInputCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
     /* it already plus one in modbus function method. */
     usAddress--;
 
+    //测试用：每次读取对所有寄存器+1
+    for (int i = 0; i < 7; i++)
+    {
+        pusRegInputBuf[i]++;
+    }
+    
     if ((usAddress >= REG_INPUT_START)
             && (usAddress + usNRegs <= REG_INPUT_START + REG_INPUT_NREGS))
     {
@@ -118,6 +124,19 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
         {
         /* read current register values from the protocol stack. */
         case MB_REG_READ:
+            {
+                //获取最新的节点数据
+                OS_MSG_SIZE msg_size;
+                OS_ERR err;
+                NodeDataStruct *latestNodeData = (NodeDataStruct*)OSQPend(&latestNodeDataQuene, 0,  OS_OPT_PEND_NON_BLOCKING, &msg_size, NULL, &err);
+                if (err == OS_ERR_NONE)
+                {
+                    u16 nodeAddress = latestNodeData->receivedNodeData.localShortAddress;
+                    char str[100];
+                    NodeDataToJSON(*latestNodeData, str);
+                    ModbusConvertStringToHoldingBuffer(str, usSRegHoldBuf, 50);
+                } 
+            }            
             while (usNRegs > 0)
             {
                 *pucRegBuffer++ = (UCHAR) (pusRegHoldingBuf[iRegIndex] >> 8);

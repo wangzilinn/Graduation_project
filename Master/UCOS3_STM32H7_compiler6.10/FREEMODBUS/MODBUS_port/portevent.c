@@ -27,12 +27,14 @@
 Include headers
 ******************************************************************************/
 #include "mb.h"
+#include "includes.h"//mutex support
 /******************************************************************************
 Global variable definition
 ******************************************************************************/
 /*-----------------------------------------------------------------------------
 使用两个变量模拟实现消息邮箱
 -----------------------------------------------------------------------------*/
+OS_MUTEX xModbusEventMutex;
 static eMBEventType eQueuedEvent;
 static BOOL     xEventInQueue;
 /*-----------------------------------------------------------------------------
@@ -52,8 +54,12 @@ static BOOL     xEventInQueue;
 BOOL
 xMBPortEventInit( void )
 {
+    OS_ERR err;
+    OSMutexCreate(&xModbusEventMutex, (char*)"access modbus event Mutex", &err);
     //使用模拟消息邮箱
-    xEventInQueue = FALSE;
+    OSMutexPend(&xModbusEventMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
+        xEventInQueue = FALSE;
+    OSMutexPost(&xModbusEventMutex, OS_OPT_POST_NONE, &err);
     //使用事件标志组:
 //    OS_ERR err;
 //    OSFlagCreate(&xSlaveOsEvent, "modbus slave flag", 0, &err);
@@ -72,8 +78,11 @@ BOOL
 xMBPortEventPost( eMBEventType eEvent )
 {
     //使用模拟消息邮箱
-    xEventInQueue = TRUE;
-    eQueuedEvent = eEvent;
+    OS_ERR err;
+    OSMutexPend(&xModbusEventMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
+        xEventInQueue = TRUE;
+        eQueuedEvent = eEvent;
+    OSMutexPost(&xModbusEventMutex, OS_OPT_POST_NONE, &err);
     //使用事件标志组
 //    OS_ERR err;
 //    OSFlagPost(&xSlaveOsEvent, eEvent, OS_OPT_POST_FLAG_SET, &err);   
@@ -91,15 +100,19 @@ xMBPortEventPost( eMBEventType eEvent )
 BOOL
 xMBPortEventGet( eMBEventType * eEvent )
 {
-    //使用模拟消息邮箱
-    BOOL xEventHappened = FALSE;
+    OS_ERR err;
+    OSMutexPend(&xModbusEventMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
+        //使用模拟消息邮箱
+        BOOL xEventHappened = FALSE;
 
-    if( xEventInQueue )
-    {
-        *eEvent = eQueuedEvent;
-        xEventInQueue = FALSE;
-        xEventHappened = TRUE;
-    }
+        if( xEventInQueue )
+        {
+            *eEvent = eQueuedEvent;
+            xEventInQueue = FALSE;
+            xEventHappened = TRUE;
+        }
+    OSMutexPost(&xModbusEventMutex, OS_OPT_POST_NONE, &err);         
+        
     return xEventHappened;
     //使用事件标志组
 //    OS_ERR err;

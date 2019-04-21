@@ -123,7 +123,8 @@
   ../HARDWARE/ITM.h ../HARDWARE/dht11.h ../HARDWARE/delay.h \
   ../HARDWARE/lcd.h ../HARDWARE/ltdc.h ../HARDWARE/hardware_init.h \
   ../HARDWARE/sdram.h ../HARDWARE/timer.h ../APP\app.h \
-  ../MIDDLELAYER\graph.h ../MIDDLELAYER/device_parameters.h \
+  ../MIDDLELAYER\graph_module.h \
+  ../MIDDLELAYER/monitoring_node_data_storage_module.h \
   ../FREEMODBUS/MODBUS/include\mb.h ../FREEMODBUS/MODBUS_port\port.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\assert.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\inttypes.h \
@@ -131,4 +132,7 @@
   ../FREEMODBUS/MODBUS/include/mbport.h \
   ../FREEMODBUS/MODBUS/include/mbproto.h \
   ../FREEMODBUS/MODBUS_port\mb_register_callback.h \
-  ../FREEMODBUS/MODBUS/include\mbutils.h
+  ../FREEMODBUS/MODBUS/include\mbutils.h \
+  ../FREEMODBUS/MODBUS_port/mb_method.h \
+  ../MIDDLELAYER\communication_protocol_stack_module.h \
+  ../MIDDLELAYER/method.h

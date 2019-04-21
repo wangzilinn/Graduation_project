@@ -34,7 +34,7 @@ void Method::ClearStringBuff(char* str, int length)
 {
     if (str == NULL)
         return;
-	for(u8 i = 0; i < length; i++)
+	for(int i = 0; i < length; i++)
 	{
 		str[i] = '\0';
 	}

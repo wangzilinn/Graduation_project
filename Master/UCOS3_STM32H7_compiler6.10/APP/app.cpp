@@ -21,8 +21,8 @@ CPU_STK UPLOAD_DATA_TASK_STK[UPLOAD_DATA_STK_SIZE];                     //任务
 /******************************************************************************
 *  消息队列缓冲区
 ******************************************************************************/
-ReceivedNodeDataStruct nodeDataBuffer[RECEIVED_NODE_DATA_BUFFER_LENGTH];
-u8 nodeDataBufferPointer = 0;
+ReceivedNodeDataStruct receivedNodeDataBuffer[RECEIVED_NODE_DATA_BUFFER_LENGTH];
+u8 receivedNodeDataBufferPointer = 0;
 
 /******************************************************************************
 *  Mutex definition
@@ -122,6 +122,7 @@ void StartTask(void *p_arg)
 *
 *  @Modified:2019-03-07 14:52 by Wang Zilin
 ******************************************************************************/
+int restart = 0;
 void ReceiveDataTask(void *p_arg)
 {
     OS_ERR err;
@@ -131,10 +132,12 @@ void ReceiveDataTask(void *p_arg)
     OSTimeDlyHMSM(0, 0, 0, 1000, OS_OPT_TIME_HMSM_STRICT, &err);  //延时500ms
     while (1)
     {
+        
         OS_MSG_SIZE            msg_size;
         ReceivedNodeDataStruct *receivedNodeData = (ReceivedNodeDataStruct *)OSTaskQPend(0, OS_OPT_PEND_BLOCKING, &msg_size, NULL, &err);
         if (err == OS_ERR_NONE)
         {
+            restart = 0;
             //printf("t=%f, h=%f, id=%d\r\n",receivedNodeData->temperature, receivedNodeData->humidity, receivedNodeData->localShortAddress);
             char debugStr[10];
             sprintf(debugStr, "ID:%d", receivedNodeData->localShortAddress);
@@ -158,30 +161,34 @@ void ReceiveDataTask(void *p_arg)
 *
 *  @Modified:2019-03-30 10:51 by Wang Zilin
 ******************************************************************************/
+//OS_MUTEX accessHoldingBufferMutex;
+bool Test = 0;
+
 void UploadDataTask(void *p_arg)
 {
+    
     OS_ERR err;
-
-    //定义要返回的值
-    usSRegInputBuf[0] = 0;
-    usSRegInputBuf[1] = 1;
-    usSRegInputBuf[2] = 2;
-    usSRegInputBuf[3] = 3;
-    usSRegInputBuf[4] = 4;
-    usSRegInputBuf[5] = 5;
-    usSRegInputBuf[6] = 6;
-
+    //OSMutexCreate(&accessHoldingBufferMutex, (char*)"access Holding Buffer Mutex", &err);
+    
     eMBErrorCode eStatus;
 
     eStatus = eMBInit(MB_RTU, 0x0a, 0, 115200, MB_PAR_NONE);
     /* Enable the Modbus Protocol Stack. */
     eStatus = eMBEnable(  );
-    for ( ; ;)
+    while(1)
     {
         ( void )eMBPoll(  );
         OSTimeDlyHMSM(0, 0, 0, 50, OS_OPT_TIME_HMSM_STRICT, &err);
         TogglePilotLED(3);
+        restart++;
+        if (restart > 200)
+        {
+            restart = 0;
+            receiveStatus = RECEIVE_FIXED_PART;
+            HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);
+        }
     }
+    
 }
 
 
@@ -202,7 +209,7 @@ void DisplayTask(void *p_arg)
     while (1)
     {
         OSMutexPend(&loaclDataSetAccessMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-        UIDrawNodeData(&localDataSet, 1);
+            UIDrawNodeData(&localDataSet, 0);
         OSMutexPost(&loaclDataSetAccessMutex, OS_OPT_POST_NONE, &err);
         OSTimeDlyHMSM(0, 0, 0, 20, OS_OPT_TIME_HMSM_STRICT, &err);
         TogglePilotLED(2);
