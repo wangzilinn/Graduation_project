@@ -45,6 +45,7 @@ void MainTask(void *pdata)
     USART zigBeeUsart(USART_ZIGBEE);
     DHT11_Init();
     OSTimeDlyHMSM(0, 0, 0, 1000);
+    OSTimeDlyHMSM(0, 0, 0, LOCAL_SHORT_ADDRESS*1000);//防止同时上电链路冲突
     NodeData.localShortAddress = LOCAL_SHORT_ADDRESS;
     while(1)
     {           
@@ -54,7 +55,7 @@ void MainTask(void *pdata)
             pilotLED.Toggle(); 
             OSTimeDlyHMSM(0, 0, 0, 5000);            
         }                
-        OSTimeDlyHMSM(0, 0, 0, 20);       
+        OSTimeDlyHMSM(0, 0, 0, 20);       //
     }
 }
 

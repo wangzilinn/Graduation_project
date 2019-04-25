@@ -124,8 +124,9 @@ eMBRegHoldingCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs,
         {
         /* read current register values from the protocol stack. */
         case MB_REG_READ:
+            //获取最新的节点数据
             {
-                //获取最新的节点数据
+                
                 OS_MSG_SIZE msg_size;
                 OS_ERR err;
                 NodeDataStruct *latestNodeData = (NodeDataStruct*)OSQPend(&latestNodeDataQuene, 0,  OS_OPT_PEND_NON_BLOCKING, &msg_size, NULL, &err);

@@ -27,5 +27,8 @@ void ModbusConvertStringToHoldingBuffer(char* str, u16* buffer, int bufferLength
 ******************************************************************************/
 void NodeDataToJSON(NodeDataStruct nodeData, char* str)
 {
-    sprintf(str, "{\"position\":{\"x\":%d,\"y\":%d,\"z\":%d},\"temp\":%d,\"humi\":%d}", nodeData.coordinate.x, nodeData.coordinate.y, nodeData.coordinate.z, (int)nodeData.receivedNodeData.temperature, (int)nodeData.receivedNodeData.humidity);
+    sprintf(str, "{\"position\":{\"x\":%d,\"y\":%d,\"z\":%d},\"temp\":%d.%d,\"humi\":%d}", 
+    nodeData.coordinate.x, nodeData.coordinate.y, nodeData.coordinate.z, 
+    (int)nodeData.receivedNodeData.temperature, (int)((nodeData.receivedNodeData.temperature - (int)nodeData.receivedNodeData.temperature) * 10),
+        (int)nodeData.receivedNodeData.humidity);
 }

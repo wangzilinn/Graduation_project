@@ -122,7 +122,7 @@ void StartTask(void *p_arg)
 *
 *  @Modified:2019-03-07 14:52 by Wang Zilin
 ******************************************************************************/
-int restart = 0;
+int restartReceive = 0;
 void ReceiveDataTask(void *p_arg)
 {
     OS_ERR err;
@@ -137,7 +137,7 @@ void ReceiveDataTask(void *p_arg)
         ReceivedNodeDataStruct *receivedNodeData = (ReceivedNodeDataStruct *)OSTaskQPend(0, OS_OPT_PEND_BLOCKING, &msg_size, NULL, &err);
         if (err == OS_ERR_NONE)
         {
-            restart = 0;
+            restartReceive = 0;
             //printf("t=%f, h=%f, id=%d\r\n",receivedNodeData->temperature, receivedNodeData->humidity, receivedNodeData->localShortAddress);
             char debugStr[10];
             sprintf(debugStr, "ID:%d", receivedNodeData->localShortAddress);
@@ -162,8 +162,6 @@ void ReceiveDataTask(void *p_arg)
 *  @Modified:2019-03-30 10:51 by Wang Zilin
 ******************************************************************************/
 //OS_MUTEX accessHoldingBufferMutex;
-bool Test = 0;
-
 void UploadDataTask(void *p_arg)
 {
     
@@ -180,10 +178,10 @@ void UploadDataTask(void *p_arg)
         ( void )eMBPoll(  );
         OSTimeDlyHMSM(0, 0, 0, 50, OS_OPT_TIME_HMSM_STRICT, &err);
         TogglePilotLED(3);
-        restart++;
-        if (restart > 200)
+        restartReceive++;
+        if (restartReceive > 200)//10s未接收到，则重启
         {
-            restart = 0;
+            restartReceive = 0;
             receiveStatus = RECEIVE_FIXED_PART;
             HAL_UART_Receive_IT(&UART2_Handler, (u8 *)Usart2RxBuffer, 1);
         }
