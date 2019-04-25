@@ -205,5 +205,6 @@ void HardwareInit(void)
     Uart2Init(115200);
     //Uart3Init(115200);
     LEDInit();                      //初始化LED
+    tp_dev.init();				    		//触摸屏初始化 
 
 }

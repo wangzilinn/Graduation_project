@@ -121,7 +121,9 @@
   ../HARDWARE/usart.h ../HARDWARE/led.h ../HARDWARE/ITM.h \
   ../HARDWARE/dht11.h ../HARDWARE/delay.h ../HARDWARE/lcd.h \
   ../HARDWARE/ltdc.h ../HARDWARE/hardware_init.h ../HARDWARE/sdram.h \
-  ../HARDWARE/timer.h ../MIDDLELAYER\graph_module.h \
+  ../HARDWARE/timer.h ../HARDWARE/TOUCH\touch.h ../HARDWARE\sys.h \
+  ../HARDWARE/TOUCH/ott2001a.h ../HARDWARE/TOUCH/gt9147.h \
+  ../HARDWARE/TOUCH/ft5206.h ../MIDDLELAYER\graph_module.h \
   ../MIDDLELAYER/monitoring_node_data_storage_module.h \
   ../FREEMODBUS/MODBUS/include\mb.h ../FREEMODBUS/MODBUS_port\port.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\assert.h \

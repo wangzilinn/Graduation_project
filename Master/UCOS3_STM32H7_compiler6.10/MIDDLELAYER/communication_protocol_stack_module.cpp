@@ -27,7 +27,7 @@ void ZigBeeReceiveCallBack()
 {
     if (receiveStatus == RECEIVE_FIXED_PART)
     {      
-        printf("1");
+        //printf("1");
         //放入接受队列
         Method::BytewiseShiftLeft(fixedFrameArray, 6);
         fixedFrameArray[5] = Usart2RxBuffer[0];
@@ -59,7 +59,7 @@ void ZigBeeReceiveCallBack()
     else if (receiveStatus == RECEIVE_VARIABLE_PART)
     {
         TogglePilotLED(4);
-        printf("2\r\n");
+        //printf("2\r\n");
         u8 structLength = fixedFrameArray[4];
         //check variable part CRC result
         u16 CRCCheck = Method::ModbusCRC16(Usart2RxBuffer, structLength);

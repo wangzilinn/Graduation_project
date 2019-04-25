@@ -209,8 +209,15 @@ void DisplayTask(void *p_arg)
         OSMutexPend(&loaclDataSetAccessMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
             UIDrawNodeData(&localDataSet, 0);
         OSMutexPost(&loaclDataSetAccessMutex, OS_OPT_POST_NONE, &err);
-        OSTimeDlyHMSM(0, 0, 0, 20, OS_OPT_TIME_HMSM_STRICT, &err);
+        OSTimeDlyHMSM(0, 0, 0, 5, OS_OPT_TIME_HMSM_STRICT, &err);
         TogglePilotLED(2);
+        tp_dev.scan(0);
+        if ((tp_dev.sta)&1)//有点按下
+        {
+            int x= tp_dev.x[0];
+            int y= tp_dev.y[0];
+            printf("%d,%d\r\n",x,y);
+        }
     }
 }
 

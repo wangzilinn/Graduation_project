@@ -15,6 +15,7 @@ Peripheral header file
 #include "lcd.h"
 #include "sdram.h"
 #include "timer.h"
+#include "touch.h"
 /******************************************************************************
 Private function declarations
 ******************************************************************************/
