@@ -199,25 +199,46 @@ void UploadDataTask(void *p_arg)
 *
 *  @Modified:2019-03-10 20:36 by Wang Zilin
 ******************************************************************************/
+int posX= 0,posY = 0;
 void DisplayTask(void *p_arg)
 {
     OS_ERR err;
-
-    UIDrawBackground();
+    UIDrawBackground(PageName);
     while (1)
-    {
-        OSMutexPend(&loaclDataSetAccessMutex, 0, OS_OPT_PEND_BLOCKING, NULL, &err);
-            UIDrawNodeData(&localDataSet, 0);
-        OSMutexPost(&loaclDataSetAccessMutex, OS_OPT_POST_NONE, &err);
-        OSTimeDlyHMSM(0, 0, 0, 5, OS_OPT_TIME_HMSM_STRICT, &err);
-        TogglePilotLED(2);
-        tp_dev.scan(0);
-        if ((tp_dev.sta)&1)//有点按下
+    { 
+        u8 touched = 0;
+        if(UIScan(&posX, &posY))
         {
-            int x= tp_dev.x[0];
-            int y= tp_dev.y[0];
-            printf("%d,%d\r\n",x,y);
+            touched = 1;
         }
+        switch (PageName)
+        {
+            case OVERVIEW_PAGE:
+            {
+                if(touched)
+                {
+                    printf("Overview %d,%d\r\n", posX, posY);
+                    UIOverviewPageRespond(posX,posY,&localDataSet, 0);
+                    break;
+                }
+                else
+                {
+                    UIOverviewPageRespond(0, 0, &localDataSet, 0);
+                }
+            }
+            case NODE_NUMBER_CONFIG_PAGE:
+            {
+                if(touched)
+                {
+                    printf("Config %d,%d\r\n",posX, posY);
+                    UIConfigPageRespond(posX,posY,&localDataSet);
+                    break;
+                }
+            }
+        }
+        OSTimeDlyHMSM(0, 0, 0, 5, OS_OPT_TIME_HMSM_STRICT, &err);
+        TogglePilotLED(2);     
+        posX = posY = 0;
     }
 }
 
