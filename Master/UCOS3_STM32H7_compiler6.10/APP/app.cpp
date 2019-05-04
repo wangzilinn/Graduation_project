@@ -199,13 +199,14 @@ void UploadDataTask(void *p_arg)
 *
 *  @Modified:2019-03-10 20:36 by Wang Zilin
 ******************************************************************************/
-int posX= 0,posY = 0;
+
 void DisplayTask(void *p_arg)
 {
     OS_ERR err;
     UIDrawBackground(PageName);
     while (1)
     { 
+        int posX= 0,posY = 0;
         u8 touched = 0;
         if(UIScan(&posX, &posY))
         {
@@ -238,7 +239,6 @@ void DisplayTask(void *p_arg)
         }
         OSTimeDlyHMSM(0, 0, 0, 5, OS_OPT_TIME_HMSM_STRICT, &err);
         TogglePilotLED(2);     
-        posX = posY = 0;
     }
 }
 
